@@ -4,7 +4,7 @@ export function Header() {
   return (
     <header>
       {/* this will be home page  */}
-      <Link>
+      <Link to={"/"}>
         <img
           className="logo"
           src="public/images/logo-bicycle.svg"
@@ -15,16 +15,16 @@ export function Header() {
       <nav>
         <ul>
           <li>
-            <NavLink>About</NavLink>
+            <NavLink to={"bikes"}>Bikes</NavLink>
           </li>
           <li>
-            <NavLink>Bikes</NavLink>
+            <NavLink to={"repair"}>Repair</NavLink>
           </li>
           <li>
-            <NavLink>Repair</NavLink>
+            <NavLink to={"about"}>About</NavLink>
           </li>
           <li>
-            <NavLink>Contact Us</NavLink>
+            <NavLink to={"contact"}>Contact Us</NavLink>
           </li>
           {/* Connect -> use an icon instead  */}
           <li>
