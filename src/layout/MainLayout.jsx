@@ -1,13 +1,16 @@
+import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 
 export function MainLayout() {
   return (
     <div className="container">
       <Header />
-      <main>
-        <h1>Main layout</h1>
+      <main className="hero">
+        <h1 className="hero-title">
+          Ride Into <span>The Future</span>
+        </h1>
       </main>
-      <footer>footer</footer>
+      <Footer />
     </div>
   );
 }

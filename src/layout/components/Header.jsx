@@ -5,7 +5,11 @@ export function Header() {
     <header>
       {/* this will be home page  */}
       <Link>
-        <img className="logo" src="" alt="" />
+        <img
+          className="logo"
+          src="public/images/logo-bicycle.svg"
+          alt="bicycle logo"
+        />
       </Link>
 
       <nav>
@@ -24,7 +28,9 @@ export function Header() {
           </li>
           {/* Connect -> use an icon instead  */}
           <li>
-            <NavLink>Connect</NavLink>
+            <NavLink>
+              <img src="public/images/user-solid.svg" alt="user icon" />
+            </NavLink>
           </li>
         </ul>
       </nav>
