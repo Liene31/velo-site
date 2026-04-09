@@ -76,8 +76,7 @@ nav ul {
   padding: 1rem;
   background:
     linear-gradient(rgba(11, 15, 26, 0.65), rgba(11, 15, 26, 0.8)),
-    url("https://images.unsplash.com/photo-1541625602330-2277a4c46182?auto=format&fit=crop&w=1400&q=80")
-      center/cover no-repeat;
+    url("/images/hero-img.png") center 40% / cover no-repeat;
 }
 
 .hero-title {
