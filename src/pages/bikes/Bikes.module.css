@@ -5,7 +5,10 @@
   gap: 2rem;
   color: var(--color-white);
   background:
-    linear-gradient(rgba(5, 7, 15, 0.82), rgba(5, 7, 15, 0.94)),
+    linear-gradient(
+      rgba(var(--color-dark-bg-rgb), 0.65),
+      rgba(var(--color-dark-bg-rgb), 0.8)
+    ),
     url("/images/bg-img.png") center center / cover no-repeat;
 }
 
@@ -22,7 +25,7 @@
     var(--color-yellow),
     var(--color-blue)
   );
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -67,16 +70,16 @@
   align-items: center;
   gap: 1rem;
   border-radius: 1rem;
-  background: rgba(17, 24, 39, 0.78);
-  border: 1px solid rgba(52, 152, 219, 0.35);
+  background: rgba(var(--color-dark-rgb), 0.78);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
 }
 
 .bikeType {
   align-self: flex-start;
   padding: 0.35rem 0.8rem;
   border-radius: 0.5rem;
-  background: rgba(192, 36, 37, 0.18);
-  border: 1px solid rgba(192, 36, 37, 0.45);
+  background: rgba(var(--color-red-rgb), 0.18);
+  border: 1px solid rgba(var(--color-red-rgb), 0.45);
   color: var(--color-yellow);
   font-family: var(--font-secondary);
   font-size: 0.8rem;

@@ -6,7 +6,10 @@
   justify-content: center;
   padding: 1rem;
   background:
-    linear-gradient(rgba(11, 15, 26, 0.65), rgba(11, 15, 26, 0.8)),
+    linear-gradient(
+      rgba(var(--color-dark-bg-rgb), 0.65),
+      rgba(var(--color-dark-bg-rgb), 0.8)
+    ),
     url("/images/hero-img.png") center 40% / cover no-repeat;
 }
 
@@ -23,7 +26,7 @@
     var(--color-yellow),
     var(--color-blue)
   );
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
