@@ -56,7 +56,7 @@
 
 .bikesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
+  grid-template-columns: repeat(auto-fill, minmax(80px, 250px));
   justify-content: center;
   gap: 1rem;
   width: 100%;
