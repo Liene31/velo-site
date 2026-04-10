@@ -4,12 +4,6 @@
   align-items: center;
   gap: 2rem;
   color: var(--color-white);
-  background:
-    linear-gradient(
-      rgba(var(--color-dark-bg-rgb), 0.65),
-      rgba(var(--color-dark-bg-rgb), 0.8)
-    ),
-    url("/images/bg-img.png") center center / cover no-repeat;
 }
 
 .bikesTitle {
@@ -54,47 +48,39 @@
   color: var(--color-dark);
 }
 
-.bikesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 250px));
-  justify-content: center;
+.bikesWrapper {
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
-  width: 100%;
+  justify-content: center;
+  padding: 1rem;
   max-width: 1200px;
 }
 
-@media (max-width: 562px) {
-  .bikesGrid {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 200px));
-  }
-}
-
-@media (max-width: 462px) {
-  .bikesGrid {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 150px));
-  }
-}
-
-@media (max-width: 362px) {
-  .bikesGrid {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-/* 462px */
-/* 362px */
-
 .bikeCard {
-  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  max-width: 250px;
+  width: 100%;
+  padding: 1.5rem;
   border-radius: 1rem;
   background: rgba(var(--color-dark-rgb), 0.78);
   border: 1px solid rgba(var(--color-blue-rgb), 0.35);
 }
+
+/* @media (max-width: 828px) {
+  .bikeCard {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 678px) {
+  .bikeCard {
+    width: 100%;
+  }
+} */
 
 .bikeType {
   align-self: flex-start;

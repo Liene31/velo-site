@@ -75,6 +75,12 @@ nav ul {
 main {
   flex: 1;
   padding: 2rem 1rem;
+  background:
+    linear-gradient(
+      rgba(var(--color-dark-bg-rgb), 0.65),
+      rgba(var(--color-dark-bg-rgb), 0.8)
+    ),
+    url("/images/bg-img.png") center center / cover no-repeat;
 }
 
 /* ----FOOTER---- */

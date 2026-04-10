@@ -11,11 +11,3 @@ export function MainLayout() {
     </div>
   );
 }
-
-{
-  /* <Header />
-      <main>
-        <Outlet />
-      </main>
-      <Footer /> */
-}
