@@ -29,7 +29,7 @@ export function Header() {
           {/* Connect -> use an icon instead  */}
           <li>
             <NavLink>
-              <img src="public/images/user-solid.svg" alt="user icon" />
+              <img src="/images/user-solid.svg" alt="user icon" />
             </NavLink>
           </li>
         </ul>

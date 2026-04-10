@@ -29,6 +29,8 @@ Minimum: The smallest size your text can shrink to.
 Preferred: The ideal size, often a percentage of the viewport width
 Maximum: The largest size your text can grow to. */
 
+/* @media (min-width: 650px) { ... } means if the screen is bigger then 650px, do this*/
+
 .container {
   display: flex;
   flex-direction: column;

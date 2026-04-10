@@ -63,6 +63,28 @@
   max-width: 1200px;
 }
 
+@media (max-width: 562px) {
+  .bikesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 200px));
+  }
+}
+
+@media (max-width: 462px) {
+  .bikesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 150px));
+  }
+}
+
+@media (max-width: 362px) {
+  .bikesGrid {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* 462px */
+/* 362px */
+
 .bikeCard {
   padding: 1.5rem;
   display: flex;
