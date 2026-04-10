@@ -13,6 +13,17 @@
     url("/images/hero-img.png") center 40% / cover no-repeat;
 }
 
+@media (min-width: 885px) {
+  .hero {
+    background:
+      linear-gradient(
+        rgba(var(--color-dark-bg-rgb), 0.65),
+        rgba(var(--color-dark-bg-rgb), 0.8)
+      ),
+      url("/images/bg-img.png") center center / cover no-repeat;
+  }
+}
+
 .heroTitle {
   font-size: clamp(2.5rem, 6vw, 5rem);
   font-family: var(--font-secondary);
