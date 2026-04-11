@@ -5,10 +5,22 @@
   margin-top: 1.5rem;
 }
 
+@media (max-width: 600px) {
+  .specWrapper {
+    gap: 1rem;
+  }
+}
+
 .specOptions {
   display: flex;
   gap: 0.5rem;
   padding-right: 2rem;
+}
+
+@media (max-width: 600px) {
+  .specOptions {
+    flex-wrap: wrap;
+  }
 }
 
 .specOptions button {
@@ -22,6 +34,13 @@
   font-weight: 600;
   letter-spacing: 1px;
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .specOptions button {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.7rem;
+  }
 }
 
 .specOptions button:hover {
@@ -46,4 +65,16 @@
   color: var(--color-yellow);
   font-weight: 700;
   min-width: 140px;
+}
+
+@media (max-width: 600px) {
+  .specDetails {
+    padding: 0.5rem;
+  }
+
+  .specDetails li {
+    flex-direction: column;
+    padding: 0.4rem;
+    font-size: 0.9rem;
+  }
 }
