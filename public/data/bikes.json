@@ -32,7 +32,7 @@
     "images": [
       {
         "id": "img_001",
-        "url": "/images/bikes/scott-speedster-30-2025/main.jpg",
+        "url": "https://asset.scott-sports.com/fit-in/260x260/425/4253668357_2222971_4.png?signature=a666003985a5bf2673fe406cc4e74ef2d9fb69510c8dcf5ad6543524c71fe11d",
         "alt": "Scott Speedster 30 side view",
         "isPrimary": true
       },
@@ -78,7 +78,7 @@
     "images": [
       {
         "id": "img_011",
-        "url": "/images/bikes/cube-reaction-hybrid-pro-2025/main.jpg",
+        "url": "https://asset.scott-sports.com/fit-in/260x260/425/4256873020_2222983_2.png?signature=b2015eca92160fec8145e5f4690663577109f7e80c6cf61ef39a9c223ce1752c",
         "alt": "Cube Reaction Hybrid Pro side view",
         "isPrimary": true
       },
@@ -120,7 +120,7 @@
     "images": [
       {
         "id": "img_021",
-        "url": "/images/bikes/cube-nuroad-pro-2025/main.jpg",
+        "url": "https://asset.scott-sports.com/fit-in/260x260/425/4253633020_2222965_3.png?signature=72c1071438227af6c52909863be4553a706d776b250920abc7094753c37bff49",
         "alt": "Cube Nuroad Pro on gravel terrain",
         "isPrimary": true
       },
@@ -167,13 +167,13 @@
     "images": [
       {
         "id": "img_031",
-        "url": "/images/bikes/cube-cargo-sport-dual-2025/main.jpg",
+        "url": "https://asset.scott-sports.com/fit-in/260x260/425/4256368355_2222979_2.png?signature=1890ceedcf619f9871bfb3505bbdd6f22a51ebc3f65bc6e03fd7076d03f95018",
         "alt": "Cube Cargo Sport Dual side profile",
         "isPrimary": true
       },
       {
         "id": "img_032",
-        "url": "/images/bikes/cube-cargo-sport-dual-2025/detail-1.jpg",
+        "url": "https://asset.scott-sports.com/fit-in/260x260/425/4253678332_2222972_4.png?signature=f26d88c5449e6d2fe35cb27a99c3cdfc213684b4bfe7570805abfbd4e0d36808",
         "alt": "Cube Cargo Sport Dual cargo area detail",
         "isPrimary": false
       }
@@ -209,7 +209,7 @@
     "images": [
       {
         "id": "img_041",
-        "url": "/images/bikes/uto-fold-lite-2025/main.jpg",
+        "url": "https://asset.scott-sports.com/fit-in/260x260/425/4253678332_2222972_4.png?signature=f26d88c5449e6d2fe35cb27a99c3cdfc213684b4bfe7570805abfbd4e0d36808",
         "alt": "UTO Fold Lite unfolded side view",
         "isPrimary": true
       },

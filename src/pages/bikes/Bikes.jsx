@@ -1,7 +1,33 @@
 import styles from "./Bikes.module.css";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export function Bikes() {
+  const [bikes, setBikes] = useState(null);
+
+  useEffect(() => {
+    fetch("/data/bikes.json")
+      .then((res) => res.json())
+      .then((data) => setBikes(data));
+  }, []);
+
+  const bikeElement = bikes?.map((bike) => {
+    return (
+      <Link className={styles.bikeCard} to={bike.id} key={bike.id}>
+        <i className={styles.bikeType}>{bike.overview.category}</i>
+        <img
+          className={styles.bikeImg}
+          src={bike.images[0].url}
+          alt={bike.images[0].alt}
+        />
+        <h2>{bike.name}</h2>
+        <p>
+          {bike.overview.currency} {bike.overview.price}
+        </p>
+      </Link>
+    );
+  });
+
   return (
     <main className={styles.bikesPage}>
       <h1 className={styles.bikesTitle}>Explore our bikes</h1>
@@ -15,57 +41,7 @@ export function Bikes() {
         <button>Clear filters</button>
       </div>
       <div className={styles.bikesWrapper}>
-        <Link className={styles.bikeCard} to="1">
-          <i className={styles.bikeType}>Road</i>
-          <img
-            className={styles.bikeImg}
-            src="https://asset.scott-sports.com/fit-in/260x260/425/4253488087_2223048_3.png?signature=991b49b7a60172fca3ba8def142f86b71122c7baf1937421157c38e1ba4b8502"
-            alt="image of bike"
-          />
-          <h2>Bike Name</h2>
-          <p>€ 2100</p>
-        </Link>
-
-        <div className={styles.bikeCard}>
-          <i className={styles.bikeType}>Road</i>
-          <img
-            className={styles.bikeImg}
-            src="https://asset.scott-sports.com/fit-in/260x260/425/4253488087_2223048_3.png?signature=991b49b7a60172fca3ba8def142f86b71122c7baf1937421157c38e1ba4b8502"
-            alt="image of bike"
-          />
-          <h2>Bike Name</h2>
-          <p>€ 2100</p>
-        </div>
-        <div className={styles.bikeCard}>
-          <i className={styles.bikeType}>Road</i>
-          <img
-            className={styles.bikeImg}
-            src="https://asset.scott-sports.com/fit-in/260x260/425/4253488087_2223048_3.png?signature=991b49b7a60172fca3ba8def142f86b71122c7baf1937421157c38e1ba4b8502"
-            alt="image of bike"
-          />
-          <h2>Bike Name</h2>
-          <p>€ 2100</p>
-        </div>
-        <div className={styles.bikeCard}>
-          <i className={styles.bikeType}>Road</i>
-          <img
-            className={styles.bikeImg}
-            src="https://asset.scott-sports.com/fit-in/260x260/425/4253488087_2223048_3.png?signature=991b49b7a60172fca3ba8def142f86b71122c7baf1937421157c38e1ba4b8502"
-            alt="image of bike"
-          />
-          <h2>Bike Name</h2>
-          <p>€ 2100</p>
-        </div>
-        <div className={styles.bikeCard}>
-          <i className={styles.bikeType}>Road</i>
-          <img
-            className={styles.bikeImg}
-            src="https://asset.scott-sports.com/fit-in/260x260/425/4253488087_2223048_3.png?signature=991b49b7a60172fca3ba8def142f86b71122c7baf1937421157c38e1ba4b8502"
-            alt="image of bike"
-          />
-          <h2>Bike Name</h2>
-          <p>€ 2100</p>
-        </div>
+        {bikes ? bikeElement : <h2>Loading</h2>}
       </div>
     </main>
   );

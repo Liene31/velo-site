@@ -1,7 +1,17 @@
+import { useEffect, useState } from "react";
 import styles from "./BikeDetail.module.css";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 
 export function BikeDetail() {
+  const [currentBike, setCurrentBike] = useState(null);
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetch(`/data/bikes.json`)
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, []);
+
   return (
     <main className={styles.bikesDetailPage}>
       <div className={styles.bikeDetailWrapper}>
