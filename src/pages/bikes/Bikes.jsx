@@ -11,6 +11,7 @@ export function Bikes() {
         <button>E-bikes</button>
         <button>Gravel</button>
         <button>Longtail</button>
+        <button>Folded</button>
         <button>Clear filters</button>
       </div>
       <div className={styles.bikesWrapper}>

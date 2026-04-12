@@ -1,0 +1,224 @@
+[
+  {
+    "id": "bike_001",
+    "slug": "scott-speedster-30-2025",
+    "name": "Scott Speedster 30",
+    "overview": {
+      "brand": "Scott",
+      "model": "Speedster 30",
+      "year": 2025,
+      "category": "road",
+      "price": 1399,
+      "currency": "EUR",
+      "colors": ["Black", "Red"],
+      "sizes": ["XS", "S", "M", "L"],
+      "description": "Endurance-focused road bike with stable handling and comfortable geometry for long rides.",
+      "inStock": true
+    },
+    "specs": {
+      "drivetrain": "Shimano Sora 2x9",
+      "wheel": "Syncros Race 24 Disc",
+      "brakes": "Tektro MD-C511 mechanical disc",
+      "tyres": "Schwalbe Lugano 700x32c",
+      "fork": "Speedster Disc carbon fork",
+      "saddle": "Syncros Tofino Regular",
+      "frame": "Speedster Disc Alloy",
+      "other": [
+        "Internal cable routing",
+        "Endurance geometry",
+        "Alloy seatpost"
+      ]
+    },
+    "images": [
+      {
+        "id": "img_001",
+        "url": "/images/bikes/scott-speedster-30-2025/main.jpg",
+        "alt": "Scott Speedster 30 side view",
+        "isPrimary": true
+      },
+      {
+        "id": "img_002",
+        "url": "/images/bikes/scott-speedster-30-2025/detail-1.jpg",
+        "alt": "Scott Speedster 30 cockpit detail",
+        "isPrimary": false
+      }
+    ]
+  },
+
+  {
+    "id": "bike_006",
+    "slug": "cube-reaction-hybrid-pro-2025",
+    "name": "Cube Reaction Hybrid Pro",
+    "overview": {
+      "brand": "Cube",
+      "model": "Reaction Hybrid Pro",
+      "year": 2025,
+      "category": "e-bike",
+      "price": 2899,
+      "currency": "EUR",
+      "colors": ["Black", "Green"],
+      "sizes": ["S", "M", "L", "XL"],
+      "description": "Electric hardtail for city use, fitness, and light trail adventures.",
+      "inStock": true
+    },
+    "specs": {
+      "drivetrain": "Shimano Cues 1x10",
+      "wheel": "CUBE EX30 29 inch",
+      "brakes": "Shimano hydraulic disc",
+      "tyres": "Schwalbe Smart Sam 29x2.25",
+      "fork": "SR Suntour XCM32 120mm",
+      "saddle": "Natural Fit Sequence",
+      "frame": "Aluminium Superlite e-bike frame",
+      "other": [
+        "Bosch Performance Line motor",
+        "625Wh battery",
+        "Integrated display"
+      ]
+    },
+    "images": [
+      {
+        "id": "img_011",
+        "url": "/images/bikes/cube-reaction-hybrid-pro-2025/main.jpg",
+        "alt": "Cube Reaction Hybrid Pro side view",
+        "isPrimary": true
+      },
+      {
+        "id": "img_012",
+        "url": "/images/bikes/cube-reaction-hybrid-pro-2025/detail-1.jpg",
+        "alt": "Cube Reaction Hybrid Pro motor detail",
+        "isPrimary": false
+      }
+    ]
+  },
+
+  {
+    "id": "bike_011",
+    "slug": "cube-nuroad-pro-2025",
+    "name": "Cube Nuroad Pro",
+    "overview": {
+      "brand": "Cube",
+      "model": "Nuroad Pro",
+      "year": 2025,
+      "category": "gravel",
+      "price": 1499,
+      "currency": "EUR",
+      "colors": ["Olive", "Grey"],
+      "sizes": ["50", "53", "56", "58", "61"],
+      "description": "Balanced gravel bike for mixed surfaces, bikepacking, and weekend exploration.",
+      "inStock": true
+    },
+    "specs": {
+      "drivetrain": "Shimano GRX 2x10",
+      "wheel": "CUBE GR 2.3 Disc",
+      "brakes": "Shimano GRX hydraulic disc",
+      "tyres": "Schwalbe G-One Allround 700x40c",
+      "fork": "Full carbon gravel fork",
+      "saddle": "Natural Fit Venec Gravel",
+      "frame": "Aluminium Superlite Gravel",
+      "other": ["Rack mounts", "Mudguard mounts", "Gravel geometry"]
+    },
+    "images": [
+      {
+        "id": "img_021",
+        "url": "/images/bikes/cube-nuroad-pro-2025/main.jpg",
+        "alt": "Cube Nuroad Pro on gravel terrain",
+        "isPrimary": true
+      },
+      {
+        "id": "img_022",
+        "url": "/images/bikes/cube-nuroad-pro-2025/detail-1.jpg",
+        "alt": "Cube Nuroad Pro handlebar detail",
+        "isPrimary": false
+      }
+    ]
+  },
+
+  {
+    "id": "bike_016",
+    "slug": "cube-cargo-sport-dual-2025",
+    "name": "Cube Cargo Sport Dual",
+    "overview": {
+      "brand": "Cube",
+      "model": "Cargo Sport Dual",
+      "year": 2025,
+      "category": "longtail",
+      "price": 4999,
+      "currency": "EUR",
+      "colors": ["Black", "Blue"],
+      "sizes": ["One Size"],
+      "description": "Longtail cargo e-bike built for family transport, shopping, and daily utility use.",
+      "inStock": true
+    },
+    "specs": {
+      "drivetrain": "Enviolo Cargo hub",
+      "wheel": "20 inch rear / 26 inch front cargo wheelset",
+      "brakes": "Magura hydraulic disc",
+      "tyres": "Schwalbe Pick-Up cargo tyres",
+      "fork": "Suspension fork 80mm",
+      "saddle": "Natural Fit Sequence Comfort",
+      "frame": "Cargo aluminium frame",
+      "other": [
+        "Bosch Cargo Line motor",
+        "725Wh dual battery setup",
+        "Passenger footrests",
+        "Rear rack system"
+      ]
+    },
+    "images": [
+      {
+        "id": "img_031",
+        "url": "/images/bikes/cube-cargo-sport-dual-2025/main.jpg",
+        "alt": "Cube Cargo Sport Dual side profile",
+        "isPrimary": true
+      },
+      {
+        "id": "img_032",
+        "url": "/images/bikes/cube-cargo-sport-dual-2025/detail-1.jpg",
+        "alt": "Cube Cargo Sport Dual cargo area detail",
+        "isPrimary": false
+      }
+    ]
+  },
+
+  {
+    "id": "bike_021",
+    "slug": "uto-fold-lite-2025",
+    "name": "UTO Fold Lite",
+    "overview": {
+      "brand": "UTO",
+      "model": "Fold Lite",
+      "year": 2025,
+      "category": "folded",
+      "price": 899,
+      "currency": "EUR",
+      "colors": ["Black", "Red"],
+      "sizes": ["One Size"],
+      "description": "Simple folding bike for short commutes, trains, and easy storage at home or office.",
+      "inStock": true
+    },
+    "specs": {
+      "drivetrain": "Shimano Tourney 1x7",
+      "wheel": "20 inch alloy wheelset",
+      "brakes": "V-brakes",
+      "tyres": "CST city 20x1.75",
+      "fork": "Rigid steel fork",
+      "saddle": "UTO Comfort Urban",
+      "frame": "Folding aluminium frame",
+      "other": ["Magnetic fold lock", "Quick fold stem", "Compact pedals"]
+    },
+    "images": [
+      {
+        "id": "img_041",
+        "url": "/images/bikes/uto-fold-lite-2025/main.jpg",
+        "alt": "UTO Fold Lite unfolded side view",
+        "isPrimary": true
+      },
+      {
+        "id": "img_042",
+        "url": "/images/bikes/uto-fold-lite-2025/detail-1.jpg",
+        "alt": "UTO Fold Lite folded position detail",
+        "isPrimary": false
+      }
+    ]
+  }
+]
