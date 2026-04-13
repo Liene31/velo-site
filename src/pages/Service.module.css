@@ -58,7 +58,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
   max-width: 1000px;
 }
 
@@ -173,33 +173,4 @@
 
 .booking p {
   margin-bottom: 2rem;
-}
-
-@media (max-width: 768px) {
-  .servicesPage {
-    gap: 2rem;
-  }
-
-  .serviceCard {
-    padding: 1.4rem;
-  }
-
-  .priceCard {
-    padding: 1.4rem;
-  }
-}
-
-@media (max-width: 500px) {
-  .serviceHero {
-    padding: 1.5rem 1rem;
-  }
-
-  .serviceHero h1 {
-    font-size: 2rem;
-  }
-
-  .cta {
-    padding: 0.6rem 1.3rem;
-    font-size: 0.9rem;
-  }
 }

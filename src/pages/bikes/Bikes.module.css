@@ -53,7 +53,6 @@
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
-  padding: 1rem;
   max-width: 1200px;
 }
 
@@ -66,26 +65,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1 1 230px;
   gap: 1rem;
-  max-width: 250px;
-  width: 100%;
+  max-width: 280px;
   padding: 1.5rem;
   border-radius: 1rem;
   background: rgba(var(--color-dark-rgb), 0.78);
   border: 1px solid rgba(var(--color-blue-rgb), 0.35);
 }
 
-/* @media (max-width: 828px) {
+@media (max-width: 768px) {
   .bikeCard {
-    max-width: 200px;
+    flex: 1 1 185px;
   }
 }
 
-@media (max-width: 678px) {
+@media (max-width: 450px) {
   .bikeCard {
-    width: 100%;
+    max-width: 100%;
   }
-} */
+}
 
 .bikeType {
   align-self: flex-start;
@@ -111,6 +110,12 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .bikeCard h2 {
+    font-size: 0.95rem;
+  }
 }
 
 .bikeCard p {
