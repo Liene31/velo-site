@@ -1,22 +1,8 @@
-import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import styles from "./BikeSpecs.module.css";
-import { useParams } from "react-router-dom";
 
 export function BikeOverview() {
-  const [currentBike, setCurrentBike] = useState(null);
-  const { id } = useParams();
-
-  useEffect(() => {
-    fetch(`/data/bikes.json`)
-      .then((res) => res.json())
-      .then((data) => {
-        const filteredBike = data.filter((bike) => {
-          return bike.id === id;
-        });
-        //normalizing data since I know it will be always only one object
-        setCurrentBike(filteredBike[0]);
-      });
-  }, []);
+  const { currentBike } = useOutletContext();
 
   return (
     <div className={styles.specDetails}>

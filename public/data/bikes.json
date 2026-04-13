@@ -16,18 +16,26 @@
       "inStock": true
     },
     "specs": {
-      "drivetrain": "Shimano Sora 2x9",
-      "wheel": "Syncros Race 24 Disc",
-      "brakes": "Tektro MD-C511 mechanical disc",
-      "tyres": "Schwalbe Lugano 700x32c",
-      "fork": "Speedster Disc carbon fork",
-      "saddle": "Syncros Tofino Regular",
-      "frame": "Speedster Disc Alloy",
-      "other": [
-        "Internal cable routing",
-        "Endurance geometry",
-        "Alloy seatpost"
-      ]
+      "performance": {
+        "drivetrain": "Shimano Sora 2x9",
+        "wheelset": "Syncros Race 24 Disc",
+        "brakes": "Tektro MD-C511 mechanical disc",
+        "tyres": "Schwalbe Lugano 700x32c"
+      },
+      "chassis": {
+        "frame": "Speedster Disc Alloy",
+        "fork": "Speedster Disc carbon fork"
+      },
+      "components": {
+        "saddle": "Syncros Tofino Regular"
+      },
+      "features": {
+        "other": [
+          "Internal cable routing",
+          "Endurance geometry",
+          "Alloy seatpost"
+        ]
+      }
     },
     "images": [
       {
@@ -62,18 +70,26 @@
       "inStock": true
     },
     "specs": {
-      "drivetrain": "Shimano Cues 1x10",
-      "wheel": "CUBE EX30 29 inch",
-      "brakes": "Shimano hydraulic disc",
-      "tyres": "Schwalbe Smart Sam 29x2.25",
-      "fork": "SR Suntour XCM32 120mm",
-      "saddle": "Natural Fit Sequence",
-      "frame": "Aluminium Superlite e-bike frame",
-      "other": [
-        "Bosch Performance Line motor",
-        "625Wh battery",
-        "Integrated display"
-      ]
+      "performance": {
+        "drivetrain": "Shimano Sora 2x9",
+        "wheelset": "Syncros Race 24 Disc",
+        "brakes": "Tektro MD-C511 mechanical disc",
+        "tyres": "Schwalbe Lugano 700x32c"
+      },
+      "chassis": {
+        "frame": "Speedster Disc Alloy",
+        "fork": "Speedster Disc carbon fork"
+      },
+      "components": {
+        "saddle": "Syncros Tofino Regular"
+      },
+      "features": {
+        "other": [
+          "Internal cable routing",
+          "Endurance geometry",
+          "Alloy seatpost"
+        ]
+      }
     },
     "images": [
       {
@@ -108,14 +124,26 @@
       "inStock": true
     },
     "specs": {
-      "drivetrain": "Shimano GRX 2x10",
-      "wheel": "CUBE GR 2.3 Disc",
-      "brakes": "Shimano GRX hydraulic disc",
-      "tyres": "Schwalbe G-One Allround 700x40c",
-      "fork": "Full carbon gravel fork",
-      "saddle": "Natural Fit Venec Gravel",
-      "frame": "Aluminium Superlite Gravel",
-      "other": ["Rack mounts", "Mudguard mounts", "Gravel geometry"]
+      "performance": {
+        "drivetrain": "Shimano Sora 2x9",
+        "wheelset": "Syncros Race 24 Disc",
+        "brakes": "Tektro MD-C511 mechanical disc",
+        "tyres": "Schwalbe Lugano 700x32c"
+      },
+      "chassis": {
+        "frame": "Speedster Disc Alloy",
+        "fork": "Speedster Disc carbon fork"
+      },
+      "components": {
+        "saddle": "Syncros Tofino Regular"
+      },
+      "features": {
+        "other": [
+          "Internal cable routing",
+          "Endurance geometry",
+          "Alloy seatpost"
+        ]
+      }
     },
     "images": [
       {
@@ -150,19 +178,26 @@
       "inStock": true
     },
     "specs": {
-      "drivetrain": "Enviolo Cargo hub",
-      "wheel": "20 inch rear / 26 inch front cargo wheelset",
-      "brakes": "Magura hydraulic disc",
-      "tyres": "Schwalbe Pick-Up cargo tyres",
-      "fork": "Suspension fork 80mm",
-      "saddle": "Natural Fit Sequence Comfort",
-      "frame": "Cargo aluminium frame",
-      "other": [
-        "Bosch Cargo Line motor",
-        "725Wh dual battery setup",
-        "Passenger footrests",
-        "Rear rack system"
-      ]
+      "performance": {
+        "drivetrain": "Shimano Sora 2x9",
+        "wheelset": "Syncros Race 24 Disc",
+        "brakes": "Tektro MD-C511 mechanical disc",
+        "tyres": "Schwalbe Lugano 700x32c"
+      },
+      "chassis": {
+        "frame": "Speedster Disc Alloy",
+        "fork": "Speedster Disc carbon fork"
+      },
+      "components": {
+        "saddle": "Syncros Tofino Regular"
+      },
+      "features": {
+        "other": [
+          "Internal cable routing",
+          "Endurance geometry",
+          "Alloy seatpost"
+        ]
+      }
     },
     "images": [
       {
@@ -197,14 +232,26 @@
       "inStock": true
     },
     "specs": {
-      "drivetrain": "Shimano Tourney 1x7",
-      "wheel": "20 inch alloy wheelset",
-      "brakes": "V-brakes",
-      "tyres": "CST city 20x1.75",
-      "fork": "Rigid steel fork",
-      "saddle": "UTO Comfort Urban",
-      "frame": "Folding aluminium frame",
-      "other": ["Magnetic fold lock", "Quick fold stem", "Compact pedals"]
+      "performance": {
+        "drivetrain": "Shimano Sora 2x9",
+        "wheelset": "Syncros Race 24 Disc",
+        "brakes": "Tektro MD-C511 mechanical disc",
+        "tyres": "Schwalbe Lugano 700x32c"
+      },
+      "chassis": {
+        "frame": "Speedster Disc Alloy",
+        "fork": "Speedster Disc carbon fork"
+      },
+      "components": {
+        "saddle": "Syncros Tofino Regular"
+      },
+      "features": {
+        "other": [
+          "Internal cable routing",
+          "Endurance geometry",
+          "Alloy seatpost"
+        ]
+      }
     },
     "images": [
       {
