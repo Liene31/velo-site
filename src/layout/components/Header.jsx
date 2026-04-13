@@ -6,7 +6,7 @@ export function Header() {
       <Link to={"/"}>
         <img
           className="logo"
-          src="/images/logo-bicycle.svg"
+          src="/images/bicycle-logo.png"
           alt="bicycle logo"
         />
       </Link>
