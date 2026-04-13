@@ -1,0 +1,205 @@
+.servicesPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  color: var(--color-white);
+}
+
+.serviceHero {
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  background: rgba(var(--color-dark-rgb), 0.78);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+.serviceHero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-family: var(--font-secondary);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    var(--color-red),
+    var(--color-yellow),
+    var(--color-blue)
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.serviceHero p {
+  margin: 1rem 0 2rem 0;
+  font-size: 1rem;
+}
+
+.cta {
+  text-decoration: none;
+  background-color: #f0cb35;
+  padding: 0.7rem 1.6rem;
+  border-radius: 2rem;
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-dark);
+}
+
+.cta:hover {
+  background-color: transparent;
+  color: var(--color-yellow);
+  border: 1px solid var(--color-yellow);
+}
+
+.serviceWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1000px;
+}
+
+.serviceCard {
+  flex: 1 1 280px;
+  max-width: 420px;
+  padding: 1.8rem;
+  border-radius: 1rem;
+  background: rgba(var(--color-dark-rgb), 0.78);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+.serviceCard h2 {
+  margin-bottom: 1rem;
+  font-family: var(--font-secondary);
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-yellow);
+}
+
+.serviceCard ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.serviceCard li {
+  font-size: 0.95rem;
+}
+
+.pricingWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1100px;
+}
+
+.priceCard {
+  flex: 1 1 260px;
+  max-width: 320px;
+  text-align: center;
+  padding: 1.8rem;
+  border-radius: 1rem;
+  background: rgba(var(--color-dark-rgb), 0.78);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+.priceCard h3 {
+  font-family: var(--font-secondary);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-yellow);
+  margin-bottom: 1rem;
+}
+
+.priceCard ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.priceCard li {
+  font-size: 0.9rem;
+}
+
+.priceList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 700px;
+}
+
+.priceList li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 0.5rem;
+  background: rgba(var(--color-dark-rgb), 0.78);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+.priceList li span:last-child {
+  color: var(--color-yellow);
+  font-weight: 700;
+}
+
+.booking {
+  text-align: center;
+  max-width: 700px;
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  background: rgba(var(--color-dark-rgb), 0.78);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+.booking h2 {
+  font-size: 1.8rem;
+  font-family: var(--font-secondary);
+  margin-bottom: 1rem;
+}
+
+.booking p {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .servicesPage {
+    gap: 2rem;
+  }
+
+  .serviceCard {
+    padding: 1.4rem;
+  }
+
+  .priceCard {
+    padding: 1.4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .serviceHero {
+    padding: 1.5rem 1rem;
+  }
+
+  .serviceHero h1 {
+    font-size: 2rem;
+  }
+
+  .cta {
+    padding: 0.6rem 1.3rem;
+    font-size: 0.9rem;
+  }
+}

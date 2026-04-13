@@ -3,7 +3,6 @@ import { NavLink, Link } from "react-router-dom";
 export function Header() {
   return (
     <header>
-      {/* this will be home page  */}
       <Link to={"/"}>
         <img
           className="logo"
@@ -18,7 +17,7 @@ export function Header() {
             <NavLink to={"bikes"}>Bikes</NavLink>
           </li>
           <li>
-            <NavLink to={"repair"}>Repair</NavLink>
+            <NavLink to={"service"}>Service</NavLink>
           </li>
           <li>
             <NavLink to={"about"}>About</NavLink>

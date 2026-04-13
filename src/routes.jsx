@@ -7,6 +7,7 @@ import { Bikes } from "./pages/bikes/Bikes";
 import { BikeSpecs } from "./pages/bikes/BikeSpecs";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
+import { Service } from "./pages/Service";
 
 export const routes = [
   {
@@ -25,6 +26,7 @@ export const routes = [
           { path: "reviews", element: <BikeReviews /> },
         ],
       },
+      { path: "service", element: <Service /> },
 
       { path: "*", element: <NotFound /> },
     ],
