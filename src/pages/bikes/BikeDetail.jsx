@@ -13,33 +13,33 @@ export function BikeDetail() {
         const filteredBike = data.filter((bike) => {
           return bike.id === id;
         });
-        // ----------normalizing data, same as in BikeOverview------
-        setCurrentBike(filteredBike);
+
+        setCurrentBike(filteredBike[0]);
       });
   }, []);
-
-  const bikeElement = currentBike?.map((bike) => {
-    return (
-      <div className={styles.bikeInfo} key={bike.id}>
-        <i>{bike.overview.category}</i>
-        <h1>{bike.name}</h1>
-        <p>
-          {bike.overview.currency} {bike.overview.price}
-        </p>
-      </div>
-    );
-  });
 
   return (
     <main className={styles.bikesDetailPage}>
       <div className={styles.bikeDetailWrapper}>
         <div className={styles.bikeTopInfo}>
-          <img
-            className={styles.bikeImg}
-            src="https://asset.scott-sports.com/fit-in/260x260/425/4253488087_2223048_3.png?signature=991b49b7a60172fca3ba8def142f86b71122c7baf1937421157c38e1ba4b8502"
-            alt="image of bike"
-          />
-          {currentBike ? bikeElement : <h2>Loading</h2>}
+          {currentBike ? (
+            <>
+              <img
+                className={styles.bikeImg}
+                src={currentBike.images[0].url}
+                alt={currentBike.images[0].alt}
+              />
+              <div className={styles.bikeInfo}>
+                <i>{currentBike.overview.category}</i>
+                <h1>{currentBike.name}</h1>
+                <p>
+                  {currentBike.overview.currency} {currentBike.overview.price}
+                </p>
+              </div>
+            </>
+          ) : (
+            <h2>Loading</h2>
+          )}
         </div>
         <nav className={styles.navLinks}>
           <NavLink to="." end>
@@ -49,7 +49,7 @@ export function BikeDetail() {
           <NavLink to="photos">Photos</NavLink>
           <NavLink to="reviews">Reviews</NavLink>
         </nav>
-        <Outlet className={styles.detailContent} />
+        <Outlet className={styles.detailContent} context={{ currentBike }} />
       </div>
     </main>
   );

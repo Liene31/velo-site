@@ -1,47 +1,29 @@
+import { useState } from "react";
 import styles from "./BikeSpecs.module.css";
+import { DrivetrainSpecs } from "./DrivetrainSpecs";
 
 export function BikeSpecs() {
+  const [activeTab, setActiveTab] = useState("General");
+
+  function handleTabs(tab) {
+    setActiveTab(tab);
+  }
   return (
     <div className={styles.specWrapper}>
       <ul className={styles.specOptions}>
         <li>
-          <button>General</button>
+          <button onClick={() => handleTabs("Drivetrain")}>Drivetrain</button>
         </li>
         <li>
-          <button>Frame</button>
+          <button onClick={() => handleTabs("Frame")}>Frame</button>
         </li>
         <li>
-          <button>Components</button>
-        </li>
-        <li>
-          <button>Drivetrain</button>
+          <button onClick={() => handleTabs("Components")}>Components</button>
         </li>
       </ul>
 
       <div className={styles.specDetails}>
-        <ul>
-          <li>
-            <span>Brand:</span> Trek
-          </li>
-          <li>
-            <span>Year:</span> 2026
-          </li>
-          <li>
-            <span>Type:</span> Road Bike
-          </li>
-          <li>
-            <span>Intended use:</span> Lorem Ipsum is simply dummy text of the
-            printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown
-            printer took a galley of type and scrambled it to make a type
-            specimen book. It has survived not only five centuries, but also the
-            leap into electronic typesetting, remaining essentially unchanged.
-            It was popularised in the 1960s with the release of Letraset sheets
-            containing Lorem Ipsum passages, and more recently with desktop
-            publishing software like Aldus PageMaker including versions of Lorem
-            Ipsum.
-          </li>
-        </ul>
+        {activeTab === "Drivetrain" && <DrivetrainSpecs />}
       </div>
     </div>
   );
