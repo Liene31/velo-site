@@ -30,8 +30,15 @@
 .bikeInfo {
   display: flex;
   flex-direction: column;
+  max-width: 50%;
   gap: 0.5rem;
   text-align: center;
+}
+
+@media (max-width: 800px) {
+  .bikeInfo {
+    max-width: 100%;
+  }
 }
 
 .bikeInfo i {
@@ -53,7 +60,6 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 2px;
-
   background: linear-gradient(
     90deg,
     var(--color-red),

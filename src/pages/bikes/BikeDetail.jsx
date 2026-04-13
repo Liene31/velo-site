@@ -9,8 +9,26 @@ export function BikeDetail() {
   useEffect(() => {
     fetch(`/data/bikes.json`)
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        const filteredBike = data.filter((bike) => {
+          return bike.id === id;
+        });
+        // ----------normalizing data, same as in BikeOverview------
+        setCurrentBike(filteredBike);
+      });
   }, []);
+
+  const bikeElement = currentBike?.map((bike) => {
+    return (
+      <div className={styles.bikeInfo} key={bike.id}>
+        <i>{bike.overview.category}</i>
+        <h1>{bike.name}</h1>
+        <p>
+          {bike.overview.currency} {bike.overview.price}
+        </p>
+      </div>
+    );
+  });
 
   return (
     <main className={styles.bikesDetailPage}>
@@ -21,11 +39,7 @@ export function BikeDetail() {
             src="https://asset.scott-sports.com/fit-in/260x260/425/4253488087_2223048_3.png?signature=991b49b7a60172fca3ba8def142f86b71122c7baf1937421157c38e1ba4b8502"
             alt="image of bike"
           />
-          <div className={styles.bikeInfo}>
-            <i>Road</i>
-            <h1>Bike Name</h1>
-            <p>€ 2100</p>
-          </div>
+          {currentBike ? bikeElement : <h2>Loading</h2>}
         </div>
         <nav className={styles.navLinks}>
           <NavLink to="." end>
