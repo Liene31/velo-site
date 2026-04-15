@@ -1,3 +1,5 @@
+import { Login } from "./features/auth/pages/Login";
+import { Register } from "./features/auth/pages/Register";
 import { MainLayout } from "./layout/MainLayout";
 import { BikeDetail } from "./pages/bikes/BikeDetail";
 import { BikeOverview } from "./pages/bikes/BikeOverview";
@@ -29,6 +31,19 @@ export const routes = [
       },
       { path: "service", element: <Service /> },
       { path: "contact", element: <Contact /> },
+      {
+        path: "auth",
+        children: [
+          {
+            path: "register",
+            element: <Register />,
+          },
+          {
+            path: "login",
+            element: <Login />,
+          },
+        ],
+      },
 
       { path: "*", element: <NotFound /> },
     ],

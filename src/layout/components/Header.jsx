@@ -27,7 +27,7 @@ export function Header() {
           </li>
           <li>
             <NavLink to="auth/login" className="auth-btn">
-              Log In
+              Sign In
             </NavLink>
           </li>
         </ul>
