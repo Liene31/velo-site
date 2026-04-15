@@ -5,6 +5,7 @@ import { BikePhotos } from "./pages/bikes/BikePhotos";
 import { BikeReviews } from "./pages/bikes/BikeReviews";
 import { Bikes } from "./pages/bikes/Bikes";
 import { BikeSpecs } from "./pages/bikes/BikeSpecs";
+import { Contact } from "./pages/Contact";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
 import { Service } from "./pages/Service";
@@ -27,6 +28,7 @@ export const routes = [
         ],
       },
       { path: "service", element: <Service /> },
+      { path: "contact", element: <Contact /> },
 
       { path: "*", element: <NotFound /> },
     ],

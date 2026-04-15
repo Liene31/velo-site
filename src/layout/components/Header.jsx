@@ -23,7 +23,7 @@ export function Header() {
             <NavLink to={"about"}>About</NavLink>
           </li>
           <li>
-            <NavLink to={"contact"}>Contact Us</NavLink>
+            <NavLink to={"contact"}>Contact</NavLink>
           </li>
           {/* Connect -> use an icon instead  */}
           <li>

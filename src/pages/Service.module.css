@@ -39,7 +39,7 @@
 
 .cta {
   text-decoration: none;
-  background-color: #f0cb35;
+  background-color: var(--color-yellow);
   padding: 0.7rem 1.6rem;
   border-radius: 2rem;
   font-family: var(--font-secondary);
