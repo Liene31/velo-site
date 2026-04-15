@@ -27,7 +27,7 @@ export function Contact() {
               id="email"
               name="email"
               type="email"
-              placeholder="your@email.com"
+              placeholder="johnDoe@email.com"
               required
             />
           </div>

@@ -25,10 +25,9 @@ export function Header() {
           <li>
             <NavLink to={"contact"}>Contact</NavLink>
           </li>
-          {/* Connect -> use an icon instead  */}
           <li>
-            <NavLink>
-              <img src="/images/user-solid.svg" alt="user icon" />
+            <NavLink to="auth/login" className="auth-btn">
+              Log In
             </NavLink>
           </li>
         </ul>
