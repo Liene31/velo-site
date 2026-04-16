@@ -96,9 +96,13 @@ nav ul {
 }
 
 @media (max-width: 665px) {
-  nav {
+  .show-menu {
     /* when open menu -> display block/display none */
     display: block;
+  }
+
+  .hide-menu {
+    display: none;
   }
 
   nav ul {
@@ -106,12 +110,20 @@ nav ul {
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    position: fixed;
+    position: absolute;
+    /* position: fixed; */
+    height: 100vh;
     background: var(--color-dark);
     top: 63px;
     left: 0;
     right: 0;
     bottom: 0;
+  }
+}
+
+@media (min-width: 665px) {
+  .menu-btn {
+    display: none;
   }
 }
 
@@ -125,9 +137,6 @@ nav ul {
   width: 35px;
 }
 
-.hamburger-menu-close {
-  display: none;
-}
 /* ----MAIN---- */
 
 main {
