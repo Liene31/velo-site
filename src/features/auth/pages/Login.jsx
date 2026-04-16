@@ -1,16 +1,16 @@
-import styles from "./Login.module.css";
+import styles from "./Auth.module.css";
 import { Link } from "react-router-dom";
 
 export function Login() {
   return (
-    <main className={styles.loginPage}>
-      <section className={styles.loginCard}>
-        <div className={styles.loginHeader}>
+    <main className={styles.authPage}>
+      <section className={styles.authCard}>
+        <div className={styles.authHeader}>
           <h1>Welcome Back</h1>
           <p>Log in to manage your account, bookings, and bike services.</p>
         </div>
 
-        <form className={styles.loginForm}>
+        <form className={styles.authForm}>
           <div className={styles.formGroup}>
             <label htmlFor="email">Email</label>
             <input
@@ -37,14 +37,14 @@ export function Login() {
             />
           </div>
 
-          <button type="submit" className={styles.loginBtn}>
+          <button type="submit" className={styles.authBtn}>
             Log In
           </button>
         </form>
 
-        <p className={styles.registerText}>
+        <p className={styles.authText}>
           Don't have an account?
-          <Link to="/auth/register" className={styles.registerLink}>
+          <Link to="/auth/register" className={styles.authLink}>
             Create one
           </Link>
         </p>
