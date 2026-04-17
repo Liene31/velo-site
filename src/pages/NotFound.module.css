@@ -1,0 +1,99 @@
+.notFoundPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: var(--color-white);
+}
+
+.notFoundCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-radius: 1rem;
+  background: rgba(var(--color-dark-rgb), 0.78);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+@media (max-width: 520px) {
+  .notFoundCard {
+    padding: 2rem 1rem;
+  }
+}
+
+.errorCode {
+  font-family: var(--font-secondary);
+  font-size: clamp(4rem, 12vw, 8rem);
+  font-weight: 900;
+  letter-spacing: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--color-red),
+    var(--color-yellow),
+    var(--color-blue)
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.notFoundCard h1 {
+  font-family: var(--font-secondary);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.errorText {
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 520px) {
+  .actions {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+.btn {
+  text-decoration: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 2rem;
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.primaryBtn {
+  background: var(--color-yellow);
+  border: 1px solid var(--color-yellow);
+  color: var(--color-dark);
+}
+
+.primaryBtn:hover {
+  background: transparent;
+  color: var(--color-yellow);
+}
+
+.secondaryBtn {
+  background: transparent;
+  color: var(--color-yellow);
+  border: 1px solid var(--color-yellow);
+}
+
+.secondaryBtn:hover {
+  background: var(--color-yellow);
+  color: var(--color-dark);
+}

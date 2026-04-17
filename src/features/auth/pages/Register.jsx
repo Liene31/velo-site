@@ -6,7 +6,7 @@ export function Register() {
     <main className={styles.authPage}>
       <section className={styles.authCard}>
         <div className={styles.authHeader}>
-          <h1>Create Account</h1>
+          <h1>Sign Up</h1>
           <p>Sign up to manage your account, bookings, and bike services.</p>
         </div>
 
@@ -40,18 +40,6 @@ export function Register() {
               name="password"
               type="password"
               placeholder="Create a password"
-              required
-            />
-            <p className={styles.fieldHint}>Use at least 8 characters</p>
-          </div>
-
-          <div className={styles.formGroup}>
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              id="confirmPassword"
-              name="confirmPassword"
-              type="password"
-              placeholder="Repeat your password"
               required
             />
           </div>
