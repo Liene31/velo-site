@@ -1,8 +1,18 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { t, i18n } = useTranslation();
+
+  // takes the language string from onClick and change language
+  function changeLanguage(langCode) {
+    i18n.changeLanguage(langCode);
+  }
+
+  console.log(i18n.language);
 
   function handleHamburgerMenu() {
     setIsOpen((prev) => !prev);
@@ -48,7 +58,7 @@ export function Header() {
         <ul>
           <li>
             <NavLink onClick={handleNavLink} to={"bikes"}>
-              Bikes
+              {t("nav.bikes")}
             </NavLink>
           </li>
           <li>
@@ -65,6 +75,19 @@ export function Header() {
             <NavLink onClick={handleNavLink} to={"contact"}>
               Contact
             </NavLink>
+          </li>
+          <li className="lang-switcher">
+            {i18n.language === "fr" && (
+              <button onClick={() => changeLanguage("en")} className="lang-btn">
+                EN
+              </button>
+            )}
+
+            {i18n.language === "en" && (
+              <button onClick={() => changeLanguage("fr")} className="lang-btn">
+                FR
+              </button>
+            )}
           </li>
           <li>
             <NavLink

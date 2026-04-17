@@ -11,6 +11,7 @@
   --color-red: #c02425;
   --color-red-rgb: 192, 36, 37;
   --color-yellow: #f0cb35;
+  --color-yellow-rgb: 240, 203, 53;
   --color-blue: #3498db;
   --color-blue-rgb: 52, 152, 219;
   --color-white: #e5e7eb;
@@ -93,6 +94,7 @@ header .logo {
 nav ul {
   display: flex;
   gap: 1rem;
+  align-items: center;
 }
 
 @media (max-width: 665px) {
@@ -135,6 +137,32 @@ nav ul {
 
 .menu img {
   width: 35px;
+}
+
+/* LANGUAGE SWITCHER BTN */
+
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lang-btn {
+  padding: 0.35rem 0.7rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(var(--color-yellow-rgb), 0.35);
+  background: rgba(var(--color-dark-rgb), 0.78);
+  color: var(--color-white);
+  font-family: var(--font-secondary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.lang-btn:hover {
+  border-color: var(--color-yellow);
+  color: var(--color-yellow);
 }
 
 /* ----MAIN---- */
