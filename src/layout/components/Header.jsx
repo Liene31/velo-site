@@ -40,7 +40,7 @@ export function Header() {
 
   return (
     <header>
-      <Link to={"/"}>
+      <Link onClick={handleNavLink} to={"/"}>
         <img className="logo" src="/images/velo1.svg" alt="bicycle logo" />
       </Link>
 
