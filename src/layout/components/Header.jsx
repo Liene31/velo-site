@@ -63,17 +63,17 @@ export function Header() {
           </li>
           <li>
             <NavLink onClick={handleNavLink} to={"service"}>
-              Service
+              {t("nav.service")}
             </NavLink>
           </li>
           <li>
             <NavLink onClick={handleNavLink} to={"about"}>
-              About
+              {t("nav.about")}
             </NavLink>
           </li>
           <li>
             <NavLink onClick={handleNavLink} to={"contact"}>
-              Contact
+              {t("nav.contact")}
             </NavLink>
           </li>
           <li className="lang-switcher">

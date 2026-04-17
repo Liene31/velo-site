@@ -1,5 +1,61 @@
 {
   "nav": {
-    "bikes": "Vélos"
+    "bikes": "Vélos",
+    "service": "Service",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "home": {
+    "heroCta": "Découvrez nos vélos"
+  },
+  "bikes": {
+    "bikesTitle": "Nos vélos"
+  },
+  "service": {
+    "title": "Services vélo",
+    "para": "Réparation & entretien professionnels pour que votre vélo fonctionne au mieux.",
+    "cta": "Prendre rendez-vous",
+    "repair": "Réparation",
+    "repairList": {
+      "brakes": "Réglage & remplacement des freins",
+      "gears": "Réglage & indexation des vitesses",
+      "tire": "Réparation de crevaison",
+      "wheel": "Dévoilage de roue",
+      "chain": "Remplacement de la chaîne & de la cassette"
+    },
+    "maintenance": "Entretien",
+    "maintenanceList": {
+      "inspection": "Inspection complète du vélo",
+      "drivetrain": "Nettoyage & lubrification de la transmission",
+      "safety": "Contrôle de sécurité",
+      "torque": "Vérification du couple de serrage de tous les boulons",
+      "wash": "Lavage & polissage du vélo"
+    },
+    "pricing": {
+      "basic": {
+        "title": "Révision de base",
+        "list": {
+          "brakes": "Réglage des freins",
+          "gears": "Réglage des vitesses",
+          "chain": "Lubrification de la chaîne"
+        }
+      },
+      "standard": {
+        "title": "Service standard",
+        "list": {
+          "inspection": "Inspection complète",
+          "tuning": "Réglage des freins et des vitesses",
+          "drivetrain": "Nettoyage de la transmission"
+        }
+      },
+      "full": {
+        "title": "Service complet",
+        "list": {
+          "overhaul": "Révision complète du vélo",
+          "cleaning": "Nettoyage en profondeur",
+          "adjustments": "Tous les réglages inclus"
+        }
+      }
+    }
   }
 }

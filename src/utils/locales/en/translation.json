@@ -1,5 +1,61 @@
 {
   "nav": {
-    "bikes": "Bikes"
+    "bikes": "Bikes",
+    "service": "Service",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "heroCta": "Explore our Bikes"
+  },
+  "bikes": {
+    "bikesTitle": "Our Bikes"
+  },
+  "service": {
+    "title": "Bike Services",
+    "para": "Professional repair & maintenance to keep your bike running at its best.",
+    "cta": "Book Appointment",
+    "repair": "Repair",
+    "repairList": {
+      "brakes": "Brake adjustment & replacement",
+      "gears": "Gear tuning & indexing",
+      "tire": "Flat tire repair",
+      "wheel": "Wheel truing",
+      "chain": "Chain & cassette replacement"
+    },
+    "maintenance": "Maintenance",
+    "maintenanceList": {
+      "inspection": "Full bike inspection",
+      "drivetrain": "Drivetrain cleaning & lubrication",
+      "safety": "Safety check",
+      "torque": "Torque check on all bolts",
+      "wash": "Bike wash & polish"
+    },
+    "pricing": {
+      "basic": {
+        "title": "Basic Tune-Up",
+        "list": {
+          "brakes": "Brake adjustment",
+          "gears": "Gear tuning",
+          "chain": "Chain lubrication"
+        }
+      },
+      "standard": {
+        "title": "Standard Service",
+        "list": {
+          "inspection": "Full inspection",
+          "tuning": "Brake + gear tuning",
+          "drivetrain": "Drivetrain cleaning"
+        }
+      },
+      "full": {
+        "title": "Full Service",
+        "list": {
+          "overhaul": "Complete bike overhaul",
+          "cleaning": "Deep cleaning",
+          "adjustments": "All adjustments included"
+        }
+      }
+    }
   }
 }

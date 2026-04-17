@@ -1,9 +1,11 @@
 import styles from "./Bikes.module.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export function Bikes() {
   const [bikes, setBikes] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetch("/data/bikes.json")
@@ -30,7 +32,7 @@ export function Bikes() {
 
   return (
     <main className={styles.bikesPage}>
-      <h1 className={styles.bikesTitle}>Explore our bikes</h1>
+      <h1 className={styles.bikesTitle}>{t("bikes.bikesTitle")}</h1>
 
       <div className={styles.bikeFilterBtn}>
         <button>Road</button>
