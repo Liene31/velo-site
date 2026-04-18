@@ -72,34 +72,32 @@ export function Service() {
 
       <ul className={styles.priceList}>
         <li>
-          <span>Flat tire repair</span>
+          <span>{t("service.pricing.extras.flatTire")}</span>
           <span>€15</span>
         </li>
         <li>
-          <span>Brake adjustment</span>
+          <span>{t("service.pricing.extras.brake")}</span>
           <span>€20</span>
         </li>
         <li>
-          <span>Gear tuning</span>
+          <span>{t("service.pricing.extras.gear")}</span>
           <span>€25</span>
         </li>
         <li>
-          <span>Wheel truing</span>
+          <span>{t("service.pricing.extras.wheel")}</span>
           <span>€30</span>
         </li>
         <li>
-          <span>Chain replacement</span>
+          <span>{t("service.pricing.extras.chain")}</span>
           <span>€35</span>
         </li>
       </ul>
 
       <section className={styles.booking}>
-        <h2>Book your service</h2>
-        <p>
-          Ready to ride? Schedule your service and we'll take care of the rest.
-        </p>
+        <h2>{t("service.booking.title")}</h2>
+        <p>{t("service.booking.text")}</p>
         <a href="#booking" className={styles.cta}>
-          Schedule Now
+          {t("service.booking.cta")}
         </a>
       </section>
     </main>

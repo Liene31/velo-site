@@ -12,7 +12,7 @@
     "bikesTitle": "Nos vélos"
   },
   "service": {
-    "title": "Services vélo",
+    "title": "Service vélo",
     "para": "Réparation & entretien professionnels pour que votre vélo fonctionne au mieux.",
     "cta": "Prendre rendez-vous",
     "repair": "Réparation",
@@ -55,7 +55,76 @@
           "cleaning": "Nettoyage en profondeur",
           "adjustments": "Tous les réglages inclus"
         }
+      },
+      "extras": {
+        "flatTire": "Réparation de crevaison",
+        "brake": "Réglage des freins",
+        "gear": "Réglage des vitesses",
+        "wheel": "Dévoilage de roue",
+        "chain": "Remplacement de la chaîne"
       }
+    },
+    "booking": {
+      "title": "Réservez votre service",
+      "text": "Prêt à rouler ? Planifiez votre service et nous nous occupons du reste.",
+      "cta": "Réserver maintenant"
+    }
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "text": "On dirait que ce trajet a dévié. La page que vous recherchez n'existe pas ou a été déplacée.",
+    "backHome": "Retour à l'accueil",
+    "explore": "Explorer les vélos"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Une question ? Nous serions ravis de vous aider.",
+    "form": {
+      "name": "Prénom *",
+      "email": "Email *",
+      "subject": "Sujet *",
+      "message": "Message *",
+      "placeholderMessage": "Expliquez-nous comment nous pouvons vous aider...",
+      "submit": "Envoyer",
+      "selectOption": "--Veuillez choisir une option--",
+      "options": {
+        "repair": "Réparation",
+        "maintenance": "Entretien",
+        "appointment": "Rendez-vous",
+        "afterService": "Service après-vente",
+        "general": "Question générale"
+      }
+    },
+    "info": {
+      "address": "Adresse",
+      "email": "Email",
+      "hours": "Horaires",
+      "hoursValue": "Mardi au samedi 10h - 18h"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Bon retour",
+      "subtitle": "Connectez-vous pour gérer votre compte, vos réservations et vos services vélo.",
+      "email": "Email",
+      "password": "Mot de passe",
+      "placeholderPassword": "Entrez votre mot de passe",
+      "forgotPassword": "Mot de passe oublié ?",
+      "submit": "Connexion",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "createOne": "Créez-en un"
+    },
+
+    "register": {
+      "title": "Créer un compte",
+      "subtitle": "Inscrivez-vous pour gérer votre compte, vos réservations et vos services vélo.",
+      "name": "Prénom",
+      "email": "Email",
+      "password": "Mot de passe",
+      "placeholderPassword": "Créez un mot de passe",
+      "submit": "S'inscrire",
+      "haveAccount": "Vous avez déjà un compte ?",
+      "login": "Connexion"
     }
   }
 }

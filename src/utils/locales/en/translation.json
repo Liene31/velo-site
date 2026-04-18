@@ -55,7 +55,77 @@
           "cleaning": "Deep cleaning",
           "adjustments": "All adjustments included"
         }
+      },
+      "extras": {
+        "flatTire": "Flat tire repair",
+        "brake": "Brake adjustment",
+        "gear": "Gear tuning",
+        "wheel": "Wheel truing",
+        "chain": "Chain replacement"
       }
+    },
+    "booking": {
+      "title": "Book your service",
+      "text": "Ready to ride? Schedule your service and we'll take care of the rest.",
+      "cta": "Schedule Now"
+    }
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "text": "Looks like this ride went off route. The page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back Home",
+    "explore": "Explore Bikes"
+  },
+  "contact": {
+    "title": "Contact Our Team",
+    "subtitle": "Any question? We would love to hear from you.",
+    "form": {
+      "name": "Name *",
+      "email": "Email *",
+      "subject": "Subject *",
+      "message": "Message *",
+      "placeholderMessage": "Tell us how we can help...",
+      "submit": "Submit",
+      "selectOption": "--Please choose an option--",
+      "options": {
+        "repair": "Repair",
+        "maintenance": "Maintenance",
+        "appointment": "Appointment",
+        "afterService": "After-service support",
+        "general": "General question"
+      }
+    },
+    "info": {
+      "address": "Address",
+      "email": "Email",
+      "hours": "Opening Hours",
+      "hoursValue": "Tuesday to Saturday 10h - 18h"
+    }
+  },
+
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Log in to manage your account, bookings, and bike services.",
+      "email": "Email",
+      "password": "Password",
+      "placeholderPassword": "Enter your password",
+      "forgotPassword": "Forgot password?",
+      "submit": "Log In",
+      "noAccount": "Don't have an account?",
+      "createOne": "Create one"
+    },
+
+    "register": {
+      "title": "Sign Up",
+      "subtitle": "Sign up to manage your account, bookings, and bike services.",
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "placeholderPassword": "Create a password",
+      "submit": "Sign Up",
+      "haveAccount": "Already have an account?",
+      "login": "Log In"
     }
   }
 }

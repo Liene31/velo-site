@@ -1,18 +1,20 @@
 import styles from "./Auth.module.css";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export function Register() {
+  const { t } = useTranslation();
   return (
     <main className={styles.authPage}>
       <section className={styles.authCard}>
         <div className={styles.authHeader}>
-          <h1>Sign Up</h1>
-          <p>Sign up to manage your account, bookings, and bike services.</p>
+          <h1>{t("auth.register.title")}</h1>
+          <p>{t("auth.register.subtitle")}</p>
         </div>
 
         <form className={styles.authForm}>
           <div className={styles.formGroup}>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">{t("auth.register.name")}</label>
             <input
               id="name"
               name="name"
@@ -23,7 +25,7 @@ export function Register() {
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">{t("auth.register.email")}</label>
             <input
               id="email"
               name="email"
@@ -34,25 +36,25 @@ export function Register() {
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">{t("auth.register.password")}</label>
             <input
               id="password"
               name="password"
               type="password"
-              placeholder="Create a password"
+              placeholder={t("auth.register.placeholderPassword")}
               required
             />
           </div>
 
           <button type="submit" className={styles.authBtn}>
-            Sign Up
+            {t("auth.register.submit")}
           </button>
         </form>
 
         <p className={styles.authText}>
-          Already have an account?
+          {t("auth.register.haveAccount")}
           <Link to="/auth/login" className={styles.authLink}>
-            Log In
+            {t("auth.register.login")}
           </Link>
         </p>
       </section>

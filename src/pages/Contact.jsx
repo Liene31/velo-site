@@ -1,17 +1,19 @@
 import styles from "./Contact.module.css";
+import { useTranslation } from "react-i18next";
 
 export function Contact() {
+  const { t } = useTranslation();
   return (
     <main className={styles.contactPage}>
       <section className={styles.contactHero}>
-        <h1>Contact Our Team</h1>
-        <p>Any question? We would love to hear from you.</p>
+        <h1>{t("contact.title")}</h1>
+        <p>{t("contact.subtitle")}</p>
       </section>
 
       <section className={styles.contactContent}>
         <form className={styles.contactForm}>
           <div className={styles.formGroup}>
-            <label htmlFor="name">Name *</label>
+            <label htmlFor="name">{t("contact.form.name")}</label>
             <input
               id="name"
               name="name"
@@ -22,7 +24,7 @@ export function Contact() {
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="email">Email *</label>
+            <label htmlFor="email">{t("contact.form.email")}</label>
             <input
               id="email"
               name="email"
@@ -33,30 +35,38 @@ export function Contact() {
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="subject">Subject *</label>
+            <label htmlFor="subject">{t("contact.form.subject")}</label>
             <select id="subject" name="subject" required defaultValue="">
-              <option value="">--Please choose an option--</option>
-              <option value="repair">Repair</option>
-              <option value="maintenance">Maintenance</option>
-              <option value="appointment">Appointment</option>
-              <option value="after-service">After-service support</option>
-              <option value="general">General question</option>
+              <option value="">{t("contact.form.selectOption")}</option>
+              <option value="repair">{t("contact.form.options.repair")}</option>
+              <option value="maintenance">
+                {t("contact.form.options.maintenance")}
+              </option>
+              <option value="appointment">
+                {t("contact.form.options.appointment")}
+              </option>
+              <option value="after-service">
+                {t("contact.form.options.afterService")}
+              </option>
+              <option value="general">
+                {t("contact.form.options.general")}
+              </option>
             </select>
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="message">Message *</label>
+            <label htmlFor="message">{t("contact.form.message")}</label>
             <textarea
               id="message"
               name="message"
               rows="6"
-              placeholder="Tell us how we can help..."
+              placeholder={t("contact.form.placeholderMessage")}
               required
             ></textarea>
           </div>
 
           <button type="submit" className={styles.submitBtn}>
-            Submit
+            {t("contact.form.submit")}
           </button>
         </form>
 
@@ -64,18 +74,20 @@ export function Contact() {
           <h2>Bike Into The Future</h2>
 
           <div className={styles.infoItem}>
-            <span className={styles.infoLabel}>Address</span>
+            <span className={styles.infoLabel}>
+              {t("contact.info.address")}
+            </span>
             <p>Chaussée de Louvain 474, 1030 Schaerbeek</p>
           </div>
 
           <div className={styles.infoItem}>
-            <span className={styles.infoLabel}>Email</span>
+            <span className={styles.infoLabel}>{t("contact.info.email")}</span>
             <p>biketothefuture@gmail.com</p>
           </div>
 
           <div className={styles.infoItem}>
-            <span className={styles.infoLabel}>Opening Hours</span>
-            <p>Mardi au samedi 10h - 18h</p>
+            <span className={styles.infoLabel}>{t("contact.info.hours")}</span>
+            <p>{t("contact.info.hoursValue")}</p>
           </div>
         </aside>
       </section>
