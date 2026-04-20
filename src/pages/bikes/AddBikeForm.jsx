@@ -1,0 +1,44 @@
+import styles from "./AddBikeForm.module.css";
+
+export function AddBikeForm() {
+  return (
+    <form className={styles.AddBikeForm}>
+      <div className={styles.formGroup}>
+        <label htmlFor="slug">Slug</label>
+        <input
+          id="slug"
+          name="slug"
+          type="text"
+          placeholder="scott-speedster-30-2025"
+          required
+        />
+      </div>
+
+      <div className={styles.formGroup}>
+        <label htmlFor="name">Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="Scott Speedster 30"
+          required
+        />
+      </div>
+
+      <div className={styles.formGroup}>
+        <label htmlFor="brand">Brand</label>
+        <input
+          id="brand"
+          name="brand"
+          type="text"
+          placeholder="Scott"
+          required
+        />
+      </div>
+
+      <button type="submit" className={styles.formBtn}>
+        Submit
+      </button>
+    </form>
+  );
+}

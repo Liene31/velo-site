@@ -2,6 +2,8 @@ import styles from "./Bikes.module.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { AddBikeForm } from "./AddBikeForm";
+import { AddBikeModal } from "./AddBikeModal";
 
 export function AdminBikes() {
   const [bikes, setBikes] = useState(null);
@@ -12,6 +14,10 @@ export function AdminBikes() {
       .then((res) => res.json())
       .then((data) => setBikes(data));
   }, []);
+
+  function handleAddForm() {
+    console.log("clicked");
+  }
 
   const bikeElement = bikes?.map((bike) => {
     return (
@@ -50,10 +56,17 @@ export function AdminBikes() {
         <button>Longtail</button>
         <button>Folded</button>
         <button>Clear filters</button>
-        <button className={styles.addBikeBtn}>Add Bike</button>
+        <button onClick={handleAddForm} className={styles.addBikeBtn}>
+          Add Bike
+        </button>
       </div>
       <div className={styles.bikesWrapper}>
         {bikes ? bikeElement : <h2>Loading</h2>}
+      </div>
+
+      {/* Add Bike Modal */}
+      <div>
+        <AddBikeModal />
       </div>
     </main>
   );
