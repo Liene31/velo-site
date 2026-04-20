@@ -99,6 +99,18 @@
   letter-spacing: 1px;
 }
 
+.cardActions {
+  align-self: flex-start;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cardActions button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .bikeImg {
   width: 100%;
   max-width: 230px;

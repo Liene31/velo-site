@@ -1,6 +1,7 @@
 import { Login } from "./features/auth/pages/Login";
 import { Register } from "./features/auth/pages/Register";
 import { MainLayout } from "./layout/MainLayout";
+import { AdminBikes } from "./pages/bikes/AdminBikes";
 import { BikeDetail } from "./pages/bikes/BikeDetail";
 import { BikeOverview } from "./pages/bikes/BikeOverview";
 import { BikePhotos } from "./pages/bikes/BikePhotos";
@@ -43,6 +44,15 @@ export const routes = [
             element: <Login />,
           },
         ],
+      },
+
+      {
+        path: "admin/bikes",
+        element: (
+          // <ProtectedPage>
+          <AdminBikes />
+          // </ProtectedPage>
+        ),
       },
 
       { path: "*", element: <NotFound /> },
