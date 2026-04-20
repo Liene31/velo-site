@@ -1,7 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import styles from "./BikeSpecs.module.css";
 
-export function Performance() {
+export function Wheels() {
   const { currentBike } = useOutletContext();
 
   return (
@@ -9,16 +9,19 @@ export function Performance() {
       {currentBike ? (
         <ul>
           <li>
-            <span>Brakes:</span> {currentBike.specs.performance.brakes}
+            <span>Rims:</span> {currentBike.specs.wheels.rims}
           </li>
           <li>
-            <span>Drivetrain:</span> {currentBike.specs.performance.drivetrain}
+            <span>Spokes:</span> {currentBike.specs.wheels.spokes}
           </li>
           <li>
-            <span>Tyres:</span> {currentBike.specs.performance.tyres}
+            <span>Front Hub:</span> {currentBike.specs.wheels.frontHub}
           </li>
           <li>
-            <span>Wheelset:</span> {currentBike.specs.performance.wheelset}
+            <span>Rear Hub:</span> {currentBike.specs.wheels.rearHub}
+          </li>
+          <li>
+            <span>Tires:</span> {currentBike.specs.wheels.tires}
           </li>
         </ul>
       ) : (

@@ -48,6 +48,11 @@
   color: var(--color-dark);
 }
 
+.bikeFilterBtn .addBikeBtn {
+  background-color: #f0cb35;
+  color: var(--color-dark);
+}
+
 .bikesWrapper {
   display: flex;
   flex-wrap: wrap;

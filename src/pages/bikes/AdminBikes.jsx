@@ -50,6 +50,7 @@ export function AdminBikes() {
         <button>Longtail</button>
         <button>Folded</button>
         <button>Clear filters</button>
+        <button className={styles.addBikeBtn}>Add Bike</button>
       </div>
       <div className={styles.bikesWrapper}>
         {bikes ? bikeElement : <h2>Loading</h2>}

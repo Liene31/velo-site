@@ -1,12 +1,11 @@
 import { useState } from "react";
 import styles from "./BikeSpecs.module.css";
-import { Performance } from "./Performence";
-import { Chassis } from "./Chassis";
-import { Components } from "./Components";
-import { Features } from "./Features";
+import { Build } from "./Build";
+import { GroupSet } from "./GroupSet";
+import { Wheels } from "./Wheels";
 
 export function BikeSpecs() {
-  const [activeTab, setActiveTab] = useState("performance");
+  const [activeTab, setActiveTab] = useState("build");
 
   function handleTabs(tab) {
     setActiveTab(tab);
@@ -15,24 +14,20 @@ export function BikeSpecs() {
     <div className={styles.specWrapper}>
       <ul className={styles.specOptions}>
         <li>
-          <button onClick={() => handleTabs("performance")}>Performance</button>
+          <button onClick={() => handleTabs("build")}>Build</button>
         </li>
         <li>
-          <button onClick={() => handleTabs("chassis")}>Chassis</button>
+          <button onClick={() => handleTabs("groupSet")}>Group Set</button>
         </li>
         <li>
-          <button onClick={() => handleTabs("components")}>Components</button>
-        </li>
-        <li>
-          <button onClick={() => handleTabs("features")}>Features</button>
+          <button onClick={() => handleTabs("wheels")}>Wheels</button>
         </li>
       </ul>
 
       <div className={styles.specDetails}>
-        {activeTab === "performance" && <Performance />}
-        {activeTab === "chassis" && <Chassis />}
-        {activeTab === "components" && <Components />}
-        {activeTab === "features" && <Features />}
+        {activeTab === "build" && <Build />}
+        {activeTab === "groupSet" && <GroupSet />}
+        {activeTab === "wheels" && <Wheels />}
       </div>
     </div>
   );
