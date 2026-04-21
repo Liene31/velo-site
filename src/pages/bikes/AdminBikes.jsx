@@ -1,12 +1,11 @@
 import styles from "./Bikes.module.css";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { AddBikeForm } from "./AddBikeForm";
 import { AddBikeModal } from "./AddBikeModal";
 
 export function AdminBikes() {
   const [bikes, setBikes] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -15,8 +14,8 @@ export function AdminBikes() {
       .then((data) => setBikes(data));
   }, []);
 
-  function handleAddForm() {
-    console.log("clicked");
+  function handleModal() {
+    setShowModal((prev) => !prev);
   }
 
   const bikeElement = bikes?.map((bike) => {
@@ -56,7 +55,7 @@ export function AdminBikes() {
         <button>Longtail</button>
         <button>Folded</button>
         <button>Clear filters</button>
-        <button onClick={handleAddForm} className={styles.addBikeBtn}>
+        <button onClick={handleModal} className={styles.addBikeBtn}>
           Add Bike
         </button>
       </div>
@@ -65,9 +64,7 @@ export function AdminBikes() {
       </div>
 
       {/* Add Bike Modal */}
-      <div>
-        <AddBikeModal />
-      </div>
+      <div>{showModal ? <AddBikeModal onClick={handleModal} /> : null}</div>
     </main>
   );
 }

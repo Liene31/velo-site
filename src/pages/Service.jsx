@@ -1,5 +1,6 @@
 import styles from "./Service.module.css";
 import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router-dom";
 
 export function Service() {
   const { t } = useTranslation();
@@ -9,9 +10,9 @@ export function Service() {
       <section className={styles.serviceHero}>
         <h1>{t("service.title")}</h1>
         <p>{t("service.para")}</p>
-        <a href="#booking" className={styles.cta}>
+        <NavLink className={styles.cta} to="appointment">
           {t("service.cta")}
-        </a>
+        </NavLink>
       </section>
 
       <section className={styles.serviceWrapper}>

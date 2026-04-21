@@ -8,6 +8,7 @@ import { BikePhotos } from "./pages/bikes/BikePhotos";
 import { BikeReviews } from "./pages/bikes/BikeReviews";
 import { Bikes } from "./pages/bikes/Bikes";
 import { BikeSpecs } from "./pages/bikes/BikeSpecs";
+import { Calendar } from "./pages/Calendar";
 import { Contact } from "./pages/Contact";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
@@ -51,6 +52,15 @@ export const routes = [
         element: (
           // <ProtectedPage>
           <AdminBikes />
+          // </ProtectedPage>
+        ),
+      },
+
+      {
+        path: "service/appointment",
+        element: (
+          // <ProtectedPage>
+          <Calendar />
           // </ProtectedPage>
         ),
       },

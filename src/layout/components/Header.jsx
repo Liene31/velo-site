@@ -12,8 +12,6 @@ export function Header() {
     i18n.changeLanguage(langCode);
   }
 
-  console.log(i18n.language);
-
   function handleHamburgerMenu() {
     setIsOpen((prev) => !prev);
   }

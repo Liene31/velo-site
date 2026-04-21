@@ -1,8 +1,24 @@
 import styles from "./AddBikeForm.module.css";
 
 export function AddBikeForm() {
+  function handleFormSubmit(formData) {
+    console.log(formData);
+
+    const data = Object.fromEntries(formData.entries());
+
+    const payload = {
+      slug: data.slug,
+      name: data.name,
+      overview: {
+        brand: data.brand,
+        model: data.model,
+      },
+    };
+    console.log(payload);
+  }
+
   return (
-    <form className={styles.AddBikeForm}>
+    <form action={handleFormSubmit} className={styles.AddBikeForm}>
       <div className={styles.formGroup}>
         <label htmlFor="slug">Slug</label>
         <input
@@ -32,6 +48,17 @@ export function AddBikeForm() {
           name="brand"
           type="text"
           placeholder="Scott"
+          required
+        />
+      </div>
+
+      <div className={styles.formGroup}>
+        <label htmlFor="model">Model</label>
+        <input
+          id="model"
+          name="model"
+          type="text"
+          placeholder="Speedster 30"
           required
         />
       </div>
