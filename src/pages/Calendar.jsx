@@ -52,24 +52,63 @@ export function Calendar() {
 
   //Month in useState is number starting from 0
   //Looping trough the months array to get the current month
-  const monthEl = months.map((item, i) => {
-    if (i === month) {
-      return item;
-    }
-  });
+  const monthEl = months[month];
 
   return (
     <main className={styles.bookingPage}>
-      <h1>Calendar</h1>
-      <div className={styles.calendarWrapper}>
-        <h2>
-          {monthEl} {year}
-        </h2>
-        <div className={`${styles.daysWrapper} ${styles.grid}`}>
-          {daysOfTheWeekEl}
-        </div>
+      <h1 className={styles.pageTitle}>Schedule appointment</h1>
+      <p className={styles.pageSubtitle}>
+        Choose a day and a time slot for your service appointment.
+      </p>
 
-        <div className={`${styles.monthWrapper} ${styles.grid}`}>{daysEl}</div>
+      <div className={styles.bookingLayout}>
+        <section className={styles.calendarWrapper}>
+          <div className={styles.calendarHeader}>
+            <button type="button" className={styles.navBtn}>
+              ←
+            </button>
+
+            <h2>
+              {monthEl} {year}
+            </h2>
+
+            <button type="button" className={styles.navBtn}>
+              →
+            </button>
+          </div>
+
+          <div className={`${styles.daysWrapper} ${styles.grid}`}>
+            {daysOfTheWeekEl}
+          </div>
+
+          <div className={styles.grid}>{daysEl}</div>
+        </section>
+
+        <aside className={styles.timeSection}>
+          <h3>Select a time</h3>
+
+          <div className={styles.timeList}>
+            <button type="button" className={styles.timeBtn}>
+              10:00
+            </button>
+            <button type="button" className={styles.timeBtn}>
+              11:00
+            </button>
+            <button type="button" className={styles.timeBtn}>
+              12:00
+            </button>
+          </div>
+        </aside>
+      </div>
+
+      <div className={styles.selectionSummary}>
+        <p>
+          Selected appointment: <span>April 10, 2026 at 10:00</span>
+        </p>
+
+        <button type="button" className={styles.confirmBtn}>
+          Confirm Booking
+        </button>
       </div>
     </main>
   );
