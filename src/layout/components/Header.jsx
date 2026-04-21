@@ -77,13 +77,13 @@ export function Header() {
             </NavLink>
           </li>
           <li className="lang-switcher">
-            {i18n.language === "fr" && (
+            {i18n.language.startsWith("fr") && (
               <button onClick={() => changeLanguage("en")} className="lang-btn">
                 EN
               </button>
             )}
 
-            {i18n.language === "en" && (
+            {i18n.language.startsWith("en") && (
               <button onClick={() => changeLanguage("fr")} className="lang-btn">
                 FR
               </button>
