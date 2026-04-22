@@ -36,6 +36,12 @@
   max-width: 1000px;
 }
 
+@media (max-width: 635px) {
+  .bookingLayout {
+    flex-direction: column;
+  }
+}
+
 .calendarWrapper {
   flex: 1 1 650px;
   min-width: 300px;
@@ -43,6 +49,14 @@
   border-radius: 1rem;
   background: rgba(var(--color-dark-rgb), 0.78);
   border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+@media (max-width: 635px) {
+  .calendarWrapper {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 .calendarHeader {
@@ -124,6 +138,13 @@
   border: 1px solid rgba(var(--color-blue-rgb), 0.35);
 }
 
+@media (max-width: 635px) {
+  .timeSection {
+    flex: none;
+    max-width: none;
+  }
+}
+
 .timeSection h3 {
   margin-bottom: 1rem;
   font-family: var(--font-secondary);
@@ -137,6 +158,13 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+@media (max-width: 635px) {
+  .timeList {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 .timeBtn {
@@ -169,6 +197,12 @@
   border: 1px solid rgba(var(--color-blue-rgb), 0.35);
 }
 
+@media (max-width: 635px) {
+  .selectionSummary {
+    flex-direction: column;
+  }
+}
+
 .selectionSummary p {
   margin: 0;
   color: rgba(255, 255, 255, 0.82);
@@ -198,3 +232,5 @@
   color: var(--color-yellow);
   border: 1px solid var(--color-yellow);
 }
+
+/* 635px */
