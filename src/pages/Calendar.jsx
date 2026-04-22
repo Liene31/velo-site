@@ -27,7 +27,8 @@ export function Calendar() {
 
   //add in new Date(2026, 3 (April), 1(1st day of month))
   //and use getDay to get the day of the week when 1st April started (3 - Wednesday)
-  const startOfMonth = new Date(year, month, 1).getDay();
+  //+6 and %7 is to shift that Monday starts with 0, not Sunday
+  const startOfMonth = (new Date(year, month, 1).getDay() + 6) % 7;
 
   //calculation without leap year
   //takes current year and month (2026 3) and add one month (4 - May)
@@ -39,7 +40,7 @@ export function Calendar() {
     return <span key={day}>{day}</span>;
   });
 
-  //Creates an array from daysInMonth since it returns one number not an array
+  //Creates an array from days since it returns one number not an array
   function createArray(days) {
     return new Array(days).fill(0).map((_, i) => i + 1);
   }
@@ -54,9 +55,17 @@ export function Calendar() {
   });
 
   //-1 since my calendar starts from Monday(0) but startOfMonth starts with Sunday(0)
-  const emptySlotsEl = createArray(startOfMonth - 1).map((slot, i) => {
+  const emptySlotsEl = createArray(startOfMonth).map((slot, i) => {
     return <div key={i}></div>;
   });
+
+  function handleMonthChange(arrow) {
+    //argument could be +/- to re-use for both btn ??
+    console.log("clicked " + arrow);
+    setCurrentDate(new Date(year, month + 1, 1));
+  }
+
+  console.log(startOfMonth);
 
   return (
     <main className={styles.bookingPage}>
@@ -76,7 +85,11 @@ export function Calendar() {
               {monthEl} {year}
             </h2>
 
-            <button type="button" className={styles.navBtn}>
+            <button
+              onClick={() => handleMonthChange("right")}
+              type="button"
+              className={styles.navBtn}
+            >
               →
             </button>
           </div>
