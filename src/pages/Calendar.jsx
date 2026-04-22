@@ -2,15 +2,9 @@ import { useState } from "react";
 import styles from "./Calendar.module.css";
 
 export function Calendar() {
-  const today = new Date();
-  const [date, setDate] = useState(today);
-  const [day, setDay] = useState(date.getDate());
-  const [month, setMonth] = useState(date.getMonth());
-  const [year, setYear] = useState(date.getFullYear());
-  const [startDay, setStartDay] = useState(getStartDayOfMonth(date));
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(null);
 
-  const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  const daysLeap = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const daysOfTheWeek = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
   const months = [
     "January",
@@ -27,22 +21,31 @@ export function Calendar() {
     "December",
   ];
 
-  function getStartDayOfMonth(date) {
-    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
-  }
+  const month = currentDate.getMonth();
+  const monthEl = months[currentDate.getMonth()];
+  const year = currentDate.getFullYear();
 
-  const testDays = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-    22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
-  ];
+  //add in new Date(2026, 3 (April), 1(1st day of month))
+  //and use getDay to get the day of the week when 1st April started (3 - Wednesday)
+  const startOfMonth = new Date(year, month, 1).getDay();
+
+  //calculation without leap year
+  //takes current year and month (2026 3) and add one month (4 - May)
+  //0 -> go day back which will be a number of the last day of the prev month (30th of April)
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
 
   //Builds the days of the weeks in UI -> MON, TUE etc.
   const daysOfTheWeekEl = daysOfTheWeek.map((day) => {
     return <span key={day}>{day}</span>;
   });
 
+  //Creates an array from daysInMonth since it returns one number not an array
+  function createArray(days) {
+    return new Array(days).fill(0).map((_, i) => i + 1);
+  }
+
   //Builds the dates of the weeks in UI -> 1, 2, 3 etc.
-  const daysEl = testDays.map((day) => {
+  const daysEl = createArray(daysInMonth).map((day) => {
     return (
       <button key={day} className={styles.day}>
         {day}
@@ -50,9 +53,10 @@ export function Calendar() {
     );
   });
 
-  //Month in useState is number starting from 0
-  //Looping trough the months array to get the current month
-  const monthEl = months[month];
+  //-1 since my calendar starts from Monday(0) but startOfMonth starts with Sunday(0)
+  const emptySlotsEl = createArray(startOfMonth - 1).map((slot, i) => {
+    return <div key={i}></div>;
+  });
 
   return (
     <main className={styles.bookingPage}>
@@ -81,7 +85,10 @@ export function Calendar() {
             {daysOfTheWeekEl}
           </div>
 
-          <div className={styles.grid}>{daysEl}</div>
+          <div className={styles.grid}>
+            {emptySlotsEl}
+            {daysEl}
+          </div>
         </section>
 
         <aside className={styles.timeSection}>
