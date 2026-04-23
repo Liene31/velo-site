@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "bookingDate": "2026-04-28",
+    "bookingTime": "11:00",
+    "serviceType": "repair",
+    "name": "Anna",
+    "email": "anna@test.be",
+    "message": "need to fix my bike1"
+  },
+  {
+    "id": "2",
+    "bookingDate": "2026-04-28",
+    "bookingTime": "14:00",
+    "serviceType": "maintenance",
+    "name": "Joe",
+    "email": "joe@test.be",
+    "message": "need to fix my bike2"
+  },
+  {
+    "id": "3",
+    "bookingDate": "2026-04-29",
+    "bookingTime": "10:00",
+    "serviceType": "repair",
+    "name": "John",
+    "email": "john@test.be",
+    "message": "need to fix my bike3"
+  }
+]

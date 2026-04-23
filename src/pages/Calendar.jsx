@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Calendar.module.css";
+import { allSlots, openDays, openHour, closeHour } from "./bookingSlots.js";
 
 export function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
+  const [bookings, setBookings] = useState([]);
 
   const daysOfTheWeek = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
   const months = [
@@ -46,19 +48,11 @@ export function Calendar() {
   }
 
   function handleDaySelect(day) {
-    //make sure that one date can be selected only
-    const fullSelectedDate = day + month + year;
-    // console.log(day, monthEl, year);
-
     setSelectedDate(new Date(year, month, day));
   }
 
   //Builds the dates of the weeks in UI -> 1, 2, 3 etc.
   const daysEl = createArray(daysInMonth).map((day) => {
-    console.log(
-      new Date(year, month, day).toDateString() ===
-        selectedDate?.toDateString(),
-    );
     return (
       //adding toDateString() since just new Date() will always return false
       <button
@@ -75,8 +69,8 @@ export function Calendar() {
   });
 
   //-1 since my calendar starts from Monday(0) but startOfMonth starts with Sunday(0)
-  const emptySlotsEl = createArray(startOfMonth).map((slot, i) => {
-    return <div key={i}></div>;
+  const emptySlotsEl = createArray(startOfMonth).map((slot) => {
+    return <div key={slot}></div>;
   });
 
   //controls month switch back and forth
@@ -87,6 +81,40 @@ export function Calendar() {
       setCurrentDate(new Date(year, month - 1, 1));
     }
   }
+
+  useEffect(() => {
+    fetch("/data/bookings.json")
+      .then((res) => res.json())
+      .then((data) => setBookings(data));
+  }, []);
+
+  //checks if there are already bookings in user's selected date
+  const bookingsInSelectedDate = bookings.filter((date) => {
+    return (
+      new Date(date?.bookingDate).toDateString() ===
+      selectedDate?.toDateString()
+    );
+  });
+
+  //returns only available time in array
+  //if i would use filter it would return object not just time
+  const bookedTimes = bookingsInSelectedDate.map((booking) => {
+    return booking.bookingTime;
+  });
+
+  //looping through the all possible times and returning only the ones which where not in the booking as an array
+  const availableSlots = allSlots.filter((slot) => {
+    return !bookedTimes.includes(slot);
+  });
+
+  //display in UI
+  const availableTimeSlotEl = availableSlots.map((slot) => {
+    return (
+      <button key={slot} type="button" className={styles.timeBtn}>
+        {slot}
+      </button>
+    );
+  });
 
   return (
     <main className={styles.bookingPage}>
@@ -137,17 +165,7 @@ export function Calendar() {
         <aside className={styles.timeSection}>
           <h3>Select a time</h3>
 
-          <div className={styles.timeList}>
-            <button type="button" className={styles.timeBtn}>
-              10:00
-            </button>
-            <button type="button" className={styles.timeBtn}>
-              11:00
-            </button>
-            <button type="button" className={styles.timeBtn}>
-              12:00
-            </button>
-          </div>
+          <div className={styles.timeList}>{availableTimeSlotEl}</div>
         </aside>
       </div>
 
