@@ -45,10 +45,30 @@ export function Calendar() {
     return new Array(days).fill(0).map((_, i) => i + 1);
   }
 
+  function handleDaySelect(day) {
+    //make sure that one date can be selected only
+    const fullSelectedDate = day + month + year;
+    // console.log(day, monthEl, year);
+
+    setSelectedDate(new Date(year, month, day));
+  }
+
   //Builds the dates of the weeks in UI -> 1, 2, 3 etc.
   const daysEl = createArray(daysInMonth).map((day) => {
+    console.log(
+      new Date(year, month, day).toDateString() ===
+        selectedDate?.toDateString(),
+    );
     return (
-      <button key={day} className={styles.day}>
+      //adding toDateString() since just new Date() will always return false
+      <button
+        onClick={() => handleDaySelect(day)}
+        key={day}
+        className={`${styles.day} ${
+          new Date(year, month, day).toDateString() ===
+            selectedDate?.toDateString() && styles.daySelected
+        }`}
+      >
         {day}
       </button>
     );
@@ -79,6 +99,7 @@ export function Calendar() {
         <section className={styles.calendarWrapper}>
           <div className={styles.calendarHeader}>
             <button
+              //disables the arrow when in current month since user is not supposed to book in past
               disabled={
                 currentDate.getMonth() === new Date().getMonth() &&
                 currentDate.getFullYear() === new Date().getFullYear()

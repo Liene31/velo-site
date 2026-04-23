@@ -140,9 +140,16 @@
   cursor: pointer;
 }
 
-.day:hover {
+/*hover is working on days except when .daySelected is applied
+ :not(.daySelected) => not on .daySelected */
+.day:not(.daySelected):hover {
   border: 1px solid var(--color-yellow);
   color: var(--color-yellow);
+}
+
+.daySelected {
+  background: var(--color-yellow);
+  color: var(--color-dark);
 }
 
 .timeSection {
