@@ -96,6 +96,16 @@
   border: 1px solid var(--color-yellow);
 }
 
+:disabled {
+  border: 1px solid rgba(var(--color-yellow-rgb), 0.15);
+  color: rgba(var(--color-yellow-rgb), 0.3);
+  cursor: not-allowed;
+}
+
+:disabled:hover {
+  border: 1px solid rgba(var(--color-yellow-rgb), 0.15);
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));

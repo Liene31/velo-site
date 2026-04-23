@@ -59,13 +59,14 @@ export function Calendar() {
     return <div key={i}></div>;
   });
 
+  //controls month switch back and forth
   function handleMonthChange(arrow) {
-    //argument could be +/- to re-use for both btn ??
-    console.log("clicked " + arrow);
-    setCurrentDate(new Date(year, month + 1, 1));
+    if (arrow === "right") {
+      setCurrentDate(new Date(year, month + 1, 1));
+    } else {
+      setCurrentDate(new Date(year, month - 1, 1));
+    }
   }
-
-  console.log(startOfMonth);
 
   return (
     <main className={styles.bookingPage}>
@@ -77,7 +78,15 @@ export function Calendar() {
       <div className={styles.bookingLayout}>
         <section className={styles.calendarWrapper}>
           <div className={styles.calendarHeader}>
-            <button type="button" className={styles.navBtn}>
+            <button
+              disabled={
+                currentDate.getMonth() === new Date().getMonth() &&
+                currentDate.getFullYear() === new Date().getFullYear()
+              }
+              onClick={() => handleMonthChange("left")}
+              type="button"
+              className={styles.navBtn}
+            >
               ←
             </button>
 
