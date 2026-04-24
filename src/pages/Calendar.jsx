@@ -53,12 +53,23 @@ export function Calendar() {
 
   //Builds the dates of the weeks in UI -> 1, 2, 3 etc.
   const daysEl = createArray(daysInMonth).map((day) => {
+    //not converting to toDateString() since comparing strings work alphabetically not numerically
+    const buttonDate = new Date(year, month, day);
+    const today = new Date();
+    //Normalizing today's to much buttonDate => instead of April 24 at 15:30 it's April 24 at 00:00
+    const todayWithoutTime = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate(),
+    );
+
     return (
       //adding toDateString() since just new Date() will always return false
       <button
         onClick={() => handleDaySelect(day)}
+        disabled={buttonDate <= todayWithoutTime}
         key={day}
-        className={`${styles.day} ${
+        className={`${styles.day} ${buttonDate <= todayWithoutTime && styles.dayDisabled} ${
           new Date(year, month, day).toDateString() ===
             selectedDate?.toDateString() && styles.daySelected
         }`}
@@ -165,7 +176,9 @@ export function Calendar() {
         <aside className={styles.timeSection}>
           <h3>Select a time</h3>
 
-          <div className={styles.timeList}>{availableTimeSlotEl}</div>
+          <div className={styles.timeList}>
+            {selectedDate ? availableTimeSlotEl : <p>No date selected</p>}
+          </div>
         </aside>
       </div>
 

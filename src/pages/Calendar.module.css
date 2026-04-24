@@ -132,7 +132,7 @@
 .day {
   min-height: 3rem;
   border-radius: 0.7rem;
-  border: 1px solid rgba(var(--color-white-rgb), 0.08);
+  border: 1px solid rgba(var(--color-white-rgb), 0.1);
   background: rgba(var(--color-dark-rgb), 0.78);
   color: var(--color-white);
   font-family: var(--font-secondary);
@@ -140,9 +140,9 @@
   cursor: pointer;
 }
 
-/*hover is working on days except when .daySelected is applied
- :not(.daySelected) => not on .daySelected */
-.day:not(.daySelected):hover {
+/*hover is working on days except when .daySelected & .dayDisabled is applied
+ :not(.daySelected, .dayDisabled) => not on .daySelected & .dayDisabled*/
+.day:not(.daySelected, .dayDisabled):hover {
   border: 1px solid var(--color-yellow);
   color: var(--color-yellow);
 }
@@ -150,6 +150,11 @@
 .daySelected {
   background: var(--color-yellow);
   color: var(--color-dark);
+}
+
+button:disabled.dayDisabled {
+  opacity: 0.35;
+  cursor: not-allowed;
 }
 
 .timeSection {
