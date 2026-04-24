@@ -142,7 +142,7 @@
 
 /*hover is working on days except when .daySelected & .dayDisabled is applied
  :not(.daySelected, .dayDisabled) => not on .daySelected & .dayDisabled*/
-.day:not(.daySelected, .dayDisabled):hover {
+.day:not(.daySelected, .dayDisabled, .closedDays):hover {
   border: 1px solid var(--color-yellow);
   color: var(--color-yellow);
 }
@@ -152,9 +152,15 @@
   color: var(--color-dark);
 }
 
-button:disabled.dayDisabled {
+button:disabled.dayDisabled,
+button:disabled.closedDays {
   opacity: 0.35;
   cursor: not-allowed;
+}
+
+button:disabled.closedDays {
+  color: var(--color-red);
+  opacity: 0.7;
 }
 
 .timeSection {

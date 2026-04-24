@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Calendar.module.css";
-import { allSlots, openDays, openHour, closeHour } from "./bookingSlots.js";
+import { allSlots, openDays } from "./bookingSlots.js";
 
 export function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -63,13 +63,16 @@ export function Calendar() {
       today.getDate(),
     );
 
+    const isClosedDay = !openDays.includes(buttonDate.getDay());
+    console.log(isClosedDay);
+
     return (
       //adding toDateString() since just new Date() will always return false
       <button
         onClick={() => handleDaySelect(day)}
-        disabled={buttonDate <= todayWithoutTime}
+        disabled={buttonDate <= todayWithoutTime || isClosedDay}
         key={day}
-        className={`${styles.day} ${buttonDate <= todayWithoutTime && styles.dayDisabled} ${
+        className={`${styles.day} ${isClosedDay && styles.closedDays} ${buttonDate <= todayWithoutTime && styles.dayDisabled} ${
           new Date(year, month, day).toDateString() ===
             selectedDate?.toDateString() && styles.daySelected
         }`}

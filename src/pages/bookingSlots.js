@@ -10,5 +10,3 @@ export const allSlots = [
 ];
 
 export const openDays = [2, 3, 4, 5, 6]; // Tue–Sat
-export const openHour = 10;
-export const closeHour = 18;
