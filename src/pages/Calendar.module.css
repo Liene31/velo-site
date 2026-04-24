@@ -219,6 +219,11 @@ button:disabled.closedDays {
   border-color: var(--color-yellow);
 }
 
+.timeSelected {
+  background: var(--color-yellow);
+  color: var(--color-dark);
+}
+
 .selectionSummary {
   display: flex;
   align-items: center;

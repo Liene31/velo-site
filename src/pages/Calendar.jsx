@@ -5,6 +5,7 @@ import { allSlots, openDays } from "./bookingSlots.js";
 export function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
   const [bookings, setBookings] = useState([]);
 
   const daysOfTheWeek = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
@@ -47,8 +48,13 @@ export function Calendar() {
     return new Array(days).fill(0).map((_, i) => i + 1);
   }
 
-  function handleDaySelect(day) {
+  function handleDaySelectDate(day) {
+    setSelectedTime(null);
     setSelectedDate(new Date(year, month, day));
+  }
+
+  function handleSelectedTime(time) {
+    setSelectedTime(time);
   }
 
   //Builds the dates of the weeks in UI -> 1, 2, 3 etc.
@@ -64,12 +70,11 @@ export function Calendar() {
     );
 
     const isClosedDay = !openDays.includes(buttonDate.getDay());
-    console.log(isClosedDay);
 
     return (
       //adding toDateString() since just new Date() will always return false
       <button
-        onClick={() => handleDaySelect(day)}
+        onClick={() => handleDaySelectDate(day)}
         disabled={buttonDate <= todayWithoutTime || isClosedDay}
         key={day}
         className={`${styles.day} ${isClosedDay && styles.closedDays} ${buttonDate <= todayWithoutTime && styles.dayDisabled} ${
@@ -82,13 +87,14 @@ export function Calendar() {
     );
   });
 
-  //-1 since my calendar starts from Monday(0) but startOfMonth starts with Sunday(0)
   const emptySlotsEl = createArray(startOfMonth).map((slot) => {
     return <div key={slot}></div>;
   });
 
   //controls month switch back and forth
   function handleMonthChange(arrow) {
+    setSelectedDate(null);
+    setSelectedTime(null);
     if (arrow === "right") {
       setCurrentDate(new Date(year, month + 1, 1));
     } else {
@@ -122,10 +128,15 @@ export function Calendar() {
   });
 
   //display in UI
-  const availableTimeSlotEl = availableSlots.map((slot) => {
+  const availableTimeSlotEl = availableSlots.map((time) => {
     return (
-      <button key={slot} type="button" className={styles.timeBtn}>
-        {slot}
+      <button
+        onClick={() => handleSelectedTime(time)}
+        key={time}
+        type="button"
+        className={`${styles.timeBtn} ${selectedTime === time && styles.timeSelected}`}
+      >
+        {time}
       </button>
     );
   });
@@ -185,15 +196,19 @@ export function Calendar() {
         </aside>
       </div>
 
-      <div className={styles.selectionSummary}>
-        <p>
-          Selected appointment: <span>April 10, 2026 at 10:00</span>
-        </p>
+      {selectedDate && selectedTime ? (
+        <div className={styles.selectionSummary}>
+          <p>
+            Selected appointment:{" "}
+            <span>{`${months[selectedDate?.getMonth()]} ${selectedDate?.getDate()}, ${selectedDate?.getFullYear()}
+             at ${selectedTime}`}</span>
+          </p>
 
-        <button type="button" className={styles.confirmBtn}>
-          Confirm Booking
-        </button>
-      </div>
+          <button type="button" className={styles.confirmBtn}>
+            Confirm Booking
+          </button>
+        </div>
+      ) : null}
     </main>
   );
 }
