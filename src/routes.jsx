@@ -32,7 +32,28 @@ export const routes = [
           { path: "reviews", element: <BikeReviews /> },
         ],
       },
-      { path: "service", element: <Service /> },
+      {
+        path: "service",
+        children: [
+          { index: true, element: <Service /> },
+          {
+            path: "booking",
+            element: (
+              // <ProtectedPage>
+              <Booking />
+              // </ProtectedPage>
+            ),
+          },
+          {
+            path: "booking/confirmation",
+            element: (
+              // <ProtectedPage>
+              <BookingConfirmation />
+              // </ProtectedPage>
+            ),
+          },
+        ],
+      },
       { path: "contact", element: <Contact /> },
       {
         path: "auth",
@@ -53,23 +74,6 @@ export const routes = [
         element: (
           // <ProtectedPage>
           <AdminBikes />
-          // </ProtectedPage>
-        ),
-      },
-
-      {
-        path: "service/booking",
-        element: (
-          // <ProtectedPage>
-          <Booking />
-          // </ProtectedPage>
-        ),
-      },
-      {
-        path: "service/booking/confirmation",
-        element: (
-          // <ProtectedPage>
-          <BookingConfirmation />
           // </ProtectedPage>
         ),
       },

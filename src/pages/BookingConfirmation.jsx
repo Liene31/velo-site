@@ -1,7 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./BookingConfirmation.module.css";
 
 export function BookingConfirmation() {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const location = useLocation();
+  const bookingMonth = location.state.bookingDate?.getMonth();
+  const bookingDate = location.state.bookingDate?.getDate();
+  const bookingYear = location.state.bookingDate?.getFullYear();
+  const bookingTime = location.state.bookedTime;
+
   return (
     <main className={styles.confirmationPage}>
       <section className={styles.confirmationHero}>
@@ -15,12 +35,14 @@ export function BookingConfirmation() {
 
           <div className={styles.summaryItem}>
             <span>Date</span>
-            <p>April 10, 2026</p>
+            <p>
+              {months[bookingMonth]} {bookingDate}, {bookingYear}
+            </p>
           </div>
 
           <div className={styles.summaryItem}>
             <span>Time</span>
-            <p>10:00</p>
+            <p>{bookingTime}</p>
           </div>
 
           <Link to="/service/booking" className={styles.changeBtn}>

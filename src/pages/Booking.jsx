@@ -205,7 +205,12 @@ export function Booking() {
              at ${selectedTime}`}</span>
           </p>
 
-          <Link type="button" className={styles.confirmBtn} to="confirmation">
+          <Link
+            type="button"
+            className={styles.confirmBtn}
+            to="confirmation"
+            state={{ bookingDate: selectedDate, bookedTime: selectedTime }}
+          >
             Confirm Booking
           </Link>
         </div>
