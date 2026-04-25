@@ -6,6 +6,7 @@
     "serviceType": "repair",
     "name": "Anna",
     "email": "anna@test.be",
+    "phone": "32470000000",
     "message": "need to fix my bike1"
   },
   {
@@ -15,6 +16,7 @@
     "serviceType": "maintenance",
     "name": "Joe",
     "email": "joe@test.be",
+    "phone": "32470000000",
     "message": "need to fix my bike2"
   },
   {
@@ -24,6 +26,7 @@
     "serviceType": "repair",
     "name": "John",
     "email": "john@test.be",
+    "phone": "32470000000",
     "message": "need to fix my bike3"
   }
 ]

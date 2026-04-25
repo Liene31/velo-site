@@ -8,7 +8,8 @@ import { BikePhotos } from "./pages/bikes/BikePhotos";
 import { BikeReviews } from "./pages/bikes/BikeReviews";
 import { Bikes } from "./pages/bikes/Bikes";
 import { BikeSpecs } from "./pages/bikes/BikeSpecs";
-import { Calendar } from "./pages/Calendar";
+import { Booking } from "./pages/Booking";
+import { BookingConfirmation } from "./pages/BookingConfirmation";
 import { Contact } from "./pages/Contact";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
@@ -57,10 +58,18 @@ export const routes = [
       },
 
       {
-        path: "service/appointment",
+        path: "service/booking",
         element: (
           // <ProtectedPage>
-          <Calendar />
+          <Booking />
+          // </ProtectedPage>
+        ),
+      },
+      {
+        path: "service/booking/confirmation",
+        element: (
+          // <ProtectedPage>
+          <BookingConfirmation />
           // </ProtectedPage>
         ),
       },

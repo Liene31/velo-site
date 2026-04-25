@@ -10,7 +10,7 @@ export function Service() {
       <section className={styles.serviceHero}>
         <h1>{t("service.title")}</h1>
         <p>{t("service.para")}</p>
-        <NavLink className={styles.cta} to="appointment">
+        <NavLink className={styles.cta} to="booking">
           {t("service.cta")}
         </NavLink>
       </section>

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import styles from "./Calendar.module.css";
+import styles from "./Booking.module.css";
 import { allSlots, openDays } from "./bookingSlots.js";
+import { Link } from "react-router-dom";
 
-export function Calendar() {
+export function Booking() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
@@ -204,9 +205,9 @@ export function Calendar() {
              at ${selectedTime}`}</span>
           </p>
 
-          <button type="button" className={styles.confirmBtn}>
+          <Link type="button" className={styles.confirmBtn} to="confirmation">
             Confirm Booking
-          </button>
+          </Link>
         </div>
       ) : null}
     </main>
