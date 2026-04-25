@@ -10,6 +10,23 @@ export function BookingConfirmation() {
       </section>
 
       <section className={styles.confirmationContent}>
+        <aside className={styles.bookingSummary}>
+          <h2>Your selected slot</h2>
+
+          <div className={styles.summaryItem}>
+            <span>Date</span>
+            <p>April 10, 2026</p>
+          </div>
+
+          <div className={styles.summaryItem}>
+            <span>Time</span>
+            <p>10:00</p>
+          </div>
+
+          <Link to="/service/booking" className={styles.changeBtn}>
+            Change Date & Time
+          </Link>
+        </aside>
         <form className={styles.confirmationForm}>
           <div className={styles.formGroup}>
             <label htmlFor="name">Name *</label>
@@ -68,23 +85,6 @@ export function BookingConfirmation() {
             Confirm Booking
           </button>
         </form>
-        <aside className={styles.bookingSummary}>
-          <h2>Your selected slot</h2>
-
-          <div className={styles.summaryItem}>
-            <span>Date</span>
-            <p>April 10, 2026</p>
-          </div>
-
-          <div className={styles.summaryItem}>
-            <span>Time</span>
-            <p>10:00</p>
-          </div>
-
-          <Link to="/service/booking" className={styles.changeBtn}>
-            Change Date & Time
-          </Link>
-        </aside>
       </section>
     </main>
   );
