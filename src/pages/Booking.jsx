@@ -164,7 +164,7 @@ export function Booking() {
   });
 
   //checks if date is selected and data is available from server, and no errors
-  // if conditions are not met, shows appropriate message
+  // if conditions are not met/or is met, shows appropriate message
   let timeContent;
 
   if (!selectedDate) {
