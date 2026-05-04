@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import styles from "./Booking.module.css";
 import { allSlots, openDays } from "./bookingSlots.js";
 import { Link } from "react-router-dom";
+import { bookingService } from "../services/booking.service.js";
 
 export function Booking() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const [bookings, setBookings] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const daysOfTheWeek = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
   const months = [
@@ -104,9 +107,27 @@ export function Booking() {
   }
 
   useEffect(() => {
-    fetch("/data/bookings.json")
-      .then((res) => res.json())
-      .then((data) => setBookings(data));
+    setIsLoading(true);
+    setError(null);
+    bookingService
+      .getAll()
+      .then((data) => {
+        setBookings(data.bookings);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        if (error.response) {
+          // server responded (e.g. 500 with "DB error")
+          setError(error.response.data.message);
+        } else if (error.request) {
+          // request made but no response (server down / network issue)
+          setError("Server unavailable, please try again later");
+        } else {
+          // something else went wrong
+          setError("Unexpected error, please try again later");
+        }
+        setIsLoading(false);
+      });
   }, []);
 
   //checks if there are already bookings in user's selected date
@@ -141,6 +162,20 @@ export function Booking() {
       </button>
     );
   });
+
+  //checks if date is selected and data is available from server, and no errors
+  // if conditions are not met, shows appropriate message
+  let timeContent;
+
+  if (!selectedDate) {
+    timeContent = <p>No date selected</p>;
+  } else if (error) {
+    timeContent = <p>{error}</p>;
+  } else if (isLoading) {
+    timeContent = <p>Loading</p>;
+  } else {
+    timeContent = availableTimeSlotEl;
+  }
 
   return (
     <main className={styles.bookingPage}>
@@ -191,9 +226,7 @@ export function Booking() {
         <aside className={styles.timeSection}>
           <h3>Select a time</h3>
 
-          <div className={styles.timeList}>
-            {selectedDate ? availableTimeSlotEl : <p>No date selected</p>}
-          </div>
+          <div className={styles.timeList}>{timeContent}</div>
         </aside>
       </div>
 
