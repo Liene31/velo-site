@@ -4,9 +4,11 @@ import styles from "./BikeSpecs.module.css";
 export function BikeOverview() {
   const { currentBike } = useOutletContext();
 
+  console.log(currentBike);
+
   return (
     <div className={styles.specDetails}>
-      {currentBike ? (
+      {
         <ul>
           <li>
             <span>Brand:</span> {currentBike.overview.brand}
@@ -36,9 +38,7 @@ export function BikeOverview() {
             <span>Description:</span> {currentBike.overview.description}
           </li>
         </ul>
-      ) : (
-        <h2>Loading</h2>
-      )}
+      }
     </div>
   );
 }

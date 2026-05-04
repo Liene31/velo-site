@@ -68,15 +68,21 @@ export function BikeDetail() {
     <main className={styles.bikesDetailPage}>
       <div className={styles.bikeDetailWrapper}>
         <div className={styles.bikeTopInfo}>{bikeDetailContent}</div>
-        <nav className={styles.navLinks}>
-          <NavLink to="." end>
-            Overview
-          </NavLink>
-          <NavLink to="specs">Specs</NavLink>
-          <NavLink to="photos">Photos</NavLink>
-          <NavLink to="reviews">Reviews</NavLink>
-        </nav>
-        <Outlet className={styles.detailContent} context={{ currentBike }} />
+        {currentBike && (
+          <>
+            <nav className={styles.navLinks}>
+              <NavLink to="." end>
+                Overview
+              </NavLink>
+              <NavLink to="specs">Specs</NavLink>
+              <NavLink to="photos">Photos</NavLink>
+              <NavLink to="reviews">Reviews</NavLink>
+            </nav>
+            <div className={styles.detailContent}>
+              <Outlet context={{ currentBike }} />
+            </div>
+          </>
+        )}
       </div>
     </main>
   );

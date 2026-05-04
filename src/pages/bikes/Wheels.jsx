@@ -5,8 +5,8 @@ export function Wheels() {
   const { currentBike } = useOutletContext();
 
   return (
-    <div className={styles.specDetails}>
-      {currentBike ? (
+    <>
+      {
         <ul>
           <li>
             <span>Rims:</span> {currentBike.specs.wheels.rims}
@@ -24,9 +24,7 @@ export function Wheels() {
             <span>Tires:</span> {currentBike.specs.wheels.tires}
           </li>
         </ul>
-      ) : (
-        <h2>Loading</h2>
-      )}
-    </div>
+      }
+    </>
   );
 }

@@ -5,8 +5,8 @@ export function GroupSet() {
   const { currentBike } = useOutletContext();
 
   return (
-    <div className={styles.specDetails}>
-      {currentBike ? (
+    <>
+      {
         <ul>
           <li>
             <span>Rear derailleur:</span>{" "}
@@ -31,9 +31,7 @@ export function GroupSet() {
             <span>BrakeLevers:</span> {currentBike.specs.groupSet.brakeLevers}
           </li>
         </ul>
-      ) : (
-        <h2>Loading</h2>
-      )}
-    </div>
+      }
+    </>
   );
 }

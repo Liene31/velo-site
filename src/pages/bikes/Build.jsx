@@ -5,8 +5,8 @@ export function Build() {
   const { currentBike } = useOutletContext();
 
   return (
-    <div className={styles.specDetails}>
-      {currentBike ? (
+    <>
+      {
         <ul>
           <li>
             <span>Frame:</span> {currentBike.specs.build.frame}
@@ -40,9 +40,7 @@ export function Build() {
             <span>Grips:</span> {currentBike.specs.build.grips}
           </li>
         </ul>
-      ) : (
-        <h2>Loading</h2>
-      )}
-    </div>
+      }
+    </>
   );
 }
