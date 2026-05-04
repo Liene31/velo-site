@@ -73,7 +73,7 @@
   "notFound": {
     "title": "Page Not Found",
     "text": "Looks like this ride went off route. The page you're looking for doesn't exist or has been moved.",
-    "backHome": "Back Home",
+    "backHome": "Bike Home",
     "explore": "Explore Bikes"
   },
   "contact": {

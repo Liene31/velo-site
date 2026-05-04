@@ -1,8 +1,10 @@
 import styles from "./Contact.module.css";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export function Contact() {
   const { t } = useTranslation();
+
   return (
     <main className={styles.contactPage}>
       <section className={styles.contactHero}>
@@ -70,26 +72,39 @@ export function Contact() {
           </button>
         </form>
 
-        <aside className={styles.contactInfo}>
-          <h2>Bike Into The Future</h2>
+        <div className={styles.asideSection}>
+          <aside className={styles.contactInfo}>
+            <h2>Bike Into The Future</h2>
 
-          <div className={styles.infoItem}>
-            <span className={styles.infoLabel}>
-              {t("contact.info.address")}
-            </span>
-            <p>Chaussée de Louvain 474, 1030 Schaerbeek</p>
-          </div>
+            <div className={styles.infoItem}>
+              <span className={styles.infoLabel}>
+                {t("contact.info.address")}
+              </span>
+              <p>Chaussée de Louvain 474, 1030 Schaerbeek</p>
+            </div>
 
-          <div className={styles.infoItem}>
-            <span className={styles.infoLabel}>{t("contact.info.email")}</span>
-            <p>biketothefuture@gmail.com</p>
-          </div>
+            <div className={styles.infoItem}>
+              <span className={styles.infoLabel}>
+                {t("contact.info.email")}
+              </span>
+              <p>biketothefuture@gmail.com</p>
+            </div>
 
-          <div className={styles.infoItem}>
-            <span className={styles.infoLabel}>{t("contact.info.hours")}</span>
-            <p>{t("contact.info.hoursValue")}</p>
-          </div>
-        </aside>
+            <div className={styles.infoItem}>
+              <span className={styles.infoLabel}>
+                {t("contact.info.hours")}
+              </span>
+              <p>{t("contact.info.hoursValue")}</p>
+            </div>
+          </aside>
+          <aside className={styles.booking}>
+            <h2>{t("service.booking.title")}</h2>
+            <p>{t("service.booking.text")}</p>
+            <Link className={styles.bookingCta} to="/service/booking">
+              {t("service.booking.cta")}
+            </Link>
+          </aside>
+        </div>
       </section>
     </main>
   );
