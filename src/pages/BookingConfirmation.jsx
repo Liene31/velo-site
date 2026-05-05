@@ -22,6 +22,45 @@ export function BookingConfirmation() {
   const bookingYear = location.state.bookingDate?.getFullYear();
   const bookingTime = location.state.bookedTime;
 
+  //Formatting date to pass the correct format to payload
+  //My backend expects 2026-05-05
+  const date = new Date(bookingYear, bookingMonth, bookingDate);
+
+  const formattedMonth =
+    date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+
+  const formattedDate =
+    date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+
+  const formattedFullDate = `${date.getFullYear()}-${formattedMonth}-${formattedDate}`;
+
+  console.log(bookingTime);
+
+  //formData can be called as I want
+  //formData collects all the input, select, textarea data
+  //inputs needs to have a name attribute
+  //doesn't include anything outside the form
+  //and doesn't include disabled inputs
+  function handleFormSubmit(formData) {
+    //formData.entries() gives all the key–value pairs from the form
+    //Object.fromEntries(...) converts those pairs into a regular JavaScript object
+    const data = Object.fromEntries(formData.entries());
+
+    //my payload is JavaScript object not JSON
+    //I can convert manually but since I am using Axios, it will be done for me
+    //JSON is string {"bookingDate": "2026-05-05"}
+    const payload = {
+      bookingDate: formattedFullDate,
+      bookingTime: bookingTime,
+      serviceType: data.service,
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      message: data.message,
+    };
+    console.log(payload);
+  }
+
   return (
     <main className={styles.confirmationPage}>
       <section className={styles.confirmationHero}>
@@ -49,7 +88,7 @@ export function BookingConfirmation() {
             Change Date & Time
           </Link>
         </aside>
-        <form className={styles.confirmationForm}>
+        <form action={handleFormSubmit} className={styles.confirmationForm}>
           <div className={styles.formGroup}>
             <label htmlFor="name">Name *</label>
             <input
