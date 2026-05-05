@@ -1,7 +1,16 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "./BookingConfirmation.module.css";
+import { bookingService } from "../services/booking.service.js";
+import { useState } from "react";
 
 export function BookingConfirmation() {
+  //here it's set to false since the form isn’t submitting when the component loads
+  //loading should only be true during submission
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+
   const months = [
     "January",
     "February",
@@ -34,14 +43,17 @@ export function BookingConfirmation() {
 
   const formattedFullDate = `${date.getFullYear()}-${formattedMonth}-${formattedDate}`;
 
-  console.log(bookingTime);
-
   //formData can be called as I want
   //formData collects all the input, select, textarea data
   //inputs needs to have a name attribute
   //doesn't include anything outside the form
   //and doesn't include disabled inputs
-  function handleFormSubmit(formData) {
+  const handleFormSubmit = async (formData) => {
+    //submit btn is pressed, loading can start
+    setIsLoading(true);
+    //reset the old error when submitting again
+    //otherwise an old error may stay visible
+    setError(null);
     //formData.entries() gives all the key–value pairs from the form
     //Object.fromEntries(...) converts those pairs into a regular JavaScript object
     const data = Object.fromEntries(formData.entries());
@@ -58,8 +70,27 @@ export function BookingConfirmation() {
       phone: data.phone,
       message: data.message,
     };
-    console.log(payload);
-  }
+
+    try {
+      const response = await bookingService.insert(payload);
+      //success -> stop loading
+      setIsLoading(false);
+      //navigates back to the home page
+      navigate(`/`);
+    } catch (error) {
+      if (error.response) {
+        // server responded (e.g. 500 with "DB error")
+        setError(error.response.data.message);
+      } else if (error.request) {
+        // request made but no response (server down / network issue)
+        setError("Server unavailable, please try again later");
+      } else {
+        // something else went wrong
+        setError("Unexpected error, please try again later");
+      }
+      setIsLoading(false);
+    }
+  };
 
   return (
     <main className={styles.confirmationPage}>
@@ -142,8 +173,19 @@ export function BookingConfirmation() {
             ></textarea>
           </div>
 
-          <button type="submit" className={styles.submitBtn}>
-            Confirm Booking
+          {error && (
+            //role=alert -> using to communicate an important message to the user
+            <p className={styles.errorMessage} role="alert">
+              {error}
+            </p>
+          )}
+
+          <button
+            disabled={isLoading}
+            type="submit"
+            className={styles.submitBtn}
+          >
+            {isLoading ? "Confirming...." : "Confirm Booking"}
           </button>
         </form>
       </section>
