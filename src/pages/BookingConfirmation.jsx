@@ -76,7 +76,7 @@ export function BookingConfirmation() {
       //success -> stop loading
       setIsLoading(false);
       //navigates back to the home page
-      navigate(`/`);
+      navigate(`success`);
     } catch (error) {
       if (error.response) {
         // server responded (e.g. 500 with "DB error")

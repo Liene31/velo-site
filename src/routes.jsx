@@ -14,6 +14,7 @@ import { Contact } from "./pages/Contact";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
 import { Service } from "./pages/Service";
+import { SuccessPage } from "./pages/SuccessPage";
 
 export const routes = [
   {
@@ -49,6 +50,14 @@ export const routes = [
             element: (
               // <ProtectedPage>
               <BookingConfirmation />
+              // </ProtectedPage>
+            ),
+          },
+          {
+            path: "booking/confirmation/success",
+            element: (
+              // <ProtectedPage>
+              <SuccessPage />
               // </ProtectedPage>
             ),
           },

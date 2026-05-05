@@ -1,0 +1,148 @@
+.successPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+}
+
+.successCard {
+  width: 100%;
+  max-width: 720px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-radius: 1rem;
+  background: rgba(var(--color-dark-rgb), 0.78);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+.successIcon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  padding: 0.5rem;
+  background: var(--color-yellow);
+  color: var(--color-dark);
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+@media (max-width: 655px) {
+  .successIcon {
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+  }
+}
+
+.successCard h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-family: var(--font-secondary);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--color-red),
+    var(--color-yellow),
+    var(--color-blue)
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.successText {
+  max-width: 560px;
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.bookingDetails {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+@media (max-width: 655px) {
+  .bookingDetails {
+    flex-direction: column;
+  }
+}
+
+.detailItem {
+  flex: 1 1 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: rgba(var(--color-dark-rgb), 0.78);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+@media (max-width: 655px) {
+  .detailItem {
+    flex: initial;
+  }
+}
+
+.detailItem span {
+  color: var(--color-yellow);
+  font-family: var(--font-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.detailItem p {
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 520px) {
+  .actions {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+.btn {
+  text-decoration: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 2rem;
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.primaryBtn {
+  background: var(--color-yellow);
+  border: 1px solid var(--color-yellow);
+  color: var(--color-dark);
+}
+
+.primaryBtn:hover {
+  background: transparent;
+  color: var(--color-yellow);
+}
+
+.secondaryBtn {
+  background: transparent;
+  color: var(--color-yellow);
+  border: 1px solid var(--color-yellow);
+}
+
+.secondaryBtn:hover {
+  background: var(--color-yellow);
+  color: var(--color-dark);
+}
