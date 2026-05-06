@@ -9,8 +9,6 @@ export function BookingConfirmation() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const navigate = useNavigate();
-
   const months = [
     "January",
     "February",
@@ -26,6 +24,8 @@ export function BookingConfirmation() {
     "December",
   ];
   const location = useLocation();
+  const navigate = useNavigate();
+
   const bookingMonth = location.state.bookingDate?.getMonth();
   const bookingDate = location.state.bookingDate?.getDate();
   const bookingYear = location.state.bookingDate?.getFullYear();
@@ -164,12 +164,13 @@ export function BookingConfirmation() {
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">Message *</label>
             <textarea
               id="message"
               name="message"
               rows="6"
               placeholder="Provide more details about your bike or issue..."
+              required
             ></textarea>
           </div>
 

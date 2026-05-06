@@ -1,7 +1,10 @@
 import styles from "./SuccessPage.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export function SuccessPage() {
+  const location = useLocation();
+
+  console.log(location);
   return (
     <main className={styles.successPage}>
       <section className={styles.successCard}>

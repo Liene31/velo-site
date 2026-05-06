@@ -40,8 +40,8 @@ export function Bikes() {
         <i className={styles.bikeType}>{bike.overview.category}</i>
         <img
           className={styles.bikeImg}
-          src={bike.images[0].url}
-          alt={bike.images[0].alt}
+          src={bike.bikeUrl}
+          alt={`Image of bike ${bike.name}`}
         />
         <h2>{bike.name}</h2>
         <p>

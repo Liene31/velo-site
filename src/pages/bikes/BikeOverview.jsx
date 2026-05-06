@@ -4,8 +4,6 @@ import styles from "./BikeSpecs.module.css";
 export function BikeOverview() {
   const { currentBike } = useOutletContext();
 
-  console.log(currentBike);
-
   return (
     <div className={styles.specDetails}>
       {

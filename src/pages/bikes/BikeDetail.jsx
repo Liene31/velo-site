@@ -17,7 +17,6 @@ export function BikeDetail() {
       .then((data) => {
         setCurrentBike(data);
         setIsLoading(false);
-        console.log(data);
       })
       .catch((error) => {
         if (error.response) {
@@ -50,8 +49,8 @@ export function BikeDetail() {
       <>
         <img
           className={styles.bikeImg}
-          src={currentBike.images[0].url}
-          alt={currentBike.images[0].alt}
+          src={currentBike.bikeUrl}
+          alt={`Image of bike ${currentBike.name}`}
         />
         <div className={styles.bikeInfo}>
           <i>{currentBike.overview.category}</i>
