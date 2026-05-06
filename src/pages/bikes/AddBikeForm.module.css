@@ -1,9 +1,54 @@
-.AddBikeForm {
+.addBikeForm {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  overflow-y: scroll;
-  height: 500px;
+  overflow-y: auto;
+  max-height: 70vh;
+  padding-right: 1rem;
+}
+
+.formSection {
+  border-radius: 0.5rem;
+  background: rgba(var(--color-dark-rgb), 0.6);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+.formSection summary {
+  cursor: pointer;
+  padding: 1rem;
+  font-family: var(--font-secondary);
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-yellow);
+}
+
+.innerSection summary {
+  padding: 0.8rem 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 100;
+  color: var(--color-white);
+}
+
+/* add + when section is not open */
+.formSection summary::after,
+.innerSection summary::after {
+  content: "+";
+  float: right;
+  font-size: 1.2rem;
+}
+
+/* add - when section is open */
+.formSection[open] > summary::after,
+.innerSection[open] > summary::after {
+  content: "−";
+}
+
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .formGroup {
@@ -20,7 +65,9 @@
   color: var(--color-yellow);
 }
 
-.formGroup input {
+.formGroup input,
+.formGroup textarea,
+.formGroup select {
   width: 100%;
   padding: 0.9rem 1rem;
   border-radius: 0.5rem;
@@ -32,7 +79,14 @@
   line-height: 1.5;
 }
 
-.formGroup input:focus {
+.formGroup textarea {
+  min-height: 4rem;
+  resize: none;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
   outline: none;
   border-color: var(--color-yellow);
   box-shadow: 0 0 0 3px rgba(var(--color-yellow-rgb), 0.14);
