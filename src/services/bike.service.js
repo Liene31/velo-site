@@ -6,7 +6,6 @@ export const bikeService = {
     try {
       const response = await axios.get(`http://localhost:3000/api/bikes`);
       return response.data;
-      console.log(response);
     } catch (err) {
       console.error("Bike fetch failed:", err);
       throw err; // rethrow
@@ -17,9 +16,21 @@ export const bikeService = {
     try {
       const response = await axios.get(`http://localhost:3000/api/bikes/${id}`);
       return response.data;
-      console.log(response);
     } catch (err) {
       console.error("Bike fetch failed:", err);
+      throw err; // rethrow
+    }
+  },
+
+  insert: async (bookingData) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:3000/api/bikes`,
+        bookingData,
+      );
+      return response.data;
+    } catch (err) {
+      console.error("Bike post failed:", err);
       throw err; // rethrow
     }
   },

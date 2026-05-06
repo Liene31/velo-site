@@ -75,7 +75,7 @@ export function BookingConfirmation() {
       const response = await bookingService.insert(payload);
       //success -> stop loading
       setIsLoading(false);
-      //navigates back to the home page
+      //navigates to success page
       navigate(`success`);
     } catch (error) {
       if (error.response) {

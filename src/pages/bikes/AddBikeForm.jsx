@@ -1,7 +1,22 @@
+import { useState } from "react";
+import { bikeService } from "../../services/bike.service.js";
 import styles from "./AddBikeForm.module.css";
 
 export function AddBikeForm() {
-  function handleFormSubmit(formData) {
+  //here it's set to false since the form isn’t submitting when the component loads
+  //loading should only be true during submission
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  //collects data from user input
+  //and sends in payload to DB
+  const handleFormSubmit = async (formData) => {
+    //submit btn is pressed, loading can start
+    setIsLoading(true);
+    //reset the old error when submitting again
+    //otherwise an old error may stay visible
+    setError(null);
+
     const data = Object.fromEntries(formData.entries());
 
     const payload = {
@@ -52,8 +67,27 @@ export function AddBikeForm() {
       },
       bikeUrl: data.bikeUrl,
     };
-    console.log(payload);
-  }
+
+    try {
+      const response = await bikeService.insert(payload);
+      //success -> stop loading
+      setIsLoading(false);
+      //THINK WHAT TO DO AFTER SUCCESS
+      console.log(response);
+    } catch (error) {
+      if (error.response) {
+        // server responded (e.g. 500 with "DB error")
+        setError(error.response.data.message);
+      } else if (error.request) {
+        // request made but no response (server down / network issue)
+        setError("Server unavailable, please try again later");
+      } else {
+        // something else went wrong
+        setError("Unexpected error, please try again later");
+      }
+      setIsLoading(false);
+    }
+  };
 
   return (
     <form action={handleFormSubmit} className={styles.addBikeForm}>
