@@ -34,4 +34,16 @@ export const bikeService = {
       throw err; // rethrow
     }
   },
+
+  delete: async (id) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/api/bikes/${id}`,
+      );
+      console.log(response);
+    } catch (err) {
+      console.error("Bike deletion failed:", err);
+      throw err; // rethrow
+    }
+  },
 };

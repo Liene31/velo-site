@@ -8,6 +8,7 @@ export function AdminBikes() {
   const [bikes, setBikes] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [toastAction, setToastAction] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const { t } = useTranslation();
@@ -20,7 +21,10 @@ export function AdminBikes() {
     return (
       <div key={bike._id} className={styles.bikeCard}>
         <div className={styles.cardActions}>
-          <button className={styles.deleteBtn}>
+          <button
+            onClick={() => handleDeleteBike(bike._id)}
+            className={styles.deleteBtn}
+          >
             <img src="/images/delete.svg" alt="delete icon" />
           </button>
           <button className={styles.editBtn}>
@@ -66,11 +70,11 @@ export function AdminBikes() {
         setBikes(data.bikes);
         setIsLoading(false);
       })
-      .catch((error) => {
-        if (error.response) {
+      .catch((err) => {
+        if (err.response) {
           // server responded (e.g. 500 with "DB error")
-          setError(error.response.data.message);
-        } else if (error.request) {
+          setError(err.response.data.message);
+        } else if (err.request) {
           // request made but no response (server down / network issue)
           setError("Server unavailable, please try again later");
         } else {
@@ -87,13 +91,61 @@ export function AdminBikes() {
 
   function handleCloseBtn() {
     setShowToast(false);
+    setToastAction(null);
   }
 
   function handleBikeAdded() {
     setShowModal(false);
     setShowToast(true);
+    setToastAction("added");
     fetchBikes();
   }
+
+  //with async here, first waiting when bike is deleted and only then fetching bikes
+  //other both run immediately and fetchBikes() may happen before the backend has deleted the bike
+  async function handleDeleteBike(id) {
+    try {
+      await bikeService.delete(id);
+      fetchBikes();
+      setShowToast(true);
+      setToastAction("deleted");
+    } catch (err) {
+      if (err.response) {
+        // server responded (e.g. 500 with "DB error")
+        setError(err.response.data.message);
+      } else if (err.request) {
+        // request made but no response (server down / network issue)
+        setError("Server unavailable, please try again later");
+      } else {
+        // something else went wrong
+        setError("Unexpected error, please try again later");
+      }
+    }
+  }
+
+  const toastMessage = (action) => {
+    return (
+      <div className={styles.toastWrapper} role="status">
+        <button
+          onClick={handleCloseBtn}
+          type="button"
+          className={styles.closeBtn}
+          aria-label="Close successfully added bike message"
+        >
+          ×
+        </button>
+        <div className={styles.toast}>
+          <span className={styles.toastIcon}>✔</span>
+          <div>
+            <p className={styles.toastTitle}>Bike {action} successfully</p>
+            <p className={styles.toastText}>
+              The bike list has been updated accordingly.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <main className={styles.bikesPage}>
@@ -122,27 +174,7 @@ export function AdminBikes() {
       </div>
 
       {/* This message appears after successfully adding the bike */}
-      {showToast && (
-        <div className={styles.toastWrapper} role="status">
-          <button
-            onClick={handleCloseBtn}
-            type="button"
-            className={styles.closeBtn}
-            aria-label="Close successfully added bike message"
-          >
-            ×
-          </button>
-          <div className={styles.toast}>
-            <span className={styles.toastIcon}>✔</span>
-            <div>
-              <p className={styles.toastTitle}>Bike added successfully</p>
-              <p className={styles.toastText}>
-                The new bike is now available in the catalog.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
+      {showToast && toastMessage(toastAction)}
     </main>
   );
 }
