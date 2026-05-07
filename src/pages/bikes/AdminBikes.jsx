@@ -2,16 +2,43 @@ import styles from "./Bikes.module.css";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AddBikeModal } from "./AddBikeModal";
+import { bikeService } from "../../services/bike.service.js";
 
 export function AdminBikes() {
-  const [bikes, setBikes] = useState(null);
+  const [bikes, setBikes] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { t } = useTranslation();
 
+  // useEffect(() => {
+  //   fetch("/data/bikes.json")
+  //     .then((res) => res.json())
+  //     .then((data) => setBikes(data));
+  // }, []);
+
   useEffect(() => {
-    fetch("/data/bikes.json")
-      .then((res) => res.json())
-      .then((data) => setBikes(data));
+    setIsLoading(true);
+    setError(null);
+    bikeService
+      .getAll()
+      .then((data) => {
+        setBikes(data.bikes);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        if (error.response) {
+          // server responded (e.g. 500 with "DB error")
+          setError(error.response.data.message);
+        } else if (error.request) {
+          // request made but no response (server down / network issue)
+          setError("Server unavailable, please try again later");
+        } else {
+          // something else went wrong
+          setError("Unexpected error, please try again later");
+        }
+        setIsLoading(false);
+      });
   }, []);
 
   function handleModal() {
@@ -20,7 +47,7 @@ export function AdminBikes() {
 
   const bikeElement = bikes?.map((bike) => {
     return (
-      <div key={bike.id} className={styles.bikeCard}>
+      <div key={bike._id} className={styles.bikeCard}>
         <div className={styles.cardActions}>
           <button className={styles.deleteBtn}>
             <img src="/images/delete.svg" alt="delete icon" />
@@ -32,8 +59,8 @@ export function AdminBikes() {
 
         <img
           className={styles.bikeImg}
-          src={bike.images[0].url}
-          alt={bike.images[0].alt}
+          src={bike.bikeUrl}
+          alt={`Image of bike ${bike.name}`}
         />
 
         <h2>{bike.name}</h2>
@@ -43,6 +70,20 @@ export function AdminBikes() {
       </div>
     );
   });
+
+  //checks if no errors and data is loaded
+  // if conditions are not met/or is met, shows appropriate message
+  let bikeContent;
+
+  if (error) {
+    bikeContent = <p>{error}</p>;
+  } else if (isLoading) {
+    bikeContent = <p>Loading</p>;
+  } else if (bikes.length === 0) {
+    bikeContent = <p>No bikes found</p>;
+  } else {
+    bikeContent = bikeElement;
+  }
 
   return (
     <main className={styles.bikesPage}>
@@ -60,7 +101,7 @@ export function AdminBikes() {
         </button>
       </div>
       <div className={styles.bikesWrapper}>
-        {bikes ? bikeElement : <h2>Loading</h2>}
+        <div className={styles.bikesWrapper}>{bikeContent}</div>
       </div>
 
       {/* Add Bike Modal */}
