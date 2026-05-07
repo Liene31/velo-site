@@ -139,9 +139,10 @@
   font-size: 1rem;
   font-weight: 700;
   color: var(--color-yellow);
+  text-transform: uppercase;
 }
 
-/* Toast message after successfully adding the bike in Admin page */
+/* Toast message after successfully adding the bike in ADMIN PAGE */
 
 .closeBtn {
   width: 1.5rem;

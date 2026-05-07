@@ -27,7 +27,7 @@ export function BikeOverview() {
             <span>Sizes:</span> {currentBike.overview.sizes.join(", ")}
           </li>
           <li>
-            <span>Currency:</span> {currentBike.overview.currency}
+            <span>Currency:</span> {currentBike.overview.currency.toUpperCase()}
           </li>
           <li>
             <span>Price:</span> {currentBike.overview.price}
