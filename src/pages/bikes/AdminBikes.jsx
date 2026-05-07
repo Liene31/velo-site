@@ -7,38 +7,14 @@ import { bikeService } from "../../services/bike.service.js";
 export function AdminBikes() {
   const [bikes, setBikes] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [showToast, setShowToast] = useState(true);
+  const [showToast, setShowToast] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const { t } = useTranslation();
 
   useEffect(() => {
-    setIsLoading(true);
-    setError(null);
-    bikeService
-      .getAll()
-      .then((data) => {
-        setBikes(data.bikes);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        if (error.response) {
-          // server responded (e.g. 500 with "DB error")
-          setError(error.response.data.message);
-        } else if (error.request) {
-          // request made but no response (server down / network issue)
-          setError("Server unavailable, please try again later");
-        } else {
-          // something else went wrong
-          setError("Unexpected error, please try again later");
-        }
-        setIsLoading(false);
-      });
+    fetchBikes();
   }, []);
-
-  function handleModal() {
-    setShowModal((prev) => !prev);
-  }
 
   const bikeElement = bikes?.map((bike) => {
     return (
@@ -80,8 +56,43 @@ export function AdminBikes() {
     bikeContent = bikeElement;
   }
 
+  //makes this re-usable and can be called when needed
+  function fetchBikes() {
+    setIsLoading(true);
+    setError(null);
+    bikeService
+      .getAll()
+      .then((data) => {
+        setBikes(data.bikes);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        if (error.response) {
+          // server responded (e.g. 500 with "DB error")
+          setError(error.response.data.message);
+        } else if (error.request) {
+          // request made but no response (server down / network issue)
+          setError("Server unavailable, please try again later");
+        } else {
+          // something else went wrong
+          setError("Unexpected error, please try again later");
+        }
+        setIsLoading(false);
+      });
+  }
+
+  function handleModal() {
+    setShowModal((prev) => !prev);
+  }
+
   function handleCloseBtn() {
     setShowToast(false);
+  }
+
+  function handleBikeAdded() {
+    setShowModal(false);
+    setShowToast(true);
+    fetchBikes();
   }
 
   return (
@@ -104,7 +115,11 @@ export function AdminBikes() {
       </div>
 
       {/* Add Bike Modal */}
-      <div>{showModal ? <AddBikeModal onClick={handleModal} /> : null}</div>
+      <div>
+        {showModal ? (
+          <AddBikeModal onClose={handleModal} onSuccess={handleBikeAdded} />
+        ) : null}
+      </div>
 
       {/* This message appears after successfully adding the bike */}
       {showToast && (

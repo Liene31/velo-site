@@ -2,7 +2,7 @@ import { useState } from "react";
 import { bikeService } from "../../services/bike.service.js";
 import styles from "./AddBikeForm.module.css";
 
-export function AddBikeForm() {
+export function AddBikeForm(props) {
   //here it's set to false since the form isn’t submitting when the component loads
   //loading should only be true during submission
   const [isLoading, setIsLoading] = useState(false);
@@ -72,8 +72,8 @@ export function AddBikeForm() {
       const response = await bikeService.insert(payload);
       //success -> stop loading
       setIsLoading(false);
-      //THINK WHAT TO DO AFTER SUCCESS
-      console.log(response);
+      //setShowModal, setShowToast, fetchBikes is triggered in parent component (AdminBikes)
+      props.onSuccess();
     } catch (error) {
       if (error.response) {
         // server responded (e.g. 500 with "DB error")
@@ -102,6 +102,7 @@ export function AddBikeForm() {
               name="slug"
               type="text"
               placeholder="scott-speedster-30-2025"
+              defaultValue={"scott-speedster-30-2025"}
               required
             />
           </div>
@@ -113,6 +114,7 @@ export function AddBikeForm() {
               name="tags"
               type="text"
               placeholder="road, city"
+              defaultValue={"road, city"}
               required
             />
           </div>
@@ -124,6 +126,7 @@ export function AddBikeForm() {
               name="name"
               type="text"
               placeholder="Scott Speedster 30"
+              defaultValue={"Scott Speedster 30"}
               required
             />
           </div>
@@ -135,6 +138,9 @@ export function AddBikeForm() {
               name="bikeUrl"
               type="text"
               placeholder="https://asset.scott-sports.com"
+              defaultValue={
+                "https://asset.scott-sports.com/fit-in/260x260/425/4253668357_2222971_4.png?signature=a666003985a5bf2673fe406cc4e74ef2d9fb69510c8dcf5ad6543524c71fe11d"
+              }
               required
             />
           </div>
@@ -153,6 +159,7 @@ export function AddBikeForm() {
               name="brand"
               type="text"
               placeholder="Scott"
+              defaultValue={"Scott"}
               required
             />
           </div>
@@ -164,6 +171,7 @@ export function AddBikeForm() {
               name="model"
               type="text"
               placeholder="Speedster 30"
+              defaultValue={"Speedster 30"}
               required
             />
           </div>
@@ -175,13 +183,14 @@ export function AddBikeForm() {
               name="year"
               type="number"
               placeholder="2025"
+              defaultValue={2025}
               required
             />
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="category">Category *</label>
-            <select id="category" name="category" required defaultValue="">
+            <select id="category" name="category" required defaultValue="road">
               <option value="" disabled>
                 --Please choose a category--
               </option>
@@ -200,6 +209,7 @@ export function AddBikeForm() {
               name="price"
               type="number"
               placeholder="1399"
+              defaultValue={1399}
               required
             />
           </div>
@@ -218,6 +228,7 @@ export function AddBikeForm() {
               name="colors"
               type="text"
               placeholder="Black, Red"
+              defaultValue={"Black, Red"}
               required
             />
           </div>
@@ -229,6 +240,7 @@ export function AddBikeForm() {
               name="size"
               type="text"
               placeholder="XS, S, M"
+              defaultValue={"XS, S, M"}
               required
             />
           </div>
@@ -240,6 +252,7 @@ export function AddBikeForm() {
               name="description"
               type="text"
               placeholder="Description of the bike"
+              defaultValue={"Description of the bike"}
               required
             ></textarea>
           </div>
@@ -270,6 +283,7 @@ export function AddBikeForm() {
                 name="frame"
                 type="text"
                 placeholder="Topstone Carbon"
+                defaultValue={"Topstone Carbon"}
               />
             </div>
 
@@ -280,6 +294,7 @@ export function AddBikeForm() {
                 name="fork"
                 type="text"
                 placeholder="Lefty Oliver"
+                defaultValue={"Lefty Oliver"}
               />
             </div>
 
@@ -290,6 +305,7 @@ export function AddBikeForm() {
                 name="bottomBracket"
                 type="text"
                 placeholder="Shimano BSA 68"
+                defaultValue={"Shimano BSA 68"}
               />
             </div>
 
@@ -300,6 +316,7 @@ export function AddBikeForm() {
                 name="headset"
                 type="text"
                 placeholder="Integrated"
+                defaultValue={"Integrated"}
               />
             </div>
 
@@ -310,6 +327,7 @@ export function AddBikeForm() {
                 name="stem"
                 type="text"
                 placeholder="Cannondale 2"
+                defaultValue={"Cannondale 2"}
               />
             </div>
 
@@ -320,6 +338,7 @@ export function AddBikeForm() {
                 name="handlebar"
                 type="text"
                 placeholder="Handlebar 2 ShortDrop"
+                defaultValue={"Handlebar 2 ShortDrop"}
               />
             </div>
 
@@ -330,6 +349,7 @@ export function AddBikeForm() {
                 name="saddle"
                 type="text"
                 placeholder="Fizik Terra Argo X5"
+                defaultValue={"Fizik Terra Argo X5"}
               />
             </div>
 
@@ -340,6 +360,7 @@ export function AddBikeForm() {
                 name="seatPost"
                 type="text"
                 placeholder="Cannondale DownLow Dropper Post"
+                defaultValue={"Cannondale DownLow Dropper Post"}
               />
             </div>
 
@@ -350,6 +371,7 @@ export function AddBikeForm() {
                 name="pedals"
                 type="text"
                 placeholder="Description"
+                defaultValue={"pedals"}
               />
             </div>
 
@@ -360,6 +382,7 @@ export function AddBikeForm() {
                 name="grips"
                 type="text"
                 placeholder="Cannondale Bar Tape"
+                defaultValue={"Cannondale Bar Tape"}
               />
             </div>
           </div>
@@ -377,6 +400,7 @@ export function AddBikeForm() {
                 name="rearDerailleur"
                 type="text"
                 placeholder="Shimano GRX 822"
+                defaultValue={"Shimano GRX 822"}
               />
             </div>
 
@@ -387,6 +411,7 @@ export function AddBikeForm() {
                 name="crank"
                 type="text"
                 placeholder="Shimano GRX 610"
+                defaultValue={"Shimano GRX 610"}
               />
             </div>
 
@@ -397,6 +422,7 @@ export function AddBikeForm() {
                 name="shifters"
                 type="text"
                 placeholder="Shimano GRX 820"
+                defaultValue={"Shimano GRX 820"}
               />
             </div>
 
@@ -407,6 +433,7 @@ export function AddBikeForm() {
                 name="cassette"
                 type="text"
                 placeholder="Shimano SLX M7100"
+                defaultValue={"Shimano SLX M7100"}
               />
             </div>
 
@@ -417,6 +444,7 @@ export function AddBikeForm() {
                 name="chain"
                 type="text"
                 placeholder="Shimano HG M7100"
+                defaultValue={"Shimano HG M7100"}
               />
             </div>
 
@@ -427,6 +455,7 @@ export function AddBikeForm() {
                 name="brakes"
                 type="text"
                 placeholder="Shimano GRX 820 hydraulic disc"
+                defaultValue={"Shimano GRX 820 hydraulic disc"}
               />
             </div>
 
@@ -437,6 +466,7 @@ export function AddBikeForm() {
                 name="brakeLevers"
                 type="text"
                 placeholder="Shimano GRX 820"
+                defaultValue={"Shimano GRX 820"}
               />
             </div>
           </div>
@@ -454,6 +484,7 @@ export function AddBikeForm() {
                 name="rims"
                 type="text"
                 placeholder="DT Swiss G 540"
+                defaultValue={"DT Swiss G 540"}
               />
             </div>
 
@@ -464,6 +495,7 @@ export function AddBikeForm() {
                 name="spokes"
                 type="text"
                 placeholder="Stainless Steel"
+                defaultValue={"Stainless Steel"}
               />
             </div>
 
@@ -474,6 +506,7 @@ export function AddBikeForm() {
                 name="frontHub"
                 type="text"
                 placeholder="Lefty 50"
+                defaultValue={"Lefty 50"}
               />
             </div>
 
@@ -484,6 +517,7 @@ export function AddBikeForm() {
                 name="rearHub"
                 type="text"
                 placeholder="Shimano TC500"
+                defaultValue={"Shimano TC500"}
               />
             </div>
 
@@ -494,6 +528,7 @@ export function AddBikeForm() {
                 name="tires"
                 type="text"
                 placeholder="Vittoria Mezcal"
+                defaultValue={"Vittoria Mezcal"}
               />
             </div>
           </div>

@@ -16,14 +16,14 @@ export function AddBikeModal(props) {
             className={styles.closeBtn}
             aria-label="Close modal"
             //uses handleModal from AdminBikes to flip true/false
-            onClick={props.onClick}
+            onClick={props.onClose}
           >
             ×
           </button>
         </div>
 
         <div className={styles.modalContent}>
-          <AddBikeForm />
+          <AddBikeForm onSuccess={props.onSuccess} />
         </div>
       </div>
     </div>
