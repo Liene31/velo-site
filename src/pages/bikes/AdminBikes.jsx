@@ -7,7 +7,7 @@ import { bikeService } from "../../services/bike.service.js";
 export function AdminBikes() {
   const [bikes, setBikes] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [showToast, setShowToast] = useState(false);
+  const [showToast, setShowToast] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const { t } = useTranslation();
@@ -80,6 +80,10 @@ export function AdminBikes() {
     bikeContent = bikeElement;
   }
 
+  function handleCloseBtn() {
+    setShowToast(false);
+  }
+
   return (
     <main className={styles.bikesPage}>
       <h1 className={styles.bikesTitle}>{t("bikes.bikesTitle")}</h1>
@@ -104,13 +108,23 @@ export function AdminBikes() {
 
       {/* This message appears after successfully adding the bike */}
       {showToast && (
-        <div className={styles.toast} role="status">
-          <span className={styles.toastIcon}>✔</span>
-          <div>
-            <p className={styles.toastTitle}>Bike added successfully</p>
-            <p className={styles.toastText}>
-              The new bike is now available in the catalog.
-            </p>
+        <div className={styles.toastWrapper} role="status">
+          <button
+            onClick={handleCloseBtn}
+            type="button"
+            className={styles.closeBtn}
+            aria-label="Close successfully added bike message"
+          >
+            ×
+          </button>
+          <div className={styles.toast}>
+            <span className={styles.toastIcon}>✔</span>
+            <div>
+              <p className={styles.toastTitle}>Bike added successfully</p>
+              <p className={styles.toastText}>
+                The new bike is now available in the catalog.
+              </p>
+            </div>
           </div>
         </div>
       )}
