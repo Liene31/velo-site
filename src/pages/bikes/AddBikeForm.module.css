@@ -5,6 +5,9 @@
   overflow-y: auto;
   max-height: 70vh;
   padding-right: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--color-yellow-rgb), 0.45)
+    rgba(var(--color-dark-rgb), 0.5);
 }
 
 .formSection {

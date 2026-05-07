@@ -31,7 +31,7 @@ export function AddBikeForm() {
         price: data.price,
         currency: data.currency,
         colors: data.colors,
-        size: data.size,
+        sizes: data.size,
         description: data.description,
         inStock: data.inStock,
       },
