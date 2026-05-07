@@ -95,6 +95,15 @@
   box-shadow: 0 0 0 3px rgba(var(--color-yellow-rgb), 0.14);
 }
 
+.errorMessage {
+  padding: 0.85rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(var(--color-red-rgb), 0.12);
+  border: 1px solid rgba(var(--color-red-rgb), 0.45);
+  color: var(--color-red);
+  font-weight: 700;
+}
+
 .formBtn {
   margin-top: 0.5rem;
   background-color: var(--color-yellow);
@@ -108,8 +117,13 @@
   cursor: pointer;
 }
 
-.formBtn:hover {
+.formBtn:not(.formBtn:disabled):hover {
   background-color: transparent;
   color: var(--color-yellow);
   border: 1px solid var(--color-yellow);
+}
+
+.formBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }

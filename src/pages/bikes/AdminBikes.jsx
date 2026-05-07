@@ -7,15 +7,10 @@ import { bikeService } from "../../services/bike.service.js";
 export function AdminBikes() {
   const [bikes, setBikes] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const { t } = useTranslation();
-
-  // useEffect(() => {
-  //   fetch("/data/bikes.json")
-  //     .then((res) => res.json())
-  //     .then((data) => setBikes(data));
-  // }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -106,6 +101,19 @@ export function AdminBikes() {
 
       {/* Add Bike Modal */}
       <div>{showModal ? <AddBikeModal onClick={handleModal} /> : null}</div>
+
+      {/* This message appears after successfully adding the bike */}
+      {showToast && (
+        <div className={styles.toast} role="status">
+          <span className={styles.toastIcon}>✔</span>
+          <div>
+            <p className={styles.toastTitle}>Bike added successfully</p>
+            <p className={styles.toastText}>
+              The new bike is now available in the catalog.
+            </p>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

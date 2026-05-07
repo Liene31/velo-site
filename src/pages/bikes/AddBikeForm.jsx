@@ -500,8 +500,15 @@ export function AddBikeForm() {
         </details>
       </details>
 
-      <button type="submit" className={styles.formBtn}>
-        Submit
+      {error && (
+        //role=alert -> using to communicate an important message to the user
+        <p className={styles.errorMessage} role="alert">
+          {error}
+        </p>
+      )}
+
+      <button disabled={isLoading} type="submit" className={styles.formBtn}>
+        {isLoading ? "Submitting...." : "Submit"}
       </button>
     </form>
   );
