@@ -23,7 +23,10 @@ export function AddBikeModal(props) {
         </div>
 
         <div className={styles.modalContent}>
-          <AddBikeForm onSuccess={props.onSuccess} />
+          <AddBikeForm
+            onSuccess={props.onSuccess}
+            selectedBike={props.selectedBike}
+          />
         </div>
       </div>
     </div>

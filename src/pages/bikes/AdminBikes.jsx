@@ -6,6 +6,7 @@ import { bikeService } from "../../services/bike.service.js";
 
 export function AdminBikes() {
   const [bikes, setBikes] = useState([]);
+  const [selectedBike, setSelectedBike] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastAction, setToastAction] = useState(null);
@@ -27,7 +28,10 @@ export function AdminBikes() {
           >
             <img src="/images/delete.svg" alt="delete icon" />
           </button>
-          <button className={styles.editBtn}>
+          <button
+            onClick={() => handleEditBike(bike._id)}
+            className={styles.editBtn}
+          >
             <img src="/images/edit.svg" alt="edit icon" />
           </button>
         </div>
@@ -123,6 +127,14 @@ export function AdminBikes() {
     }
   }
 
+  function handleEditBike(id) {
+    const bikeToEdit = bikes.find((bike) => {
+      return bike._id === id;
+    });
+    setSelectedBike(bikeToEdit);
+    setShowModal(true);
+  }
+
   const toastMessage = (action) => {
     return (
       <div className={styles.toastWrapper} role="status">
@@ -169,7 +181,11 @@ export function AdminBikes() {
       {/* Add Bike Modal */}
       <div>
         {showModal ? (
-          <AddBikeModal onClose={handleModal} onSuccess={handleBikeAdded} />
+          <AddBikeModal
+            onClose={handleModal}
+            onSuccess={handleBikeAdded}
+            selectedBike={selectedBike}
+          />
         ) : null}
       </div>
 

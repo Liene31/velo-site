@@ -8,6 +8,10 @@ export function AddBikeForm(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const bikeDetails = props.selectedBike;
+
+  //NEED TO CLEAR THE FORM WHEN PRESSING ADD OTHERWISE IT KEEPS THE EDIT DATA !!!
+
   //collects data from user input
   //and sends in payload to DB
   const handleFormSubmit = async (formData) => {
@@ -102,7 +106,7 @@ export function AddBikeForm(props) {
               name="slug"
               type="text"
               placeholder="scott-speedster-30-2025"
-              defaultValue={"scott-speedster-30-2025"}
+              defaultValue={bikeDetails?.slug || ""}
               required
             />
           </div>
@@ -114,7 +118,7 @@ export function AddBikeForm(props) {
               name="tags"
               type="text"
               placeholder="road, city"
-              defaultValue={"road, city"}
+              defaultValue={bikeDetails?.tags || ""}
               required
             />
           </div>
@@ -126,7 +130,7 @@ export function AddBikeForm(props) {
               name="name"
               type="text"
               placeholder="Scott Speedster 30"
-              defaultValue={"Scott Speedster 30"}
+              defaultValue={bikeDetails?.name || ""}
               required
             />
           </div>
@@ -138,9 +142,7 @@ export function AddBikeForm(props) {
               name="bikeUrl"
               type="text"
               placeholder="https://asset.scott-sports.com"
-              defaultValue={
-                "https://asset.scott-sports.com/fit-in/260x260/425/4253668357_2222971_4.png?signature=a666003985a5bf2673fe406cc4e74ef2d9fb69510c8dcf5ad6543524c71fe11d"
-              }
+              defaultValue={bikeDetails?.bikeUrl || ""}
               required
             />
           </div>
@@ -159,7 +161,7 @@ export function AddBikeForm(props) {
               name="brand"
               type="text"
               placeholder="Scott"
-              defaultValue={"Scott"}
+              defaultValue={bikeDetails?.overview?.brand || ""}
               required
             />
           </div>
@@ -171,7 +173,7 @@ export function AddBikeForm(props) {
               name="model"
               type="text"
               placeholder="Speedster 30"
-              defaultValue={"Speedster 30"}
+              defaultValue={bikeDetails?.overview?.model || ""}
               required
             />
           </div>
@@ -183,14 +185,19 @@ export function AddBikeForm(props) {
               name="year"
               type="number"
               placeholder="2025"
-              defaultValue={2025}
+              defaultValue={bikeDetails?.overview?.year || ""}
               required
             />
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="category">Category *</label>
-            <select id="category" name="category" required defaultValue="road">
+            <select
+              id="category"
+              name="category"
+              required
+              defaultValue={bikeDetails?.overview?.category || ""}
+            >
               <option value="" disabled>
                 --Please choose a category--
               </option>
@@ -209,14 +216,18 @@ export function AddBikeForm(props) {
               name="price"
               type="number"
               placeholder="1399"
-              defaultValue={1399}
+              defaultValue={bikeDetails?.overview?.price || ""}
               required
             />
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="currency">Currency</label>
-            <select id="currency" name="currency" defaultValue="eur">
+            <select
+              id="currency"
+              name="currency"
+              defaultValue={bikeDetails?.overview?.currency || ""}
+            >
               <option value="eur">EUR</option>
             </select>
           </div>
@@ -228,7 +239,7 @@ export function AddBikeForm(props) {
               name="colors"
               type="text"
               placeholder="Black, Red"
-              defaultValue={"Black, Red"}
+              defaultValue={bikeDetails?.overview?.colors || ""}
               required
             />
           </div>
@@ -240,7 +251,7 @@ export function AddBikeForm(props) {
               name="size"
               type="text"
               placeholder="XS, S, M"
-              defaultValue={"XS, S, M"}
+              defaultValue={bikeDetails?.overview?.size || ""}
               required
             />
           </div>
@@ -252,14 +263,18 @@ export function AddBikeForm(props) {
               name="description"
               type="text"
               placeholder="Description of the bike"
-              defaultValue={"Description of the bike"}
+              defaultValue={bikeDetails?.overview?.description || ""}
               required
             ></textarea>
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="inStock">In Stock *</label>
-            <select id="inStock" name="inStock" defaultValue="false">
+            <select
+              id="inStock"
+              name="inStock"
+              defaultValue={bikeDetails?.overview?.inStock || ""}
+            >
               <option value="1">Yes</option>
               <option value="0">No</option>
             </select>
@@ -283,7 +298,7 @@ export function AddBikeForm(props) {
                 name="frame"
                 type="text"
                 placeholder="Topstone Carbon"
-                defaultValue={"Topstone Carbon"}
+                defaultValue={bikeDetails?.specs?.build?.frame || ""}
               />
             </div>
 
@@ -294,7 +309,7 @@ export function AddBikeForm(props) {
                 name="fork"
                 type="text"
                 placeholder="Lefty Oliver"
-                defaultValue={"Lefty Oliver"}
+                defaultValue={bikeDetails?.specs?.build?.fork || ""}
               />
             </div>
 
@@ -305,7 +320,7 @@ export function AddBikeForm(props) {
                 name="bottomBracket"
                 type="text"
                 placeholder="Shimano BSA 68"
-                defaultValue={"Shimano BSA 68"}
+                defaultValue={bikeDetails?.specs?.build?.bottomBracket || ""}
               />
             </div>
 
@@ -316,7 +331,7 @@ export function AddBikeForm(props) {
                 name="headset"
                 type="text"
                 placeholder="Integrated"
-                defaultValue={"Integrated"}
+                defaultValue={bikeDetails?.specs?.build?.headset || ""}
               />
             </div>
 
@@ -327,7 +342,7 @@ export function AddBikeForm(props) {
                 name="stem"
                 type="text"
                 placeholder="Cannondale 2"
-                defaultValue={"Cannondale 2"}
+                defaultValue={bikeDetails?.specs?.build?.stem || ""}
               />
             </div>
 
@@ -338,7 +353,7 @@ export function AddBikeForm(props) {
                 name="handlebar"
                 type="text"
                 placeholder="Handlebar 2 ShortDrop"
-                defaultValue={"Handlebar 2 ShortDrop"}
+                defaultValue={bikeDetails?.specs?.build?.handlebar || ""}
               />
             </div>
 
@@ -349,7 +364,7 @@ export function AddBikeForm(props) {
                 name="saddle"
                 type="text"
                 placeholder="Fizik Terra Argo X5"
-                defaultValue={"Fizik Terra Argo X5"}
+                defaultValue={bikeDetails?.specs?.build?.saddle || ""}
               />
             </div>
 
@@ -360,7 +375,7 @@ export function AddBikeForm(props) {
                 name="seatPost"
                 type="text"
                 placeholder="Cannondale DownLow Dropper Post"
-                defaultValue={"Cannondale DownLow Dropper Post"}
+                defaultValue={bikeDetails?.specs?.build?.seatPost || ""}
               />
             </div>
 
@@ -371,7 +386,7 @@ export function AddBikeForm(props) {
                 name="pedals"
                 type="text"
                 placeholder="Description"
-                defaultValue={"pedals"}
+                defaultValue={bikeDetails?.specs?.build?.pedals || ""}
               />
             </div>
 
@@ -382,7 +397,7 @@ export function AddBikeForm(props) {
                 name="grips"
                 type="text"
                 placeholder="Cannondale Bar Tape"
-                defaultValue={"Cannondale Bar Tape"}
+                defaultValue={bikeDetails?.specs?.build?.grips || ""}
               />
             </div>
           </div>
@@ -400,7 +415,9 @@ export function AddBikeForm(props) {
                 name="rearDerailleur"
                 type="text"
                 placeholder="Shimano GRX 822"
-                defaultValue={"Shimano GRX 822"}
+                defaultValue={
+                  bikeDetails?.specs?.groupSet?.rearDerailleur || ""
+                }
               />
             </div>
 
@@ -411,7 +428,7 @@ export function AddBikeForm(props) {
                 name="crank"
                 type="text"
                 placeholder="Shimano GRX 610"
-                defaultValue={"Shimano GRX 610"}
+                defaultValue={bikeDetails?.specs?.groupSet?.crank || ""}
               />
             </div>
 
@@ -422,7 +439,7 @@ export function AddBikeForm(props) {
                 name="shifters"
                 type="text"
                 placeholder="Shimano GRX 820"
-                defaultValue={"Shimano GRX 820"}
+                defaultValue={bikeDetails?.specs?.groupSet?.shifters || ""}
               />
             </div>
 
@@ -433,7 +450,7 @@ export function AddBikeForm(props) {
                 name="cassette"
                 type="text"
                 placeholder="Shimano SLX M7100"
-                defaultValue={"Shimano SLX M7100"}
+                defaultValue={bikeDetails?.specs?.groupSet?.cassette || ""}
               />
             </div>
 
@@ -444,7 +461,7 @@ export function AddBikeForm(props) {
                 name="chain"
                 type="text"
                 placeholder="Shimano HG M7100"
-                defaultValue={"Shimano HG M7100"}
+                defaultValue={bikeDetails?.specs?.groupSet?.chain || ""}
               />
             </div>
 
@@ -455,7 +472,7 @@ export function AddBikeForm(props) {
                 name="brakes"
                 type="text"
                 placeholder="Shimano GRX 820 hydraulic disc"
-                defaultValue={"Shimano GRX 820 hydraulic disc"}
+                defaultValue={bikeDetails?.specs?.groupSet?.brakes || ""}
               />
             </div>
 
@@ -466,7 +483,7 @@ export function AddBikeForm(props) {
                 name="brakeLevers"
                 type="text"
                 placeholder="Shimano GRX 820"
-                defaultValue={"Shimano GRX 820"}
+                defaultValue={bikeDetails?.specs?.groupSet?.brakeLevers || ""}
               />
             </div>
           </div>
@@ -484,7 +501,7 @@ export function AddBikeForm(props) {
                 name="rims"
                 type="text"
                 placeholder="DT Swiss G 540"
-                defaultValue={"DT Swiss G 540"}
+                defaultValue={bikeDetails?.specs?.wheels?.rims || ""}
               />
             </div>
 
@@ -495,7 +512,7 @@ export function AddBikeForm(props) {
                 name="spokes"
                 type="text"
                 placeholder="Stainless Steel"
-                defaultValue={"Stainless Steel"}
+                defaultValue={bikeDetails?.specs?.wheels?.spokes || ""}
               />
             </div>
 
@@ -506,7 +523,7 @@ export function AddBikeForm(props) {
                 name="frontHub"
                 type="text"
                 placeholder="Lefty 50"
-                defaultValue={"Lefty 50"}
+                defaultValue={bikeDetails?.specs?.wheels?.frontHub || ""}
               />
             </div>
 
@@ -517,7 +534,7 @@ export function AddBikeForm(props) {
                 name="rearHub"
                 type="text"
                 placeholder="Shimano TC500"
-                defaultValue={"Shimano TC500"}
+                defaultValue={bikeDetails?.specs?.wheels?.rearHub || ""}
               />
             </div>
 
@@ -528,7 +545,7 @@ export function AddBikeForm(props) {
                 name="tires"
                 type="text"
                 placeholder="Vittoria Mezcal"
-                defaultValue={"Vittoria Mezcal"}
+                defaultValue={bikeDetails?.specs?.wheels?.tires || ""}
               />
             </div>
           </div>

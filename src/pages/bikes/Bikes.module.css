@@ -170,7 +170,7 @@
   gap: 0.5rem;
   padding: 1rem;
   border-radius: 0.5rem;
-  background: rgba(var(--color-dark-rgb), 0.92);
+  background: rgba(var(--color-dark-rgb), 0.98);
   border: 1px solid rgba(var(--color-yellow-rgb), 0.45);
 }
 
