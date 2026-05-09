@@ -18,10 +18,12 @@ export function Header() {
     setIsOpen((prev) => !prev);
   }
 
-  //closes hamburger menu when NavLink clicked (Bikes, Contacts, Profile etc.)
-  //otherwise user navigates to the page but manu stays open
   function handleNavLink() {
+    //closes hamburger menu when NavLink clicked (Bikes, Contacts, Profile etc.)
+    //otherwise user navigates to the page but manu stays open
     setIsOpen(false);
+    //closes dropdown when specific item clicked
+    setIsDropdownOpen(false);
   }
 
   //watches if screen is desktop or mobile
