@@ -96,6 +96,28 @@ export function Header() {
               Sign In
             </NavLink>
           </li>
+          <li>
+            <div className="user-menu">
+              <button className="user-btn">
+                <span className="user-avatar">L</span>
+
+                <div className="user-info">
+                  <span className="user-greeting">Welcome back</span>
+                  <span className="user-name">Liene</span>
+                </div>
+              </button>
+
+              <div className="dropdown">
+                <Link to="/profile">Profile</Link>
+
+                <Link to="/bookings">My Bookings</Link>
+
+                <Link to="/admin/bikes">Admin Panel</Link>
+
+                <button className="logout-btn">Log Out</button>
+              </div>
+            </div>
+          </li>
         </ul>
       </nav>
       <div className="menu-btn">
