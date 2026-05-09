@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { bikeService } from "../../services/bike.service.js";
-import styles from "./AddBikeForm.module.css";
+import styles from "./BikeForm.module.css";
 
-export function AddBikeForm(props) {
+export function BikeForm(props) {
   //here it's set to false since the form isn’t submitting when the component loads
   //loading should only be true during submission
   const [isLoading, setIsLoading] = useState(false);
@@ -73,11 +73,15 @@ export function AddBikeForm(props) {
     };
 
     try {
-      const response = await bikeService.insert(payload);
+      if (bikeDetails) {
+        const response = await bikeService.update(bikeDetails._id, payload);
+      } else {
+        const response = await bikeService.insert(payload);
+      }
       //success -> stop loading
       setIsLoading(false);
       //setShowModal, setShowToast, fetchBikes is triggered in parent component (AdminBikes)
-      props.onSuccess();
+      props.onSuccess(bikeDetails ? "updated" : "added");
     } catch (error) {
       if (error.response) {
         // server responded (e.g. 500 with "DB error")
@@ -106,7 +110,7 @@ export function AddBikeForm(props) {
               name="slug"
               type="text"
               placeholder="scott-speedster-30-2025"
-              defaultValue={bikeDetails?.slug || ""}
+              defaultValue={bikeDetails?.slug || "TEST scott-speedster-30-2025"}
               required
             />
           </div>
@@ -118,7 +122,7 @@ export function AddBikeForm(props) {
               name="tags"
               type="text"
               placeholder="road, city"
-              defaultValue={bikeDetails?.tags || ""}
+              defaultValue={bikeDetails?.tags || "TEST, road, city"}
               required
             />
           </div>
@@ -130,7 +134,7 @@ export function AddBikeForm(props) {
               name="name"
               type="text"
               placeholder="Scott Speedster 30"
-              defaultValue={bikeDetails?.name || ""}
+              defaultValue={bikeDetails?.name || "TEST Scott Speedster 30"}
               required
             />
           </div>
@@ -142,7 +146,10 @@ export function AddBikeForm(props) {
               name="bikeUrl"
               type="text"
               placeholder="https://asset.scott-sports.com"
-              defaultValue={bikeDetails?.bikeUrl || ""}
+              defaultValue={
+                bikeDetails?.bikeUrl ||
+                "https://asset.scott-sports.com/fit-in/260x260/425/4253668357_2222971_4.png?signature=a666003985a5bf2673fe406cc4e74ef2d9fb69510c8dcf5ad6543524c71fe11d"
+              }
               required
             />
           </div>
@@ -161,7 +168,7 @@ export function AddBikeForm(props) {
               name="brand"
               type="text"
               placeholder="Scott"
-              defaultValue={bikeDetails?.overview?.brand || ""}
+              defaultValue={bikeDetails?.overview?.brand || "TEST Scott"}
               required
             />
           </div>
@@ -173,7 +180,7 @@ export function AddBikeForm(props) {
               name="model"
               type="text"
               placeholder="Speedster 30"
-              defaultValue={bikeDetails?.overview?.model || ""}
+              defaultValue={bikeDetails?.overview?.model || "TEST Speedster 30"}
               required
             />
           </div>
@@ -185,7 +192,7 @@ export function AddBikeForm(props) {
               name="year"
               type="number"
               placeholder="2025"
-              defaultValue={bikeDetails?.overview?.year || ""}
+              defaultValue={bikeDetails?.overview?.year || 2025}
               required
             />
           </div>
@@ -196,7 +203,7 @@ export function AddBikeForm(props) {
               id="category"
               name="category"
               required
-              defaultValue={bikeDetails?.overview?.category || ""}
+              defaultValue={bikeDetails?.overview?.category || "road"}
             >
               <option value="" disabled>
                 --Please choose a category--
@@ -216,7 +223,7 @@ export function AddBikeForm(props) {
               name="price"
               type="number"
               placeholder="1399"
-              defaultValue={bikeDetails?.overview?.price || ""}
+              defaultValue={bikeDetails?.overview?.price || 1390}
               required
             />
           </div>
@@ -226,7 +233,7 @@ export function AddBikeForm(props) {
             <select
               id="currency"
               name="currency"
-              defaultValue={bikeDetails?.overview?.currency || ""}
+              defaultValue={bikeDetails?.overview?.currency || "eur"}
             >
               <option value="eur">EUR</option>
             </select>
@@ -239,7 +246,7 @@ export function AddBikeForm(props) {
               name="colors"
               type="text"
               placeholder="Black, Red"
-              defaultValue={bikeDetails?.overview?.colors || ""}
+              defaultValue={bikeDetails?.overview?.colors || "TEST, Black, Red"}
               required
             />
           </div>
@@ -251,7 +258,7 @@ export function AddBikeForm(props) {
               name="size"
               type="text"
               placeholder="XS, S, M"
-              defaultValue={bikeDetails?.overview?.size || ""}
+              defaultValue={bikeDetails?.overview?.size || "TEST, XS, S, M"}
               required
             />
           </div>
@@ -263,7 +270,10 @@ export function AddBikeForm(props) {
               name="description"
               type="text"
               placeholder="Description of the bike"
-              defaultValue={bikeDetails?.overview?.description || ""}
+              defaultValue={
+                bikeDetails?.overview?.description ||
+                "TEST Description of the bike"
+              }
               required
             ></textarea>
           </div>
@@ -273,7 +283,7 @@ export function AddBikeForm(props) {
             <select
               id="inStock"
               name="inStock"
-              defaultValue={bikeDetails?.overview?.inStock || ""}
+              defaultValue={bikeDetails?.overview?.inStock || "0"}
             >
               <option value="1">Yes</option>
               <option value="0">No</option>
@@ -298,7 +308,9 @@ export function AddBikeForm(props) {
                 name="frame"
                 type="text"
                 placeholder="Topstone Carbon"
-                defaultValue={bikeDetails?.specs?.build?.frame || ""}
+                defaultValue={
+                  bikeDetails?.specs?.build?.frame || "TEST Topstone Carbon"
+                }
               />
             </div>
 
@@ -309,7 +321,9 @@ export function AddBikeForm(props) {
                 name="fork"
                 type="text"
                 placeholder="Lefty Oliver"
-                defaultValue={bikeDetails?.specs?.build?.fork || ""}
+                defaultValue={
+                  bikeDetails?.specs?.build?.fork || "TEST Lefty Oliver"
+                }
               />
             </div>
 
@@ -320,7 +334,10 @@ export function AddBikeForm(props) {
                 name="bottomBracket"
                 type="text"
                 placeholder="Shimano BSA 68"
-                defaultValue={bikeDetails?.specs?.build?.bottomBracket || ""}
+                defaultValue={
+                  bikeDetails?.specs?.build?.bottomBracket ||
+                  "TEST Shimano BSA 68"
+                }
               />
             </div>
 
@@ -331,7 +348,9 @@ export function AddBikeForm(props) {
                 name="headset"
                 type="text"
                 placeholder="Integrated"
-                defaultValue={bikeDetails?.specs?.build?.headset || ""}
+                defaultValue={
+                  bikeDetails?.specs?.build?.headset || "TEST Integrated"
+                }
               />
             </div>
 
@@ -342,7 +361,9 @@ export function AddBikeForm(props) {
                 name="stem"
                 type="text"
                 placeholder="Cannondale 2"
-                defaultValue={bikeDetails?.specs?.build?.stem || ""}
+                defaultValue={
+                  bikeDetails?.specs?.build?.stem || "TEST Cannondale 2"
+                }
               />
             </div>
 
@@ -353,7 +374,10 @@ export function AddBikeForm(props) {
                 name="handlebar"
                 type="text"
                 placeholder="Handlebar 2 ShortDrop"
-                defaultValue={bikeDetails?.specs?.build?.handlebar || ""}
+                defaultValue={
+                  bikeDetails?.specs?.build?.handlebar ||
+                  "TEST Handlebar 2 ShortDrop"
+                }
               />
             </div>
 
@@ -364,7 +388,10 @@ export function AddBikeForm(props) {
                 name="saddle"
                 type="text"
                 placeholder="Fizik Terra Argo X5"
-                defaultValue={bikeDetails?.specs?.build?.saddle || ""}
+                defaultValue={
+                  bikeDetails?.specs?.build?.saddle ||
+                  "TEST Fizik Terra Argo X5"
+                }
               />
             </div>
 
@@ -375,7 +402,10 @@ export function AddBikeForm(props) {
                 name="seatPost"
                 type="text"
                 placeholder="Cannondale DownLow Dropper Post"
-                defaultValue={bikeDetails?.specs?.build?.seatPost || ""}
+                defaultValue={
+                  bikeDetails?.specs?.build?.seatPost ||
+                  "TEST Cannondale DownLow Dropper Post"
+                }
               />
             </div>
 
@@ -386,7 +416,9 @@ export function AddBikeForm(props) {
                 name="pedals"
                 type="text"
                 placeholder="Description"
-                defaultValue={bikeDetails?.specs?.build?.pedals || ""}
+                defaultValue={
+                  bikeDetails?.specs?.build?.pedals || "TEST Description"
+                }
               />
             </div>
 
@@ -397,7 +429,9 @@ export function AddBikeForm(props) {
                 name="grips"
                 type="text"
                 placeholder="Cannondale Bar Tape"
-                defaultValue={bikeDetails?.specs?.build?.grips || ""}
+                defaultValue={
+                  bikeDetails?.specs?.build?.grips || "TEST Cannondale Bar Tape"
+                }
               />
             </div>
           </div>
@@ -416,7 +450,8 @@ export function AddBikeForm(props) {
                 type="text"
                 placeholder="Shimano GRX 822"
                 defaultValue={
-                  bikeDetails?.specs?.groupSet?.rearDerailleur || ""
+                  bikeDetails?.specs?.groupSet?.rearDerailleur ||
+                  "TEST Shimano GRX 822"
                 }
               />
             </div>
@@ -428,7 +463,9 @@ export function AddBikeForm(props) {
                 name="crank"
                 type="text"
                 placeholder="Shimano GRX 610"
-                defaultValue={bikeDetails?.specs?.groupSet?.crank || ""}
+                defaultValue={
+                  bikeDetails?.specs?.groupSet?.crank || "TEST Shimano GRX 610"
+                }
               />
             </div>
 
@@ -439,7 +476,10 @@ export function AddBikeForm(props) {
                 name="shifters"
                 type="text"
                 placeholder="Shimano GRX 820"
-                defaultValue={bikeDetails?.specs?.groupSet?.shifters || ""}
+                defaultValue={
+                  bikeDetails?.specs?.groupSet?.shifters ||
+                  "TEST Shimano GRX 820"
+                }
               />
             </div>
 
@@ -450,7 +490,10 @@ export function AddBikeForm(props) {
                 name="cassette"
                 type="text"
                 placeholder="Shimano SLX M7100"
-                defaultValue={bikeDetails?.specs?.groupSet?.cassette || ""}
+                defaultValue={
+                  bikeDetails?.specs?.groupSet?.cassette ||
+                  "TEST Shimano SLX M7100"
+                }
               />
             </div>
 
@@ -461,7 +504,9 @@ export function AddBikeForm(props) {
                 name="chain"
                 type="text"
                 placeholder="Shimano HG M7100"
-                defaultValue={bikeDetails?.specs?.groupSet?.chain || ""}
+                defaultValue={
+                  bikeDetails?.specs?.groupSet?.chain || "TEST Shimano HG M7100"
+                }
               />
             </div>
 
@@ -472,7 +517,10 @@ export function AddBikeForm(props) {
                 name="brakes"
                 type="text"
                 placeholder="Shimano GRX 820 hydraulic disc"
-                defaultValue={bikeDetails?.specs?.groupSet?.brakes || ""}
+                defaultValue={
+                  bikeDetails?.specs?.groupSet?.brakes ||
+                  "TEST Shimano GRX 820 hydraulic disc"
+                }
               />
             </div>
 
@@ -483,7 +531,10 @@ export function AddBikeForm(props) {
                 name="brakeLevers"
                 type="text"
                 placeholder="Shimano GRX 820"
-                defaultValue={bikeDetails?.specs?.groupSet?.brakeLevers || ""}
+                defaultValue={
+                  bikeDetails?.specs?.groupSet?.brakeLevers ||
+                  "TEST Shimano GRX 820"
+                }
               />
             </div>
           </div>
@@ -501,7 +552,9 @@ export function AddBikeForm(props) {
                 name="rims"
                 type="text"
                 placeholder="DT Swiss G 540"
-                defaultValue={bikeDetails?.specs?.wheels?.rims || ""}
+                defaultValue={
+                  bikeDetails?.specs?.wheels?.rims || "TEST DT Swiss G 540"
+                }
               />
             </div>
 
@@ -512,7 +565,9 @@ export function AddBikeForm(props) {
                 name="spokes"
                 type="text"
                 placeholder="Stainless Steel"
-                defaultValue={bikeDetails?.specs?.wheels?.spokes || ""}
+                defaultValue={
+                  bikeDetails?.specs?.wheels?.spokes || "TEST Stainless Steel"
+                }
               />
             </div>
 
@@ -523,7 +578,9 @@ export function AddBikeForm(props) {
                 name="frontHub"
                 type="text"
                 placeholder="Lefty 50"
-                defaultValue={bikeDetails?.specs?.wheels?.frontHub || ""}
+                defaultValue={
+                  bikeDetails?.specs?.wheels?.frontHub || "TEST Lefty 50"
+                }
               />
             </div>
 
@@ -534,7 +591,9 @@ export function AddBikeForm(props) {
                 name="rearHub"
                 type="text"
                 placeholder="Shimano TC500"
-                defaultValue={bikeDetails?.specs?.wheels?.rearHub || ""}
+                defaultValue={
+                  bikeDetails?.specs?.wheels?.rearHub || "TEST Shimano TC500"
+                }
               />
             </div>
 
@@ -545,7 +604,9 @@ export function AddBikeForm(props) {
                 name="tires"
                 type="text"
                 placeholder="Vittoria Mezcal"
-                defaultValue={bikeDetails?.specs?.wheels?.tires || ""}
+                defaultValue={
+                  bikeDetails?.specs?.wheels?.tires || "TEST Vittoria Mezcal"
+                }
               />
             </div>
           </div>
@@ -560,7 +621,13 @@ export function AddBikeForm(props) {
       )}
 
       <button disabled={isLoading} type="submit" className={styles.formBtn}>
-        {isLoading ? "Submitting...." : "Submit"}
+        {bikeDetails
+          ? isLoading
+            ? "Updating...."
+            : "Update"
+          : isLoading
+            ? "Submitting...."
+            : "Submit"}
       </button>
     </form>
   );

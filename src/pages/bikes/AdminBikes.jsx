@@ -1,12 +1,12 @@
 import styles from "./Bikes.module.css";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { AddBikeModal } from "./AddBikeModal";
+import { BikeModal } from "./BikeModal.jsx";
 import { bikeService } from "../../services/bike.service.js";
 
 export function AdminBikes() {
   const [bikes, setBikes] = useState([]);
-  const [selectedBike, setSelectedBike] = useState([]);
+  const [selectedBike, setSelectedBike] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastAction, setToastAction] = useState(null);
@@ -91,6 +91,7 @@ export function AdminBikes() {
 
   function handleModal() {
     setShowModal((prev) => !prev);
+    setSelectedBike(null);
   }
 
   function handleCloseBtn() {
@@ -98,10 +99,10 @@ export function AdminBikes() {
     setToastAction(null);
   }
 
-  function handleBikeAdded() {
+  function handleBikeSaved(action) {
     setShowModal(false);
     setShowToast(true);
-    setToastAction("added");
+    setToastAction(action);
     fetchBikes();
   }
 
@@ -133,6 +134,7 @@ export function AdminBikes() {
     });
     setSelectedBike(bikeToEdit);
     setShowModal(true);
+    setToastAction("updated");
   }
 
   const toastMessage = (action) => {
@@ -181,15 +183,15 @@ export function AdminBikes() {
       {/* Add Bike Modal */}
       <div>
         {showModal ? (
-          <AddBikeModal
+          <BikeModal
             onClose={handleModal}
-            onSuccess={handleBikeAdded}
+            onSuccess={handleBikeSaved}
             selectedBike={selectedBike}
           />
         ) : null}
       </div>
 
-      {/* This message appears after successfully adding the bike */}
+      {/* This message appears after successfully adding/deleting/updating the bike */}
       {showToast && toastMessage(toastAction)}
     </main>
   );

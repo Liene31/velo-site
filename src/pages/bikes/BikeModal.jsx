@@ -1,14 +1,18 @@
-import styles from "./AddBikeModal.module.css";
-import { AddBikeForm } from "./AddBikeForm";
+import styles from "./BikeModal.module.css";
+import { BikeForm } from "./BikeForm";
 
-export function AddBikeModal(props) {
+export function BikeModal(props) {
   return (
     <div className={styles.modalWrapper}>
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
           <div>
-            <h2>Add New Bike</h2>
-            <p>Create a new bike entry for the catalog.</p>
+            <h2>{props.selectedBike ? "Update Bike" : "Add New Bike"}</h2>
+            <p>
+              {props.selectedBike
+                ? "Update existing bike."
+                : "Create a new bike entry for the catalog."}
+            </p>
           </div>
 
           <button
@@ -23,7 +27,7 @@ export function AddBikeModal(props) {
         </div>
 
         <div className={styles.modalContent}>
-          <AddBikeForm
+          <BikeForm
             onSuccess={props.onSuccess}
             selectedBike={props.selectedBike}
           />

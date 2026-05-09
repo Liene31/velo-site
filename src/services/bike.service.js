@@ -35,12 +35,25 @@ export const bikeService = {
     }
   },
 
+  update: async (id, bookingData) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/api/bikes/${id}`,
+        bookingData,
+      );
+      return response.data;
+    } catch (err) {
+      console.error("Bike update failed:", err);
+      throw err; // rethrow
+    }
+  },
+
   delete: async (id) => {
     try {
       const response = await axios.delete(
         `http://localhost:3000/api/bikes/${id}`,
       );
-      console.log(response);
+      return response.data;
     } catch (err) {
       console.error("Bike deletion failed:", err);
       throw err; // rethrow
