@@ -59,7 +59,7 @@ header a {
   letter-spacing: 1px;
 }
 
-@media (max-width: 665px) {
+@media (max-width: 700px) {
   header a {
     font-size: 1.5rem;
   }
@@ -97,9 +97,8 @@ nav ul {
   align-items: center;
 }
 
-@media (max-width: 665px) {
+@media (max-width: 700px) {
   .show-menu {
-    /* when open menu -> display block/display none */
     display: block;
   }
 
@@ -123,7 +122,7 @@ nav ul {
   }
 }
 
-@media (min-width: 665px) {
+@media (min-width: 700px) {
   .menu-btn {
     display: none;
   }

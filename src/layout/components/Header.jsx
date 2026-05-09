@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const { t, i18n } = useTranslation();
 
@@ -16,6 +18,8 @@ export function Header() {
     setIsOpen((prev) => !prev);
   }
 
+  //closes hamburger menu when NavLink clicked (Bikes, Contacts, Profile etc.)
+  //otherwise user navigates to the page but manu stays open
   function handleNavLink() {
     setIsOpen(false);
   }
@@ -25,7 +29,7 @@ export function Header() {
   //here I am forcing the isOpen state to false when screen is big
   useEffect(() => {
     //defining when my nav is visible in the full not like hamburger
-    const mediaWatcher = window.matchMedia("(min-width: 665px)");
+    const mediaWatcher = window.matchMedia("(min-width: 700px)");
     if (mediaWatcher.matches) {
       setIsOpen(false);
     }
@@ -45,6 +49,11 @@ export function Header() {
       mediaWatcher.removeEventListener("change", isDesktop);
     };
   }, []);
+
+  //when user logo clicked, opens dropdown
+  function handleUserBtn() {
+    setIsDropdownOpen((prev) => !prev);
+  }
 
   return (
     <header>
@@ -87,37 +96,51 @@ export function Header() {
               </button>
             )}
           </li>
-          <li>
-            <NavLink
-              onClick={handleNavLink}
-              to="auth/login"
-              className="auth-btn"
-            >
-              Sign In
-            </NavLink>
-          </li>
-          <li>
-            <div className="user-menu">
-              <button className="user-btn">
-                <span className="user-avatar">L</span>
+          {!isLoggedIn && (
+            <li>
+              <NavLink
+                onClick={handleNavLink}
+                to="auth/login"
+                className="auth-btn"
+              >
+                Sign In
+              </NavLink>
+            </li>
+          )}
+          {isLoggedIn && (
+            <li>
+              <div className="user-menu">
+                <button onClick={handleUserBtn} className="user-btn">
+                  <span className="user-avatar">L</span>
 
-                <div className="user-info">
-                  <span className="user-greeting">Welcome back</span>
-                  <span className="user-name">Liene</span>
-                </div>
-              </button>
+                  <div className="user-info">
+                    <span className="user-greeting">Welcome back</span>
+                    <span className="user-name">Liene</span>
+                  </div>
+                </button>
 
-              <div className="dropdown">
-                <Link to="/profile">Profile</Link>
+                {isDropdownOpen && (
+                  <div className="dropdown">
+                    <NavLink onClick={handleNavLink} to="/profile">
+                      Profile
+                    </NavLink>
 
-                <Link to="/bookings">My Bookings</Link>
+                    <NavLink onClick={handleNavLink} to="/bookings">
+                      My Bookings
+                    </NavLink>
 
-                <Link to="/admin/bikes">Admin Panel</Link>
+                    <NavLink onClick={handleNavLink} to="/admin/bikes">
+                      Admin Panel
+                    </NavLink>
 
-                <button className="logout-btn">Log Out</button>
+                    <button onClick={handleNavLink} className="logout-btn">
+                      Log Out
+                    </button>
+                  </div>
+                )}
               </div>
-            </div>
-          </li>
+            </li>
+          )}
         </ul>
       </nav>
       <div className="menu-btn">
