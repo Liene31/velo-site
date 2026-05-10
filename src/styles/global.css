@@ -202,6 +202,16 @@ nav ul {
   border: 1px solid rgba(var(--color-blue-rgb), 0.35);
 }
 
+@media (max-width: 700px) {
+  .dropdown {
+    position: static;
+    margin-top: 0.75rem;
+    border: none;
+    min-width: initial;
+    align-items: center;
+  }
+}
+
 .dropdown a,
 .logout-btn {
   padding: 0.7rem 1rem;
