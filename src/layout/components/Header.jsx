@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { authUserAtom, isConnectedAtom } from "../../atoms/login.atom.js";
-import { useAtomValue } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [userDetails, setUserDetails] = useAtom(authUserAtom);
 
   const { t, i18n } = useTranslation();
 
@@ -16,9 +17,6 @@ export function Header() {
   //only using (reading value)
   //this comes from derived value from authUserAtom in login.atom.js
   const isLoggedIn = useAtomValue(isConnectedAtom);
-  const userDetails = useAtomValue(authUserAtom);
-
-  console.log(userDetails);
 
   // takes the language string from onClick and change language
   function changeLanguage(langCode) {
@@ -69,6 +67,15 @@ export function Header() {
   //when user logo clicked, opens dropdown
   function handleUserBtn() {
     setIsDropdownOpen((prev) => !prev);
+  }
+
+  //Logs out
+  function handleLogout() {
+    handleNavLink();
+    //since isLoggedIn(isConnectedAtom) is derived value from authUserAtom
+    //I am not setting isLoggedIn(isConnectedAtom) directly to false
+    //but rather setUserDetails(authUserAtom) to null since it will put isLoggedIn(isConnectedAtom) to false
+    setUserDetails(null);
   }
 
   return (
@@ -151,7 +158,7 @@ export function Header() {
                       Admin Panel
                     </NavLink>
 
-                    <button onClick={handleNavLink} className="logout-btn">
+                    <button onClick={handleLogout} className="logout-btn">
                       Log Out
                     </button>
                   </div>
