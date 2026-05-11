@@ -168,6 +168,7 @@ nav ul {
   color: var(--color-dark);
   font-family: var(--font-secondary);
   font-weight: 800;
+  text-transform: uppercase;
 }
 
 .user-info {
@@ -187,6 +188,7 @@ nav ul {
   font-family: var(--font-secondary);
   font-weight: 700;
   color: var(--color-white);
+  text-transform: capitalize;
 }
 
 .dropdown {

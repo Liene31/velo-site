@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { loggedInAtom } from "../../atoms/login.atom.js";
+import { authUserAtom, isConnectedAtom } from "../../atoms/login.atom.js";
 import { useAtomValue } from "jotai";
 
 export function Header() {
@@ -14,10 +14,11 @@ export function Header() {
   //Using Jotai to set values globally, accessible to any component which needs it
   //Without prop drilling
   //only using (reading value)
-  //I will set it in login form to true if user details are correct
-  const isLoggedIn = useAtomValue(loggedInAtom);
+  //this comes from derived value from authUserAtom in login.atom.js
+  const isLoggedIn = useAtomValue(isConnectedAtom);
+  const userDetails = useAtomValue(authUserAtom);
 
-  console.log(isLoggedIn);
+  console.log(userDetails);
 
   // takes the language string from onClick and change language
   function changeLanguage(langCode) {
@@ -126,11 +127,13 @@ export function Header() {
             <li>
               <div className="user-menu">
                 <button onClick={handleUserBtn} className="user-btn">
-                  <span className="user-avatar">L</span>
+                  <span className="user-avatar">
+                    {userDetails.name.charAt(0)}
+                  </span>
 
                   <div className="user-info">
                     <span className="user-greeting">Welcome back</span>
-                    <span className="user-name">Liene</span>
+                    <span className="user-name">{userDetails.name}</span>
                   </div>
                 </button>
 

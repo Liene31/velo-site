@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { authService } from "../../../services/auth.service.js";
 import { useState } from "react";
-import { loggedInAtom } from "../../../atoms/login.atom.js";
+import { authUserAtom } from "../../../atoms/login.atom.js";
 import { useSetAtom } from "jotai";
 
 export function Login() {
@@ -13,7 +13,7 @@ export function Login() {
   const { t } = useTranslation();
   //using Jotai for global values son non direct parent/child components have access
   //avoiding prop drilling
-  const setLoggedIn = useSetAtom(loggedInAtom);
+  const setAuthUserAtom = useSetAtom(authUserAtom);
 
   const handleLoginSubmit = async (formData) => {
     //login btn is pressed, loading can start
@@ -28,16 +28,17 @@ export function Login() {
       password: data.password,
     };
 
-    console.log(payload);
-
     try {
       const response = await authService.login(payload);
       //success -> stop loading
       setIsLoading(false);
       //on success, uses jotai atom so the header component knows that login was successful
       //in order to change btn from login to user details
-      setLoggedIn(true);
-      console.log(response);
+      setAuthUserAtom({
+        name: response.firstName,
+        email: response.userEmail,
+        role: response.role,
+      });
     } catch (err) {
       if (err.response) {
         console.log(err.response.data.message);
