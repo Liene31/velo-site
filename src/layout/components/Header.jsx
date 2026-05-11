@@ -16,6 +16,7 @@ export function Header() {
 
   function handleHamburgerMenu() {
     setIsOpen((prev) => !prev);
+    setIsDropdownOpen(false);
   }
 
   function handleNavLink() {
@@ -34,11 +35,13 @@ export function Header() {
     const mediaWatcher = window.matchMedia("(min-width: 700px)");
     if (mediaWatcher.matches) {
       setIsOpen(false);
+      setIsDropdownOpen(false);
     }
 
     function isDesktop(e) {
       if (e.matches) {
         setIsOpen(false);
+        setIsDropdownOpen(false);
       }
     }
 
