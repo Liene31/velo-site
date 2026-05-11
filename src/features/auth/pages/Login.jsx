@@ -3,12 +3,17 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { authService } from "../../../services/auth.service.js";
 import { useState } from "react";
+import { loggedInAtom } from "../../../atoms/login.atom.js";
+import { useSetAtom } from "jotai";
 
 export function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const { t } = useTranslation();
+  //using Jotai for global values son non direct parent/child components have access
+  //avoiding prop drilling
+  const setLoggedIn = useSetAtom(loggedInAtom);
 
   const handleLoginSubmit = async (formData) => {
     //login btn is pressed, loading can start
@@ -29,7 +34,9 @@ export function Login() {
       const response = await authService.login(payload);
       //success -> stop loading
       setIsLoading(false);
-      //on success, change header login btn to user info
+      //on success, uses jotai atom so the header component knows that login was successful
+      //in order to change btn from login to user details
+      setLoggedIn(true);
       console.log(response);
     } catch (err) {
       if (err.response) {

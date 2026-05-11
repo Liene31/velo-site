@@ -1,13 +1,23 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { loggedInAtom } from "../../atoms/login.atom.js";
+import { useAtomValue } from "jotai";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const { t, i18n } = useTranslation();
+
+  //I am not setting state here since header and login form is not direct parent/children
+  //Using Jotai to set values globally, accessible to any component which needs it
+  //Without prop drilling
+  //only using (reading value)
+  //I will set it in login form to true if user details are correct
+  const isLoggedIn = useAtomValue(loggedInAtom);
+
+  console.log(isLoggedIn);
 
   // takes the language string from onClick and change language
   function changeLanguage(langCode) {
