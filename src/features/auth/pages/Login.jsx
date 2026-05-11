@@ -27,6 +27,9 @@ export function Login() {
 
     try {
       const response = await authService.login(payload);
+      //success -> stop loading
+      setIsLoading(false);
+      //on success, change header login btn to user info
       console.log(response);
     } catch (err) {
       if (err.response) {
@@ -82,8 +85,15 @@ export function Login() {
             />
           </div>
 
-          <button type="submit" className={styles.authBtn}>
-            {t("auth.login.submit")}
+          {error && (
+            //role=alert -> using to communicate an important message to the user
+            <p className={styles.errorMessage} role="alert">
+              {error}
+            </p>
+          )}
+
+          <button disabled={isLoading} type="submit" className={styles.authBtn}>
+            {isLoading ? "Logging in...." : "Login"}
           </button>
         </form>
 
