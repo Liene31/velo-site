@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const { t, i18n } = useTranslation();
