@@ -81,7 +81,7 @@ export function Header() {
   return (
     <header>
       <Link onClick={handleNavLink} to={"/"}>
-        <img className="logo" src="/images/velo1.svg" alt="bicycle logo" />
+        <img className="logo" src="/images/logo.png" alt="bicycle logo" />
       </Link>
 
       <nav className={isOpen ? "show-menu" : "hide-menu"}>

@@ -80,7 +80,7 @@ export function Contact() {
               <span className={styles.infoLabel}>
                 {t("contact.info.address")}
               </span>
-              <p>Chaussée de Louvain 474, 1030 Schaerbeek</p>
+              <p>Chaussée d’Alsemberg 728, 1180 Uccle</p>
             </div>
 
             <div className={styles.infoItem}>

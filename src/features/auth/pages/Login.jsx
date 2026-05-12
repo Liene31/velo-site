@@ -1,5 +1,5 @@
 import styles from "./Auth.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { authService } from "../../../services/auth.service.js";
 import { useState } from "react";
