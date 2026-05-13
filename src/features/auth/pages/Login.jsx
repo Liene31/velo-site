@@ -30,12 +30,13 @@ export function Login() {
 
     try {
       const response = await authService.login(payload);
+
       //success -> stop loading
       setIsLoading(false);
       //on success, uses jotai atom so the header component knows that login was successful
       //in order to change btn from login to user details
       setAuthUserAtom({
-        name: response.firstName,
+        name: response.name,
         email: response.userEmail,
         role: response.role,
       });
