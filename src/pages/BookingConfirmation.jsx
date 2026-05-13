@@ -61,6 +61,8 @@ export function BookingConfirmation() {
     //my payload is JavaScript object not JSON
     //I can convert manually but since I am using Axios, it will be done for me
     //JSON is string {"bookingDate": "2026-05-05"}
+
+    console.log(formattedFullDate);
     const payload = {
       bookingDate: formattedFullDate,
       bookingTime: bookingTime,
@@ -72,6 +74,7 @@ export function BookingConfirmation() {
     };
 
     try {
+      //on backend, I have middleware before bookingController.insert to check if the user was logged in
       const response = await bookingService.insert(payload);
       //success -> stop loading
       setIsLoading(false);

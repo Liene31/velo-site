@@ -5,15 +5,26 @@ import { authService } from "../../../services/auth.service.js";
 import { useState } from "react";
 import { authUserAtom } from "../../../atoms/login.atom.js";
 import { useSetAtom } from "jotai";
+import { useAtomValue } from "jotai";
+import { bookingAtom } from "../../../atoms/booking.atom.js";
 
 export function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   //using Jotai for global values son non direct parent/child components have access
   //avoiding prop drilling
   const setAuthUserAtom = useSetAtom(authUserAtom);
+
+  //if the user was not logged in when doing the booking
+  //he is re-directed to login page
+  //reading saved date and time in jotai booking.atom so the data can be recuperated and used in booking confirmation after login
+  const bookingData = useAtomValue(bookingAtom);
+
+  console.log(bookingData);
 
   const handleLoginSubmit = async (formData) => {
     //login btn is pressed, loading can start
@@ -40,13 +51,14 @@ export function Login() {
         email: response.userEmail,
         role: response.role,
       });
+      //ADD HERE NAVIGATE TO BOOKING/CONFIRMATION IF BOOKING DATA
+      //navigate back to home page
+      navigate("/");
     } catch (err) {
       if (err.response) {
-        console.log(err.response.data.message);
         // server responded (e.g. 500 with "DB error")
         setError(err.response.data.message);
       } else if (err.request) {
-        console.log("Server unavailable, please try again later");
         // request made but no response (server down / network issue)
         setError("Server unavailable, please try again later");
       } else {

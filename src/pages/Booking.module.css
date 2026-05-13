@@ -255,15 +255,15 @@ button:disabled.closedDays {
 }
 
 .confirmBtn {
-  text-decoration: none;
+  background-color: var(--color-yellow);
   padding: 0.8rem 1.7rem;
   border-radius: 2rem;
-  background-color: var(--color-yellow);
-  color: var(--color-dark);
+  border: none;
   font-family: var(--font-secondary);
   font-weight: 700;
   letter-spacing: 1px;
-  text-transform: uppercase;
+  color: var(--color-dark);
+  cursor: pointer;
 }
 
 .confirmBtn:hover {

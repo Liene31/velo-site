@@ -33,11 +33,9 @@ export function Register() {
       console.log(response);
     } catch (err) {
       if (err.response) {
-        console.log(err.response.data.message);
         // server responded (e.g. 500 with "DB error")
         setError(err.response.data.message);
       } else if (err.request) {
-        console.log("Server unavailable, please try again later");
         // request made but no response (server down / network issue)
         setError("Server unavailable, please try again later");
       } else {

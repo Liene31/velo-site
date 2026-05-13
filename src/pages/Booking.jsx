@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./Booking.module.css";
 import { allSlots, openDays } from "./bookingSlots.js";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { bookingService } from "../services/booking.service.js";
+import { isConnectedAtom } from "../atoms/login.atom.js";
+import { useAtomValue, useSetAtom } from "jotai";
+import { bookingAtom } from "../atoms/booking.atom.js";
 
 export function Booking() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -11,6 +14,10 @@ export function Booking() {
   const [bookings, setBookings] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+  const isLoggedIn = useAtomValue(isConnectedAtom);
+  const setBookingAtom = useSetAtom(bookingAtom);
 
   const daysOfTheWeek = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
   const months = [
@@ -59,6 +66,28 @@ export function Booking() {
 
   function handleSelectedTime(time) {
     setSelectedTime(time);
+  }
+
+  //checking if the user is logged in
+  //if yes, re-direct to booking confirmation page
+  //if not -> to login page
+  //to check that, using jotai global atom isConnectedAtom
+  function handleBookingConfirmation() {
+    if (isLoggedIn) {
+      //I can use navigate to pass in temporary data to page I am redirecting
+      //it's not good if the data should persist on refresh
+      //router state is not global and only exists during navigation flow
+      navigate("confirmation", {
+        state: { bookingDate: selectedDate, bookedTime: selectedTime },
+      });
+    } else {
+      navigate("/auth/login");
+      setBookingAtom({
+        bookingDate: selectedDate,
+        bookedTime: selectedTime,
+      });
+      console.log("not connected");
+    }
   }
 
   //Builds the dates of the weeks in UI -> 1, 2, 3 etc.
@@ -238,14 +267,13 @@ export function Booking() {
              at ${selectedTime}`}</span>
           </p>
 
-          <Link
+          <button
+            onClick={handleBookingConfirmation}
             type="button"
             className={styles.confirmBtn}
-            to="confirmation"
-            state={{ bookingDate: selectedDate, bookedTime: selectedTime }}
           >
             Confirm Booking
-          </Link>
+          </button>
         </div>
       ) : null}
     </main>
