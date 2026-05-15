@@ -24,8 +24,6 @@ export function Login() {
   //reading saved date and time in jotai booking.atom so the data can be recuperated and used in booking confirmation after login
   const bookingData = useAtomValue(bookingAtom);
 
-  console.log(bookingData);
-
   const handleLoginSubmit = async (formData) => {
     //login btn is pressed, loading can start
     setIsLoading(true);
@@ -52,8 +50,14 @@ export function Login() {
         role: response.role,
       });
       //ADD HERE NAVIGATE TO BOOKING/CONFIRMATION IF BOOKING DATA
-      //navigate back to home page
-      navigate("/");
+      console.log(Boolean(bookingData));
+      if (bookingData) {
+        console.log("go to booking confirmation");
+        navigate("/service/booking/confirmation");
+      } else {
+        //navigate back to home page
+        navigate("/");
+      }
     } catch (err) {
       if (err.response) {
         // server responded (e.g. 500 with "DB error")

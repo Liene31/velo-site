@@ -1,7 +1,9 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./BookingConfirmation.module.css";
 import { bookingService } from "../services/booking.service.js";
 import { useState } from "react";
+import { useAtomValue } from "jotai";
+import { bookingAtom } from "../atoms/booking.atom.js";
 
 export function BookingConfirmation() {
   //here it's set to false since the form isn’t submitting when the component loads
@@ -23,13 +25,15 @@ export function BookingConfirmation() {
     "November",
     "December",
   ];
-  const location = useLocation();
+
   const navigate = useNavigate();
 
-  const bookingMonth = location.state.bookingDate?.getMonth();
-  const bookingDate = location.state.bookingDate?.getDate();
-  const bookingYear = location.state.bookingDate?.getFullYear();
-  const bookingTime = location.state.bookedTime;
+  const bookingData = useAtomValue(bookingAtom);
+
+  const bookingMonth = bookingData.bookingDate.getMonth();
+  const bookingDate = bookingData.bookingDate.getDate();
+  const bookingYear = bookingData.bookingDate.getFullYear();
+  const bookingTime = bookingData.bookedTime;
 
   //Formatting date to pass the correct format to payload
   //My backend expects 2026-05-05
