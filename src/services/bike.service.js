@@ -4,7 +4,7 @@ export const bikeService = {
   //get all bikes
   getAll: async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/bikes`);
+      const response = await axios.get(`/api/bikes`);
       return response.data;
     } catch (err) {
       console.error("Bike fetch failed:", err);
@@ -14,7 +14,7 @@ export const bikeService = {
 
   getById: async (id) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/bikes/${id}`);
+      const response = await axios.get(`/api/bikes/${id}`);
       return response.data;
     } catch (err) {
       console.error("Bike fetch failed:", err);
@@ -24,10 +24,7 @@ export const bikeService = {
 
   insert: async (bookingData) => {
     try {
-      const response = await axios.post(
-        `http://localhost:3000/api/bikes`,
-        bookingData,
-      );
+      const response = await axios.post(`/api/bikes`, bookingData);
       return response.data;
     } catch (err) {
       console.error("Bike post failed:", err);
@@ -37,10 +34,7 @@ export const bikeService = {
 
   update: async (id, bookingData) => {
     try {
-      const response = await axios.put(
-        `http://localhost:3000/api/bikes/${id}`,
-        bookingData,
-      );
+      const response = await axios.put(`/api/bikes/${id}`, bookingData);
       return response.data;
     } catch (err) {
       console.error("Bike update failed:", err);
@@ -50,9 +44,7 @@ export const bikeService = {
 
   delete: async (id) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:3000/api/bikes/${id}`,
-      );
+      const response = await axios.delete(`/api/bikes/${id}`);
       return response.data;
     } catch (err) {
       console.error("Bike deletion failed:", err);
