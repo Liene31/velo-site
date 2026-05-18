@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { authUserAtom, isConnectedAtom } from "../../atoms/login.atom.js";
+import { authUserAtom, isConnectedAtom } from "../../atoms/token.atom.js";
 import { useAtom, useAtomValue } from "jotai";
 
 export function Header() {

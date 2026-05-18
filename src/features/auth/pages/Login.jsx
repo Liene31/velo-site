@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { authService } from "../../../services/auth.service.js";
 import { useState } from "react";
-import { authUserAtom } from "../../../atoms/login.atom.js";
+import { authUserAtom } from "../../../atoms/token.atom.js";
 import { useSetAtom } from "jotai";
 import { useAtomValue } from "jotai";
 import { bookingAtom } from "../../../atoms/booking.atom.js";
@@ -48,6 +48,7 @@ export function Login() {
         name: response.name,
         email: response.userEmail,
         role: response.role,
+        token: response.token,
       });
 
       if (bookingData) {

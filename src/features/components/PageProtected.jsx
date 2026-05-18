@@ -1,5 +1,5 @@
 import { useAtomValue } from "jotai";
-import { isConnectedAtom } from "../../atoms/login.atom.js";
+import { isConnectedAtom } from "../../atoms/token.atom.js";
 import { Navigate } from "react-router";
 
 //in children is inside wrapped page (for example BookingConfirmation)

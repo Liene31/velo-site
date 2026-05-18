@@ -1,9 +1,5 @@
 import { atom } from "jotai";
 
-//atom which stores if the user is logged in (true/false)
-
-// export const loggedInAtom = atom(false);
-
 //this contains user data after successful connect in Login Form
 //response from server provides user details
 export const authUserAtom = atom(null);

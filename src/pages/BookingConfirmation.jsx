@@ -82,7 +82,6 @@ export function BookingConfirmation() {
     //I can convert manually but since I am using Axios, it will be done for me
     //JSON is string {"bookingDate": "2026-05-05"}
 
-    console.log(formattedFullDate);
     const payload = {
       bookingDate: formattedFullDate,
       bookingTime: bookingTime,
