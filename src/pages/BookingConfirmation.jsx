@@ -4,6 +4,7 @@ import { bookingService } from "../services/booking.service.js";
 import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import { bookingAtom } from "../atoms/booking.atom.js";
+import { da } from "@faker-js/faker";
 
 export function BookingConfirmation() {
   //here it's set to false since the form isn’t submitting when the component loads
@@ -77,6 +78,11 @@ export function BookingConfirmation() {
     //formData.entries() gives all the key–value pairs from the form
     //Object.fromEntries(...) converts those pairs into a regular JavaScript object
     const data = Object.fromEntries(formData.entries());
+
+    setBookingData({
+      ...bookingData,
+      serviceType: data.service,
+    });
 
     //my payload is JavaScript object not JSON
     //I can convert manually but since I am using Axios, it will be done for me

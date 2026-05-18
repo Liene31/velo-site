@@ -1,10 +1,31 @@
+import { useAtomValue } from "jotai";
 import styles from "./SuccessPage.module.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { bookingAtom } from "../atoms/booking.atom.js";
 
 export function SuccessPage() {
-  const location = useLocation();
+  const bookingData = useAtomValue(bookingAtom);
 
-  console.log(location);
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const bookingMonth = bookingData.bookingDate.getMonth();
+  const bookingDate = bookingData.bookingDate.getDate();
+  const bookingYear = bookingData.bookingDate.getFullYear();
+  const bookingTime = bookingData.bookedTime;
+
   return (
     <main className={styles.successPage}>
       <section className={styles.successCard}>
@@ -20,17 +41,19 @@ export function SuccessPage() {
         <div className={styles.bookingDetails}>
           <div className={styles.detailItem}>
             <span>Date</span>
-            <p>April 10, 2026</p>
+            <p>
+              {months[bookingMonth]} {bookingDate}, {bookingYear}
+            </p>
           </div>
 
           <div className={styles.detailItem}>
             <span>Time</span>
-            <p>10:00</p>
+            <p>{bookingTime}</p>
           </div>
 
           <div className={styles.detailItem}>
             <span>Service</span>
-            <p>Repair</p>
+            <p>{bookingData.serviceType}</p>
           </div>
         </div>
 
