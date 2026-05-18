@@ -4,7 +4,6 @@ import { bookingService } from "../services/booking.service.js";
 import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import { bookingAtom } from "../atoms/booking.atom.js";
-import { da } from "@faker-js/faker";
 
 export function BookingConfirmation() {
   //here it's set to false since the form isn’t submitting when the component loads
