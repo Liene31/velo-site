@@ -49,10 +49,8 @@ export function Login() {
         email: response.userEmail,
         role: response.role,
       });
-      //ADD HERE NAVIGATE TO BOOKING/CONFIRMATION IF BOOKING DATA
-      console.log(Boolean(bookingData));
+
       if (bookingData) {
-        console.log("go to booking confirmation");
         navigate("/service/booking/confirmation");
       } else {
         //navigate back to home page

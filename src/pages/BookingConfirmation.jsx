@@ -12,8 +12,6 @@ export function BookingConfirmation() {
   const [error, setError] = useState(null);
   const [bookingData, setBookingData] = useAtom(bookingAtom);
 
-  console.log(bookingData);
-
   const months = [
     "January",
     "February",
@@ -31,11 +29,22 @@ export function BookingConfirmation() {
 
   const navigate = useNavigate();
 
+  //if no bookingData navigate back to booking page
+  //I am setting to null bookingData on handleChangeBooking and navigating back to booking page
+  //but since the bookingData becomes null it gives an error in console while it doesn't break the app
   useEffect(() => {
     if (!bookingData) {
-      return navigate("/service/booking");
+      navigate("/service/booking");
     }
-  }, []);
+    //the effect depends on bookingData and navigate
+  }, [bookingData, navigate]);
+
+  //if bookingData is missing, stop rendering this page
+  //so the code is not read afterwards which would cause the error
+  //since const bookingMonth requires bookingData and it can't be null
+  if (!bookingData) {
+    return null;
+  }
 
   const bookingMonth = bookingData.bookingDate.getMonth();
   const bookingDate = bookingData.bookingDate.getDate();
@@ -108,10 +117,11 @@ export function BookingConfirmation() {
 
   //returns back to the booking and clears booking data
   function handleChangeBooking() {
+    //causes a re-render and navigation is not instant enough to prevent the render
+    //therefore page renders and bookingData is set ti null which cause the error
+    //so with useEffect and returning null the page is re-directed (see code above)
     setBookingData(null);
     navigate("/service/booking");
-
-    console.log("back to booking");
   }
 
   return (
