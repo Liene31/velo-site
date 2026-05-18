@@ -1,5 +1,6 @@
 import { Login } from "./features/auth/pages/Login";
 import { Register } from "./features/auth/pages/Register";
+import { PageProtected } from "./features/components/PageProtected";
 import { MainLayout } from "./layout/MainLayout";
 import { About } from "./pages/About";
 import { AdminBikes } from "./pages/bikes/AdminBikes";
@@ -40,18 +41,14 @@ export const routes = [
           { index: true, element: <Service /> },
           {
             path: "booking",
-            element: (
-              // <ProtectedPage>
-              <Booking />
-              // </ProtectedPage>
-            ),
+            element: <Booking />,
           },
           {
             path: "booking/confirmation",
             element: (
-              // <ProtectedPage>
-              <BookingConfirmation />
-              // </ProtectedPage>
+              <PageProtected>
+                <BookingConfirmation />
+              </PageProtected>
             ),
           },
           {

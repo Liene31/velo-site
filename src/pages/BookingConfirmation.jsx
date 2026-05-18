@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./BookingConfirmation.module.css";
 import { bookingService } from "../services/booking.service.js";
-import { useState } from "react";
-import { useAtomValue } from "jotai";
+import { useEffect, useState } from "react";
+import { useAtom } from "jotai";
 import { bookingAtom } from "../atoms/booking.atom.js";
 
 export function BookingConfirmation() {
@@ -10,6 +10,9 @@ export function BookingConfirmation() {
   //loading should only be true during submission
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [bookingData, setBookingData] = useAtom(bookingAtom);
+
+  console.log(bookingData);
 
   const months = [
     "January",
@@ -28,7 +31,11 @@ export function BookingConfirmation() {
 
   const navigate = useNavigate();
 
-  const bookingData = useAtomValue(bookingAtom);
+  useEffect(() => {
+    if (!bookingData) {
+      return navigate("/service/booking");
+    }
+  }, []);
 
   const bookingMonth = bookingData.bookingDate.getMonth();
   const bookingDate = bookingData.bookingDate.getDate();
@@ -99,6 +106,14 @@ export function BookingConfirmation() {
     }
   };
 
+  //returns back to the booking and clears booking data
+  function handleChangeBooking() {
+    setBookingData(null);
+    navigate("/service/booking");
+
+    console.log("back to booking");
+  }
+
   return (
     <main className={styles.confirmationPage}>
       <section className={styles.confirmationHero}>
@@ -122,9 +137,9 @@ export function BookingConfirmation() {
             <p>{bookingTime}</p>
           </div>
 
-          <Link to="/service/booking" className={styles.changeBtn}>
+          <button onClick={handleChangeBooking} className={styles.submitBtn}>
             Change Date & Time
-          </Link>
+          </button>
         </aside>
         <form action={handleFormSubmit} className={styles.confirmationForm}>
           <div className={styles.formGroup}>

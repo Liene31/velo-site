@@ -3,7 +3,6 @@ import styles from "./Booking.module.css";
 import { allSlots, openDays } from "./bookingSlots.js";
 import { useNavigate } from "react-router-dom";
 import { bookingService } from "../services/booking.service.js";
-import { isConnectedAtom } from "../atoms/login.atom.js";
 import { useAtomValue, useSetAtom } from "jotai";
 import { bookingAtom } from "../atoms/booking.atom.js";
 
@@ -16,7 +15,6 @@ export function Booking() {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
-  const isLoggedIn = useAtomValue(isConnectedAtom);
   const setBookingAtom = useSetAtom(bookingAtom);
 
   const daysOfTheWeek = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
@@ -68,26 +66,17 @@ export function Booking() {
     setSelectedTime(time);
   }
 
-  //checking if the user is logged in
-  //if yes, re-direct to booking confirmation page
+  //since BookingConfirmation is ProtectedPage, I don't need to check here anymore if user logged in
+  //after clicking btn, user will be navigated to BookingConfirmation
+  //and ProtectedPage will check if the user is logged in
+  //if logged in, will navigate to BookingConfirmation
   //if not -> to login page
-  //to check that, using jotai global atom isConnectedAtom
   function handleBookingConfirmation() {
-    if (isLoggedIn) {
-      //I can use navigate to pass in temporary data to page I am redirecting
-      //it's not good if the data should persist on refresh
-      //router state is not global and only exists during navigation flow
-      navigate("confirmation", {
-        state: { bookingDate: selectedDate, bookedTime: selectedTime },
-      });
-    } else {
-      navigate("/auth/login");
-      setBookingAtom({
-        bookingDate: selectedDate,
-        bookedTime: selectedTime,
-      });
-      console.log("not connected");
-    }
+    navigate("confirmation");
+    setBookingAtom({
+      bookingDate: selectedDate,
+      bookedTime: selectedTime,
+    });
   }
 
   //Builds the dates of the weeks in UI -> 1, 2, 3 etc.
