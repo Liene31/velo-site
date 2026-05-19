@@ -69,14 +69,24 @@ export function Bikes() {
     <main className={styles.bikesPage}>
       <h1 className={styles.bikesTitle}>{t("bikes.bikesTitle")}</h1>
 
-      <div className={styles.bikeFilterBtn}>
-        <button>Road</button>
-        <button>E-bikes</button>
-        <button>Gravel</button>
-        <button>Longtail</button>
-        <button>Folded</button>
-        <button>Clear filters</button>
-      </div>
+      <section className={styles.filterBar}>
+        <label htmlFor="bike-filter" className={styles.filterLabel}>
+          Filter
+        </label>
+
+        <select
+          id="bike-filter"
+          className={styles.filterSelect}
+          defaultValue="all"
+        >
+          <option value="all">All Bikes</option>
+          <option value="road">Road</option>
+          <option value="gravel">Gravel</option>
+          <option value="commuter">Commuter</option>
+          <option value="lightweight">Lightweight</option>
+          <option value="ebike">E-bike</option>
+        </select>
+      </section>
       <div className={styles.bikesWrapper}>{bikeContent}</div>
     </main>
   );

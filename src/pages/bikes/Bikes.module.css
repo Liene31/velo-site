@@ -23,34 +23,38 @@
   -webkit-text-fill-color: transparent;
 }
 
-.bikeFilterBtn {
+.filterBar {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  align-items: center;
   gap: 1rem;
 }
 
-.bikeFilterBtn button {
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--color-yellow);
-  background: var(--color-dark);
-  color: var(--color-white);
+@media (max-width: 350px) {
+  .filterBar {
+    flex-direction: column;
+  }
+}
+
+.filterLabel {
   font-family: var(--font-secondary);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-yellow);
+}
+
+.filterSelect {
+  min-width: 170px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 2rem;
+  border-color: rgba(var(--color-yellow-rgb), 0.45);
+  background: rgba(var(--color-dark-rgb), 0.78);
+  font-family: var(--font-secondary);
+  font-size: 0.85rem;
   letter-spacing: 1px;
   cursor: pointer;
-}
-
-.bikeFilterBtn button:hover {
-  background: var(--color-yellow);
-  color: var(--color-dark);
-}
-
-.bikeFilterBtn .addBikeBtn {
-  background-color: #f0cb35;
-  color: var(--color-dark);
+  appearance: base-select;
 }
 
 .bikesWrapper {
