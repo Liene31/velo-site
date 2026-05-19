@@ -165,17 +165,27 @@ export function AdminBikes() {
     <main className={styles.bikesPage}>
       <h1 className={styles.bikesTitle}>{t("bikes.bikesTitle")}</h1>
 
-      <div className={styles.bikeFilterBtn}>
-        <button>Road</button>
-        <button>E-bikes</button>
-        <button>Gravel</button>
-        <button>Longtail</button>
-        <button>Folded</button>
-        <button>Clear filters</button>
+      <section className={styles.filterBar}>
+        <label htmlFor="bike-filter" className={styles.filterLabel}>
+          Filter
+        </label>
+
+        <select
+          id="bike-filter"
+          className={styles.filterSelect}
+          defaultValue="all"
+        >
+          <option value="all">All Bikes</option>
+          <option value="road">Road</option>
+          <option value="gravel">Gravel</option>
+          <option value="commuter">Commuter</option>
+          <option value="lightweight">Lightweight</option>
+          <option value="ebike">E-bike</option>
+        </select>
         <button onClick={handleModal} className={styles.addBikeBtn}>
           Add Bike
         </button>
-      </div>
+      </section>
       <div className={styles.bikesWrapper}>
         <div className={styles.bikesWrapper}>{bikeContent}</div>
       </div>
