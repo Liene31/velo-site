@@ -10,8 +10,6 @@ export function BikeForm(props) {
 
   const bikeDetails = props.selectedBike;
 
-  //NEED TO CLEAR THE FORM WHEN PRESSING ADD OTHERWISE IT KEEPS THE EDIT DATA !!!
-
   //collects data from user input
   //and sends in payload to DB
   const handleFormSubmit = async (formData) => {
@@ -23,9 +21,15 @@ export function BikeForm(props) {
 
     const data = Object.fromEntries(formData.entries());
 
+    //transform string of word to array, it will be easier for filtering later
+    //remove commas and empty spaces + all to lowerCase
+    const tagsArray = data.tags
+      .split(",")
+      .map((string) => string.trim().toLowerCase());
+
     const payload = {
       slug: data.slug,
-      tags: data.tags,
+      tags: tagsArray,
       name: data.name,
       overview: {
         brand: data.brand,
