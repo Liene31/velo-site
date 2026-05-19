@@ -111,12 +111,17 @@
 
 .navLinks a {
   text-decoration: none;
-
   font-family: var(--font-secondary);
   font-size: 0.9rem;
   letter-spacing: 1px;
   font-weight: 600;
   color: var(--color-white);
+}
+
+/* Need to use global because I am using module.css */
+/* But active class is standard */
+.navLinks a:global(.active) {
+  color: var(--color-yellow);
 }
 
 .navLinks a:hover {

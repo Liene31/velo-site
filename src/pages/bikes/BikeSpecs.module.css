@@ -48,6 +48,11 @@
   color: var(--color-dark);
 }
 
+.specOptions .active {
+  background-color: var(--color-yellow);
+  color: var(--color-dark);
+}
+
 .specDetails {
   align-self: center;
   width: 100%;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { authUserAtom, isConnectedAtom } from "../../atoms/token.atom.js";
 import { useAtom, useAtomValue } from "jotai";
@@ -10,6 +10,7 @@ export function Header() {
   const [userDetails, setUserDetails] = useAtom(authUserAtom);
 
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
 
   //I am not setting state here since header and login form is not direct parent/children
   //Using Jotai to set values globally, accessible to any component which needs it
@@ -34,6 +35,7 @@ export function Header() {
     setIsOpen(false);
     //closes dropdown when specific item clicked
     setIsDropdownOpen(false);
+    navigate("auth/login");
   }
 
   //watches if screen is desktop or mobile
@@ -121,13 +123,9 @@ export function Header() {
           </li>
           {!isLoggedIn && (
             <li>
-              <NavLink
-                onClick={handleNavLink}
-                to="auth/login"
-                className="auth-btn"
-              >
+              <button onClick={handleNavLink} className="auth-btn">
                 Sign In
-              </NavLink>
+              </button>
             </li>
           )}
           {isLoggedIn && (

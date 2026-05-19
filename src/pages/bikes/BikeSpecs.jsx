@@ -14,13 +14,29 @@ export function BikeSpecs() {
     <div className={styles.specWrapper}>
       <ul className={styles.specOptions}>
         <li>
-          <button onClick={() => handleTabs("build")}>Build</button>
+          <button
+            //null instead of string ("") keeps the markup cleaner and might help prevent some potential issues
+            className={activeTab === "build" ? styles.active : null}
+            onClick={() => handleTabs("build")}
+          >
+            Build
+          </button>
         </li>
         <li>
-          <button onClick={() => handleTabs("groupSet")}>Group Set</button>
+          <button
+            className={activeTab === "groupSet" ? styles.active : null}
+            onClick={() => handleTabs("groupSet")}
+          >
+            Group Set
+          </button>
         </li>
         <li>
-          <button onClick={() => handleTabs("wheels")}>Wheels</button>
+          <button
+            className={activeTab === "wheels" ? styles.active : null}
+            onClick={() => handleTabs("wheels")}
+          >
+            Wheels
+          </button>
         </li>
       </ul>
 
