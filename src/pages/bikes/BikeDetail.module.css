@@ -36,13 +36,6 @@
   color: var(--color-yellow);
 }
 
-@media (max-width: 600px) {
-  .backButton {
-    padding: 0.65rem 1rem;
-    font-size: 0.75rem;
-  }
-}
-
 .bikeTopInfo {
   display: flex;
   flex-wrap: wrap;
