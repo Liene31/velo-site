@@ -6,6 +6,7 @@ import { bikeService } from "../../services/bike.service.js";
 
 export function Bikes() {
   const [bikes, setBikes] = useState([]);
+  const [selectedTag, setSelectedTag] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const { t } = useTranslation();
