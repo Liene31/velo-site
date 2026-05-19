@@ -1,6 +1,9 @@
 .bikesDetailPage {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 1rem;
   color: var(--color-white);
 }
 
@@ -11,6 +14,33 @@
   border-radius: 0.5rem;
   background: rgba(var(--color-dark-rgb), 0.78);
   border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+.backButton {
+  padding: 0.75rem 1.2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  background: rgba(var(--color-dark-rgb), 0.78);
+  border: 1px solid rgba(var(--color-yellow-rgb), 0.28);
+  color: var(--color-white);
+  font-family: var(--font-secondary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.backButton:hover {
+  background: rgba(var(--color-yellow-rgb), 0.08);
+  border-color: rgba(var(--color-yellow-rgb), 0.45);
+  color: var(--color-yellow);
+}
+
+@media (max-width: 600px) {
+  .backButton {
+    padding: 0.65rem 1rem;
+    font-size: 0.75rem;
+  }
 }
 
 .bikeTopInfo {

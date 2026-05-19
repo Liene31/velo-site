@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./BikeDetail.module.css";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { NavLink, Link, Outlet, useParams } from "react-router-dom";
 import { bikeService } from "../../services/bike.service";
 
 export function BikeDetail() {
@@ -65,6 +65,11 @@ export function BikeDetail() {
 
   return (
     <main className={styles.bikesDetailPage}>
+      {/* Relative path indicates to go path back not to go back to parent */}
+      {/* If it's just .. it would go back to home not to the /bikes */}
+      <Link to=".." relative="path" className={styles.backButton}>
+        &larr; <span>Back to all biks</span>
+      </Link>
       <div className={styles.bikeDetailWrapper}>
         <div className={styles.bikeTopInfo}>{bikeDetailContent}</div>
         {currentBike && (
