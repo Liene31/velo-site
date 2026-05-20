@@ -49,6 +49,7 @@ export function Login() {
         email: response.userEmail,
         role: response.role,
         token: response.token,
+        userId: response.id,
       });
 
       if (bookingData) {

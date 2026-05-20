@@ -1,9 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./BookingConfirmation.module.css";
 import { bookingService } from "../services/booking.service.js";
 import { useEffect, useState } from "react";
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { bookingAtom } from "../atoms/booking.atom.js";
+import { authUserAtom } from "../atoms/token.atom.js";
 
 export function BookingConfirmation() {
   //here it's set to false since the form isn’t submitting when the component loads
@@ -28,6 +29,8 @@ export function BookingConfirmation() {
   ];
 
   const navigate = useNavigate();
+  const userDetails = useAtomValue(authUserAtom);
+  console.log(userDetails);
 
   //if no bookingData navigate back to booking page
   //I am setting to null bookingData on handleChangeBooking and navigating back to booking page
@@ -95,6 +98,7 @@ export function BookingConfirmation() {
       email: data.email,
       phone: data.phone,
       message: data.message,
+      userId: userDetails.userId,
     };
 
     try {

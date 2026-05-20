@@ -1,14 +1,20 @@
+import { useAtom } from "jotai";
 import styles from "./UserProfile.module.css";
+import { authUserAtom } from "../atoms/token.atom";
 
 export function UserProfile() {
+  const [userDetails, setUserDetails] = useAtom(authUserAtom);
+
+  console.log(userDetails);
+
   return (
     <main className={styles.profilePage}>
       <section className={styles.userHeader}>
-        <span className={styles.userAvatar}>T</span>
+        <span className={styles.userAvatar}>{userDetails.name.charAt(0)}</span>
 
         <div>
-          <h1>User Name</h1>
-          <p>User email</p>
+          <h1>{userDetails.name}</h1>
+          <p>{userDetails.email}</p>
         </div>
       </section>
 
@@ -18,17 +24,17 @@ export function UserProfile() {
 
           <div className={styles.userDetails}>
             <span>Name</span>
-            <p>Your name</p>
+            <p>{userDetails.name}</p>
           </div>
 
           <div className={styles.userDetails}>
             <span>Email</span>
-            <p>yourName@gmail.com</p>
+            <p>{userDetails.email}</p>
           </div>
 
           <div className={styles.userDetails}>
             <span>Mobile</span>
-            <p>Your mobile number</p>
+            <p>{userDetails.email}</p>
           </div>
         </div>
 
