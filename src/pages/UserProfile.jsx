@@ -2,39 +2,68 @@ import styles from "./UserProfile.module.css";
 
 export function UserProfile() {
   return (
-    <main>
+    <main className={styles.profilePage}>
       <section className={styles.userHeader}>
         <span className={styles.userAvatar}>T</span>
-        <h2>User Name</h2>
-        <p>User email</p>
-      </section>
 
-      <section className={styles.userInfo}>
-        <div className={styles.userDetails}>
-          <p>Name</p>
-          <p>your name</p>
-        </div>
-
-        <div className={styles.userDetails}>
-          <p>Email</p>
-          <p>yourName@gmail.com</p>
-        </div>
-
-        <div className={styles.userDetails}>
-          <p>Mobile</p>
-          <p>your mobile number</p>
+        <div>
+          <h1>User Name</h1>
+          <p>User email</p>
         </div>
       </section>
 
-      <section className={styles.bookingHistory}>
-        <ul>
-          <li>
-            <p>date</p>
-            <p>time</p>
-            <p>service</p>
-            <p>message</p>
-          </li>
-        </ul>
+      <section className={styles.profileWrapper}>
+        <div className={styles.profileCard}>
+          <h2>Account Details</h2>
+
+          <div className={styles.userDetails}>
+            <span>Name</span>
+            <p>Your name</p>
+          </div>
+
+          <div className={styles.userDetails}>
+            <span>Email</span>
+            <p>yourName@gmail.com</p>
+          </div>
+
+          <div className={styles.userDetails}>
+            <span>Mobile</span>
+            <p>Your mobile number</p>
+          </div>
+        </div>
+
+        <div className={styles.historyCard}>
+          <h2>Booking History</h2>
+
+          <div className={styles.tableWrapper}>
+            <table className={styles.bookingTable}>
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Service</th>
+                  <th scope="col">Message</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>April 10, 2026</td>
+                  <td>10:00</td>
+                  <td>Repair</td>
+                  <td>Brake adjustment and general inspection.</td>
+                </tr>
+
+                <tr>
+                  <td>April 12, 2026</td>
+                  <td>14:00</td>
+                  <td>Maintenance</td>
+                  <td>Full service and drivetrain cleaning.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </section>
     </main>
   );
