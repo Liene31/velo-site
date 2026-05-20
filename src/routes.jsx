@@ -17,6 +17,7 @@ import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
 import { Service } from "./pages/Service";
 import { SuccessPage } from "./pages/SuccessPage";
+import { UserProfile } from "./pages/UserProfile";
 
 export const routes = [
   {
@@ -82,6 +83,15 @@ export const routes = [
         element: (
           // <ProtectedPage>
           <AdminBikes />
+          // </ProtectedPage>
+        ),
+      },
+
+      {
+        path: "profile",
+        element: (
+          // <ProtectedPage>
+          <UserProfile />
           // </ProtectedPage>
         ),
       },

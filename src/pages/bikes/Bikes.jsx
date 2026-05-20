@@ -76,6 +76,13 @@ export function Bikes() {
     );
   });
 
+  //get the selected tag from the filter
+  function handleChange(event) {
+    setSelectedTag(event.target.value);
+  }
+
+  console.log(selectedTag);
+
   //checks if no errors and data is loaded
   // if conditions are not met/or is met, shows appropriate message
   let bikeContent;
@@ -100,6 +107,7 @@ export function Bikes() {
         </label>
 
         <select
+          onChange={handleChange}
           id="bike-filter"
           className={styles.filterSelect}
           defaultValue="all"
