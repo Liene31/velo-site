@@ -9,7 +9,16 @@ export const bookingService = {
   getAll: async () => {
     try {
       const response = await axios.get(`${url}/api/booking`);
+      return response.data;
+    } catch (err) {
+      console.error("Booking fetch failed:", err);
+      throw err; // rethrow
+    }
+  },
 
+  getById: async (id) => {
+    try {
+      const response = await axios.get(`${url}/api/booking/${id}`);
       return response.data;
     } catch (err) {
       console.error("Booking fetch failed:", err);

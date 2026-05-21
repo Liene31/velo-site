@@ -1,11 +1,71 @@
 import { useAtom } from "jotai";
 import styles from "./UserProfile.module.css";
 import { authUserAtom } from "../atoms/token.atom";
+import { useEffect, useState } from "react";
+import { bookingService } from "../services/booking.service";
 
 export function UserProfile() {
+  const [bookings, setBookings] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [userDetails, setUserDetails] = useAtom(authUserAtom);
 
-  console.log(userDetails);
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  useEffect(() => {
+    setIsLoading(true);
+    setError(null);
+    bookingService
+      .getById(userDetails.userId)
+      .then((data) => {
+        setBookings(data.bookings);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        if (error.response) {
+          // server responded (e.g. 500 with "DB error")
+          setError(error.response.data.message);
+        } else if (error.request) {
+          // request made but no response (server down / network issue)
+          setError("Server unavailable, please try again later");
+        } else {
+          // something else went wrong
+          setError("Unexpected error, please try again later");
+        }
+        setIsLoading(false);
+      });
+  }, []);
+
+  const bookingData = bookings.map((booking) => {
+    const date = new Date(booking.bookingDate);
+    const bookingMonth = date.getMonth();
+    const bookingDate = date.getDate();
+    const bookingYear = date.getFullYear();
+
+    return (
+      <tr key={booking._id}>
+        <td>
+          {months[bookingMonth]} {bookingDate}, {bookingYear}
+        </td>
+        <td>{booking.bookingTime}</td>
+        <td>{booking.serviceType}</td>
+        <td>{booking.message}</td>
+      </tr>
+    );
+  });
 
   return (
     <main className={styles.profilePage}>
@@ -52,21 +112,7 @@ export function UserProfile() {
                 </tr>
               </thead>
 
-              <tbody>
-                <tr>
-                  <td>April 10, 2026</td>
-                  <td>10:00</td>
-                  <td>Repair</td>
-                  <td>Brake adjustment and general inspection.</td>
-                </tr>
-
-                <tr>
-                  <td>April 12, 2026</td>
-                  <td>14:00</td>
-                  <td>Maintenance</td>
-                  <td>Full service and drivetrain cleaning.</td>
-                </tr>
-              </tbody>
+              <tbody>{bookingData}</tbody>
             </table>
           </div>
         </div>

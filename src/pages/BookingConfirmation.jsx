@@ -30,7 +30,6 @@ export function BookingConfirmation() {
 
   const navigate = useNavigate();
   const userDetails = useAtomValue(authUserAtom);
-  console.log(userDetails);
 
   //if no bookingData navigate back to booking page
   //I am setting to null bookingData on handleChangeBooking and navigating back to booking page
