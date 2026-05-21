@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./About.module.css";
 
 export function About() {
@@ -63,12 +64,12 @@ export function About() {
         </div>
 
         <div className={styles.actions}>
-          <a href="/bikes" className={styles.primaryBtn}>
+          <Link to="/bikes" className={styles.primaryBtn}>
             Explore Bikes
-          </a>
-          <a href="/service" className={styles.secondaryBtn}>
+          </Link>
+          <Link to="/service" className={styles.secondaryBtn}>
             View Services
-          </a>
+          </Link>
         </div>
       </section>
     </main>
