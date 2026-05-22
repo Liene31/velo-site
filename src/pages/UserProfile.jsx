@@ -3,6 +3,7 @@ import styles from "./UserProfile.module.css";
 import { authUserAtom } from "../atoms/token.atom";
 import { useEffect, useState } from "react";
 import { bookingService } from "../services/booking.service";
+import { da } from "@faker-js/faker";
 
 export function UserProfile() {
   const [bookings, setBookings] = useState([]);
@@ -67,6 +68,18 @@ export function UserProfile() {
     );
   });
 
+  let bookingElement;
+
+  if (error) {
+    bookingElement = <p>{error}</p>;
+  } else if (isLoading) {
+    bookingElement = <p>Loading</p>;
+  } else if (bookings.length === 0) {
+    bookingElement = <p>You don’t have any booking history</p>;
+  } else {
+    bookingElement = bookingData;
+  }
+
   return (
     <main className={styles.profilePage}>
       <section className={styles.userHeader}>
@@ -100,21 +113,24 @@ export function UserProfile() {
 
         <div className={styles.historyCard}>
           <h2>Booking History</h2>
+          {error || isLoading || bookings.length === 0 ? (
+            bookingElement
+          ) : (
+            <div className={styles.tableWrapper}>
+              <table className={styles.bookingTable}>
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Service</th>
+                    <th scope="col">Message</th>
+                  </tr>
+                </thead>
 
-          <div className={styles.tableWrapper}>
-            <table className={styles.bookingTable}>
-              <thead>
-                <tr>
-                  <th scope="col">Date</th>
-                  <th scope="col">Time</th>
-                  <th scope="col">Service</th>
-                  <th scope="col">Message</th>
-                </tr>
-              </thead>
-
-              <tbody>{bookingData}</tbody>
-            </table>
-          </div>
+                <tbody>{bookingElement}</tbody>
+              </table>
+            </div>
+          )}
         </div>
       </section>
     </main>

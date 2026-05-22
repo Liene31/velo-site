@@ -81,8 +81,6 @@ export function Bikes() {
     setSelectedTag(event.target.value);
   }
 
-  console.log(selectedTag);
-
   //checks if no errors and data is loaded
   // if conditions are not met/or is met, shows appropriate message
   let bikeContent;
