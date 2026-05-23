@@ -3,7 +3,6 @@ import styles from "./UserProfile.module.css";
 import { authUserAtom } from "../atoms/token.atom";
 import { useEffect, useState } from "react";
 import { bookingService } from "../services/booking.service";
-import { da } from "@faker-js/faker";
 
 export function UserProfile() {
   const [bookings, setBookings] = useState([]);
