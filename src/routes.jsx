@@ -90,9 +90,9 @@ export const routes = [
       {
         path: "profile",
         element: (
-          // <ProtectedPage>
-          <UserProfile />
-          // </ProtectedPage>
+          <PageProtected>
+            <UserProfile />
+          </PageProtected>
         ),
       },
 
