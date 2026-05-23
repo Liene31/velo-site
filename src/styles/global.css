@@ -123,15 +123,18 @@ nav ul {
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    position: absolute;
-    /* position: fixed; */
-    height: 100vh;
+    position: fixed;
     background: var(--color-dark);
-    top: 63px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
   }
+}
+
+.menu-btn {
+  z-index: 1;
+  position: relative;
 }
 
 @media (min-width: 700px) {

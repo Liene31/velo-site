@@ -66,6 +66,23 @@ export function Header() {
     };
   }, []);
 
+  //if the menu isOpen, locks the screen and doesn't allow the content below to scroll
+  //if manu is closed, scroll has a standard behavior
+  //using useEffect because this is something outside React component
+  //React doesn't control it directly
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    //This is the cleanup function
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   //when user logo clicked, opens dropdown
   function handleUserBtn() {
     setIsDropdownOpen((prev) => !prev);
