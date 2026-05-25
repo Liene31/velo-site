@@ -15,7 +15,7 @@ export function Bikes() {
     setIsLoading(true);
     setError(null);
     bikeService
-      .getAll()
+      .getAll(selectedTag)
       .then((data) => {
         setBikes(data.bikes);
         setIsLoading(false);
@@ -33,7 +33,7 @@ export function Bikes() {
         }
         setIsLoading(false);
       });
-  }, []);
+  }, [selectedTag]);
 
   const bikeElement = bikes?.map((bike) => {
     return (
