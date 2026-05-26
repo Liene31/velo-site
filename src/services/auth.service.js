@@ -24,4 +24,21 @@ export const authService = {
       throw err; // rethrow
     }
   },
+
+  //on page refresh, sends saved token in localStorage to verify if it's valid
+  //if yes, sends to front-end user details
+  currentUser: async (token) => {
+    try {
+      const response = await axios.get(`${url}/api/auth/current-user`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return response.data;
+    } catch (err) {
+      console.error("Issue with user verification:", err);
+      throw err; // rethrow
+    }
+  },
 };

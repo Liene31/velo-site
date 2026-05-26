@@ -52,6 +52,8 @@ export function Login() {
         userId: response.id,
       });
 
+      localStorage.setItem("token", response.token);
+
       if (bookingData) {
         navigate("/service/booking/confirmation");
       } else {
