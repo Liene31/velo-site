@@ -95,6 +95,9 @@ export function Header() {
     //I am not setting isLoggedIn(isConnectedAtom) directly to false
     //but rather setUserDetails(authUserAtom) to null since it will put isLoggedIn(isConnectedAtom) to false
     setUserDetails(null);
+    //on logout clearing the localStorage
+    localStorage.removeItem("token");
+    navigate("/bikes");
   }
 
   return (

@@ -19,6 +19,13 @@ function App() {
   //saves it to jotai
   //whenever the page refresh happens in any of page this will run in order to keep user log in if token is valid
   useEffect(() => {
+    //this checks if token exists in localStorage
+    //if doesn't, basically don't do anything, just exit the useEffect and stop loading
+    //users just stays in publicly available part of the page without login or if protected page, should be re-directed to login
+    if (!savedToken) {
+      setIsLoading(false);
+      return;
+    }
     setIsLoading(true);
     authService
       .currentUser(savedToken)
@@ -43,10 +50,17 @@ function App() {
           // something else went wrong
           console.log("Unexpected error, please try again later");
         }
+        //if the backend sends an error while verifying the token (token not valid or expired)
+        //token is removed from local storage and jotai set to null
+        localStorage.removeItem("token");
+        setAuthUserAtom(null);
         setIsLoading(false);
       });
   }, []);
 
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
   return <RouterProvider router={router} />;
 }
 
