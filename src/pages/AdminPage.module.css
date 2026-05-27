@@ -1,0 +1,231 @@
+.adminPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  color: var(--color-white);
+}
+
+.adminHero {
+  text-align: center;
+}
+
+.adminHero h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-family: var(--font-secondary);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--color-red),
+    var(--color-yellow),
+    var(--color-blue)
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.adminHero p {
+  margin-top: 0.5rem;
+}
+
+.statsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.statCard {
+  flex: 1 1 180px;
+  padding: 1.2rem;
+  border-radius: 0.5rem;
+  background: rgba(var(--color-dark-rgb), 0.78);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+.statCard span {
+  font-family: var(--font-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-yellow);
+}
+
+.statCard p {
+  margin-top: 0.4rem;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.statsSelect {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1100px;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: rgba(var(--color-dark-rgb), 0.78);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+.statsSelect label {
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: var(--font-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-yellow);
+}
+
+.statsSelect select,
+.statsSelect input {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(var(--color-white-rgb), 0.18);
+  background: rgba(var(--color-dark-rgb), 0.9);
+  color: var(--color-white);
+  font: inherit;
+}
+
+/* for a date calender to be visitable on dark background */
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.bookingsCard {
+  width: 100%;
+  max-width: 1100px;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background: rgba(var(--color-dark-rgb), 0.78);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+.bookingsCard h2 {
+  margin-bottom: 1rem;
+  font-family: var(--font-secondary);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-yellow);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--color-yellow-rgb), 0.45)
+    rgba(var(--color-dark-rgb), 0.5);
+}
+
+.bookingsTable {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+}
+
+.bookingsTable th,
+.bookingsTable td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(var(--color-white-rgb), 0.18);
+}
+
+.bookingsTable th {
+  font-family: var(--font-secondary);
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-yellow);
+}
+
+.bookingsTable td .strong {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.bookingsTable td span {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(var(--color-white-rgb), 0.65);
+}
+
+.bookingsTable td .statusBadge {
+  padding: 0.35rem 0.7rem;
+  border-radius: 2rem;
+  font-family: var(--font-secondary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.bookingsTable td .pending {
+  color: var(--color-yellow);
+  background: rgba(var(--color-yellow-rgb), 0.12);
+  border: 1px solid rgba(var(--color-yellow-rgb), 0.35);
+}
+
+.bookingsTable td .confirmed {
+  color: var(--color-blue);
+  background: rgba(var(--color-blue-rgb), 0.12);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+.bookingsTable td .cancelled {
+  color: var(--color-red);
+  background: rgba(var(--color-red-rgb), 0.12);
+  border: 1px solid rgba(var(--color-red-rgb), 0.35);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.confirmBtn,
+.completeBtn,
+.cancelBtn {
+  padding: 0.5rem 0.8rem;
+  border-radius: 2rem;
+  font-family: var(--font-secondary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.confirmBtn,
+.completeBtn {
+  background: var(--color-yellow);
+  border: none;
+  color: var(--color-dark);
+}
+
+.cancelBtn {
+  background: transparent;
+  border: 1px solid rgba(var(--color-red-rgb), 0.45);
+  color: var(--color-red);
+}
+
+.confirmBtn:hover,
+.completeBtn:hover {
+  background: rgba(var(--color-yellow-rgb), 0.9);
+}
+
+.cancelBtn:hover {
+  background: rgba(var(--color-red-rgb), 0.12);
+}

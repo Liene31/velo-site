@@ -3,6 +3,7 @@ import { Register } from "./features/auth/pages/Register";
 import { PageProtected } from "./features/components/PageProtected";
 import { MainLayout } from "./layout/MainLayout";
 import { About } from "./pages/About";
+import { AdminPage } from "./pages/AdminPage";
 import { AdminBikes } from "./pages/bikes/AdminBikes";
 import { BikeDetail } from "./pages/bikes/BikeDetail";
 import { BikeOverview } from "./pages/bikes/BikeOverview";
@@ -83,6 +84,15 @@ export const routes = [
         element: (
           // <ProtectedPage>
           <AdminBikes />
+          // </ProtectedPage>
+        ),
+      },
+
+      {
+        path: "admin/panel",
+        element: (
+          // <ProtectedPage>
+          <AdminPage />
           // </ProtectedPage>
         ),
       },

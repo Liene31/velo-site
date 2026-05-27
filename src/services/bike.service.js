@@ -5,7 +5,6 @@ const url = import.meta.env.VITE_API_URL;
 export const bikeService = {
   //get all bikes
   getAll: async (tag) => {
-    console.log(tag);
     try {
       const response = await axios.get(`${url}/api/bikes`, {
         params: { tag: tag },

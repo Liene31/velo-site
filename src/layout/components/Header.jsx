@@ -173,6 +173,10 @@ export function Header() {
                     </NavLink>
 
                     <NavLink onClick={handleNavLink} to="/admin/bikes">
+                      Admin Bikes
+                    </NavLink>
+
+                    <NavLink onClick={handleNavLink} to="/admin/panel">
                       Admin Panel
                     </NavLink>
 
