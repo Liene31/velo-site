@@ -7,6 +7,7 @@ import { bikeService } from "../../services/bike.service.js";
 export function AdminBikes() {
   const [bikes, setBikes] = useState([]);
   const [selectedBike, setSelectedBike] = useState(null);
+  const [selectedTag, setSelectedTag] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastAction, setToastAction] = useState(null);
@@ -14,9 +15,10 @@ export function AdminBikes() {
   const [error, setError] = useState(null);
   const { t } = useTranslation();
 
+  //fetchBikes is re-usable function
   useEffect(() => {
     fetchBikes();
-  }, []);
+  }, [selectedTag]);
 
   const bikeElement = bikes?.map((bike) => {
     return (
@@ -69,7 +71,7 @@ export function AdminBikes() {
     setIsLoading(true);
     setError(null);
     bikeService
-      .getAll()
+      .getAll(selectedTag)
       .then((data) => {
         setBikes(data.bikes);
         setIsLoading(false);
@@ -161,6 +163,35 @@ export function AdminBikes() {
     );
   };
 
+  //gets all the bike tags arrays in one array (nested array)
+  const bikeTagArray = bikes?.map((bike) => {
+    return bike.tags;
+  });
+
+  //flatten the nested array (transforms into one array)
+  const flattenedTagArray = bikeTagArray.flat(Infinity);
+
+  //create set of unique values using Set constructor.
+  //it's an object
+  const uniqueTags = new Set(flattenedTagArray);
+
+  //convert the object back to array
+  const uniqueTagsArray = [...uniqueTags];
+
+  //display filter list
+  const filterTags = uniqueTagsArray.map((tag) => {
+    return (
+      <option key={tag} value={tag}>
+        {tag}
+      </option>
+    );
+  });
+
+  //get the selected tag from the filter
+  function handleChange(event) {
+    setSelectedTag(event.target.value);
+  }
+
   return (
     <main className={styles.bikesPage}>
       <h1 className={styles.bikesTitle}>{t("bikes.bikesTitle")}</h1>
@@ -171,16 +202,13 @@ export function AdminBikes() {
         </label>
 
         <select
+          onChange={handleChange}
           id="bike-filter"
           className={styles.filterSelect}
           defaultValue="all"
         >
           <option value="all">All Bikes</option>
-          <option value="road">Road</option>
-          <option value="gravel">Gravel</option>
-          <option value="commuter">Commuter</option>
-          <option value="lightweight">Lightweight</option>
-          <option value="ebike">E-bike</option>
+          {filterTags}
         </select>
         <button onClick={handleModal} className={styles.addBikeBtn}>
           Add Bike
