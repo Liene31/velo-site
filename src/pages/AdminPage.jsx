@@ -21,7 +21,12 @@ export function AdminPage() {
 
         <div className={styles.statCard}>
           <span>Confirmed</span>
-          <p>12</p>
+          <p>6</p>
+        </div>
+
+        <div className={styles.statCard}>
+          <span>Completed</span>
+          <p>6</p>
         </div>
 
         <div className={styles.statCard}>
@@ -121,6 +126,28 @@ export function AdminPage() {
                 <td>
                   <span className={`${styles.statusBadge} ${styles.cancelled}`}>
                     Cancelled
+                  </span>
+                </td>
+                <td>Full service and drivetrain cleaning.</td>
+                <td>
+                  <div className={styles.actions}>
+                    <button className={styles.completeBtn}>Complete</button>
+                    <button className={styles.cancelBtn}>Cancel</button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>April 12, 2026</td>
+                <td>14:00</td>
+                <td>
+                  <span className={styles.strong}>Jane Smith</span>
+                  <span>jane@email.com</span>
+                </td>
+                <td>Maintenance</td>
+                <td>
+                  <span className={`${styles.statusBadge} ${styles.completed}`}>
+                    Completed
                   </span>
                 </td>
                 <td>Full service and drivetrain cleaning.</td>

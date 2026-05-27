@@ -190,6 +190,12 @@
   border: 1px solid rgba(var(--color-red-rgb), 0.35);
 }
 
+.bookingsTable td .completed {
+  color: var(--color-white);
+  background: rgba(var(--color-white-rgb), 0.12);
+  border: 1px solid rgba(var(--color-white-rgb), 0.35);
+}
+
 .actions {
   display: flex;
   flex-direction: column;
