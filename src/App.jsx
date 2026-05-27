@@ -10,7 +10,7 @@ const router = createBrowserRouter(routes);
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-
+  const [error, setError] = useState(null);
   const setAuthUserAtom = useSetAtom(authUserAtom);
 
   const savedToken = localStorage.getItem("token");
@@ -40,16 +40,19 @@ function App() {
         });
         setIsLoading(false);
       })
-      .catch((error) => {
-        if (error.response) {
+      .catch((err) => {
+        if (err.response) {
           // server responded (e.g. 500 with "DB error")
-          console.log(error.response.data.message);
-        } else if (error.request) {
+          console.log(err.response.data.message);
+          setError(err.response.data.message);
+        } else if (err.request) {
           // request made but no response (server down / network issue)
           console.log("Server unavailable, please try again later");
+          setError("Server unavailable, please try again later");
         } else {
           // something else went wrong
           console.log("Unexpected error, please try again later");
+          setError("Unexpected error, please try again later");
         }
         //if the backend sends an error while verifying the token (token not valid or expired)
         //token is removed from local storage and jotai set to null
@@ -59,7 +62,8 @@ function App() {
       });
   }, []);
 
-  if (isLoading) {
+  // shows the spinner with appropriate message depending on if it's loading or error
+  function showSpinner(message) {
     return (
       <main className={styles.appLoader}>
         <div className={styles.loaderCard}>
@@ -69,10 +73,18 @@ function App() {
             className={styles.loaderLogo}
           />
           <div className={styles.loaderSpinner}></div>
-          <p>Prepare for your ride...</p>
+          <p>{message}</p>
         </div>
       </main>
     );
+  }
+
+  if (error) {
+    return showSpinner(error);
+  }
+
+  if (isLoading) {
+    return showSpinner("Prepare for your ride...");
   }
   return <RouterProvider router={router} />;
 }
