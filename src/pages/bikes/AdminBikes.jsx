@@ -214,9 +214,7 @@ export function AdminBikes() {
           Add Bike
         </button>
       </section>
-      <div className={styles.bikesWrapper}>
-        <div className={styles.bikesWrapper}>{bikeContent}</div>
-      </div>
+      <div className={styles.bikesWrapper}>{bikeContent}</div>
 
       {/* Add Bike Modal */}
       <div>
