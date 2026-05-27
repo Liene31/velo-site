@@ -1,0 +1,61 @@
+.appLoader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: var(--font-primary);
+  color: var(--color-white);
+  background:
+    linear-gradient(
+      rgba(var(--color-dark-bg-rgb), 0.65),
+      rgba(var(--color-dark-bg-rgb), 0.8)
+    ),
+    url("/images/bg-img.png") center center / cover no-repeat;
+}
+
+.loaderCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background: rgba(var(--color-dark-rgb), 0.78);
+  border: 1px solid rgba(var(--color-blue-rgb), 0.35);
+}
+
+.loaderLogo {
+  width: 90px;
+}
+
+.loaderSpinner {
+  /* width, height, border-radius gives the round circle */
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  /* sets all the borders of the element in white with transparency */
+  border: 3px solid rgba(var(--color-white-rgb), 0.18);
+  /* sets the color of an element's top border in yellow */
+  border-top-color: var(--color-yellow);
+  /* gives the infinite spinning */
+  /* animation: spin 0.8s linear infinite; ==> this is a shorthand for below */
+  animation-name: spinAnimation;
+  animation-duration: 0.8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.loader-card p {
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--color-yellow);
+}
+
+/* rotates the circle */
+/* spinAnimation is the name I give in above animation-name */
+@keyframes spinAnimation {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,3 +1,4 @@
+import styles from "./App.module.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { routes } from "./routes";
 import { useEffect, useState } from "react";
@@ -59,7 +60,19 @@ function App() {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <main className={styles.appLoader}>
+        <div className={styles.loaderCard}>
+          <img
+            src="/images/logo.png"
+            alt="Bike logo"
+            className={styles.loaderLogo}
+          />
+          <div className={styles.loaderSpinner}></div>
+          <p>Prepare for your ride...</p>
+        </div>
+      </main>
+    );
   }
   return <RouterProvider router={router} />;
 }
