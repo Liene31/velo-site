@@ -31,15 +31,14 @@
 }
 
 .statsWrapper {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
   width: 100%;
   max-width: 1100px;
 }
 
 .statCard {
-  flex: 1 1 180px;
   padding: 1.2rem;
   border-radius: 0.5rem;
   background: rgba(var(--color-dark-rgb), 0.78);
