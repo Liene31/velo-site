@@ -1,5 +1,5 @@
 import styles from "./Auth.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { authService } from "../../../services/auth.service";
@@ -9,6 +9,7 @@ export function Register() {
   const [error, setError] = useState(null);
 
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const handleRegisterSubmit = async (formData) => {
     //register btn is pressed, loading can start
@@ -31,6 +32,14 @@ export function Register() {
       //success -> stop loading
       setIsLoading(false);
       //THINK WHAT TO DO WHEN SUCCESS --> success message and/or navigate to another page
+      //navigate to login page
+      navigate("/auth/login", {
+        state: {
+          message:
+            "Your account has been created. Login to manage your bookings and profile.",
+        },
+      });
+
       console.log(response);
     } catch (err) {
       if (err.response) {

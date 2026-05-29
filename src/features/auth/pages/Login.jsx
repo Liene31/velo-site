@@ -1,5 +1,5 @@
 import styles from "./Auth.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { authService } from "../../../services/auth.service.js";
 import { useState } from "react";
@@ -14,6 +14,18 @@ export function Login() {
 
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  //first check if there is a state passed from register
+  //if yes, inform user that account is registered (message comes from Register component, with passed in state if success)
+  //if user goes directly to login page, state is null, and default message is displayed
+  let subtitle = "";
+
+  if (location.state) {
+    subtitle = location.state.message;
+  } else {
+    subtitle = "Log in to manage your account, bookings, and bike services.";
+  }
 
   //using Jotai for global values son non direct parent/child components have access
   //avoiding prop drilling
@@ -80,7 +92,8 @@ export function Login() {
       <section className={styles.authCard}>
         <div className={styles.authHeader}>
           <h1>{t("auth.login.title")}</h1>
-          <p>{t("auth.login.subtitle")}</p>
+          {/* dynamic message based from where user gets to login (directly or re-directed from register) */}
+          <p>{subtitle}</p>
         </div>
 
         <form className={styles.authForm} action={handleLoginSubmit}>
