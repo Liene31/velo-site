@@ -119,6 +119,7 @@
       "title": "Créer un compte",
       "subtitle": "Inscrivez-vous pour gérer votre compte, vos réservations et vos services vélo.",
       "name": "Prénom",
+      "surname": "Nom",
       "email": "Email",
       "password": "Mot de passe",
       "placeholderPassword": "Créez un mot de passe",

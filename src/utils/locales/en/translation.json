@@ -120,6 +120,7 @@
       "title": "Sign Up",
       "subtitle": "Sign up to manage your account, bookings, and bike services.",
       "name": "Name",
+      "surname": "Surname",
       "email": "Email",
       "password": "Password",
       "placeholderPassword": "Create a password",

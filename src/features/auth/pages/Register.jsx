@@ -21,6 +21,7 @@ export function Register() {
 
     const payload = {
       name: data.name,
+      surname: data.surname,
       email: data.email,
       password: data.password,
     };
@@ -61,7 +62,18 @@ export function Register() {
               id="name"
               name="name"
               type="text"
-              placeholder="John Doe"
+              placeholder="John "
+              required
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="name">{t("auth.register.surname")}</label>
+            <input
+              id="surname"
+              name="surname"
+              type="text"
+              placeholder="Doe"
               required
             />
           </div>
