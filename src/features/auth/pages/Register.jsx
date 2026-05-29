@@ -31,8 +31,8 @@ export function Register() {
       const response = await authService.register(payload);
       //success -> stop loading
       setIsLoading(false);
-      //THINK WHAT TO DO WHEN SUCCESS --> success message and/or navigate to another page
-      //navigate to login page
+
+      //navigate to login page after successful account register
       navigate("/auth/login", {
         state: {
           message:
