@@ -1,6 +1,6 @@
-import styles from "./AdminPage.module.css";
+import styles from "./AdminBookings.module.css";
 
-export function AdminPage() {
+export function AdminBookings() {
   return (
     <main className={styles.adminPage}>
       <section className={styles.adminHero}>

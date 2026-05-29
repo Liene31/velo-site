@@ -3,7 +3,7 @@ import { Register } from "./features/auth/pages/Register";
 import { PageProtected } from "./features/components/PageProtected";
 import { MainLayout } from "./layout/MainLayout";
 import { About } from "./pages/About";
-import { AdminPage } from "./pages/AdminPage";
+import { AdminBookings } from "./pages/AdminBookings";
 import { AdminBikes } from "./pages/bikes/AdminBikes";
 import { BikeDetail } from "./pages/bikes/BikeDetail";
 import { BikeOverview } from "./pages/bikes/BikeOverview";
@@ -89,10 +89,10 @@ export const routes = [
       },
 
       {
-        path: "admin/panel",
+        path: "admin/bookings",
         element: (
           <PageProtected role="admin">
-            <AdminPage />
+            <AdminBookings />
           </PageProtected>
         ),
       },

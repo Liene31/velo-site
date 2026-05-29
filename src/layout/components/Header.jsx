@@ -174,13 +174,17 @@ export function Header() {
 
                 {isDropdownOpen && (
                   <div className="dropdown">
-                    <NavLink onClick={handleNavLink} to="/profile">
-                      Profile
-                    </NavLink>
+                    {userDetails.role === "user" && (
+                      <NavLink onClick={handleNavLink} to="/profile">
+                        Profile
+                      </NavLink>
+                    )}
 
-                    <NavLink onClick={handleNavLink} to="/admin/panel">
-                      Admin Panel
-                    </NavLink>
+                    {userDetails.role === "admin" && (
+                      <NavLink onClick={handleNavLink} to="/admin/bookings">
+                        Bookings
+                      </NavLink>
+                    )}
 
                     <button onClick={handleLogout} className="logout-btn">
                       Log Out
