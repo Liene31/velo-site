@@ -109,7 +109,14 @@ export function Header() {
       <nav className={isOpen ? "show-menu" : "hide-menu"}>
         <ul>
           <li>
-            <NavLink onClick={handleNavLink} to={"bikes"}>
+            <NavLink
+              onClick={handleNavLink}
+              to={
+                isLoggedIn && userDetails.role === "admin"
+                  ? "/admin/bikes"
+                  : "/bikes"
+              }
+            >
               {t("nav.bikes")}
             </NavLink>
           </li>
@@ -166,14 +173,6 @@ export function Header() {
                   <div className="dropdown">
                     <NavLink onClick={handleNavLink} to="/profile">
                       Profile
-                    </NavLink>
-
-                    <NavLink onClick={handleNavLink} to="/bookings">
-                      My Bookings
-                    </NavLink>
-
-                    <NavLink onClick={handleNavLink} to="/admin/bikes">
-                      Admin Bikes
                     </NavLink>
 
                     <NavLink onClick={handleNavLink} to="/admin/panel">
