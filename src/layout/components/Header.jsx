@@ -111,6 +111,9 @@ export function Header() {
           <li>
             <NavLink
               onClick={handleNavLink}
+              //this is only UI/UX convenience and it's not real security
+              //because user can still type manually in browser and he will have an access
+              //so the page needs to be protected on router
               to={
                 isLoggedIn && userDetails.role === "admin"
                   ? "/admin/bikes"

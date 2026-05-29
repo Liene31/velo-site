@@ -56,9 +56,9 @@ export const routes = [
           {
             path: "booking/confirmation/success",
             element: (
-              // <ProtectedPage>
-              <SuccessPage />
-              // </ProtectedPage>
+              <PageProtected>
+                <SuccessPage />
+              </PageProtected>
             ),
           },
         ],
@@ -82,18 +82,18 @@ export const routes = [
       {
         path: "admin/bikes",
         element: (
-          // <ProtectedPage>
-          <AdminBikes />
-          // </ProtectedPage>
+          <PageProtected role="admin">
+            <AdminBikes />
+          </PageProtected>
         ),
       },
 
       {
         path: "admin/panel",
         element: (
-          // <ProtectedPage>
-          <AdminPage />
-          // </ProtectedPage>
+          <PageProtected role="admin">
+            <AdminPage />
+          </PageProtected>
         ),
       },
 
