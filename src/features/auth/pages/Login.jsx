@@ -58,6 +58,7 @@ export function Login() {
       //in order to change btn from login to user details
       setAuthUserAtom({
         name: response.name,
+        surname: response.surname,
         email: response.userEmail,
         role: response.role,
         token: response.token,

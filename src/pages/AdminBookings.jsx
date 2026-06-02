@@ -1,6 +1,84 @@
+import { useEffect, useState } from "react";
 import styles from "./AdminBookings.module.css";
+import { bookingService } from "../services/booking.service";
 
 export function AdminBookings() {
+  const [bookings, setBookings] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  useEffect(() => {
+    setIsLoading(true);
+    setError(null);
+    bookingService
+      .getAll()
+      .then((data) => {
+        setBookings(data.bookings);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        if (error.response) {
+          // server responded (e.g. 500 with "DB error")
+          setError(error.response.data.message);
+        } else if (error.request) {
+          // request made but no response (server down / network issue)
+          setError("Server unavailable, please try again later");
+        } else {
+          // something else went wrong
+          setError("Unexpected error, please try again later");
+        }
+        setIsLoading(false);
+      });
+  }, []);
+
+  const bookingData = bookings.map((booking) => {
+    const date = new Date(booking.bookingDate);
+    const bookingMonth = date.getMonth();
+    const bookingDate = date.getDate();
+    const bookingYear = date.getFullYear();
+
+    return (
+      <tr key={booking._id}>
+        <td>
+          {months[bookingMonth]} {bookingDate}, {bookingYear}
+        </td>
+        <td>{booking.bookingTime}</td>
+        <td>
+          <span className={styles.strong}>{booking.name}</span>
+          <span>{booking.email}</span>
+        </td>
+        <td>{booking.serviceType}</td>
+        <td>
+          <span className={`${styles.statusBadge} ${styles.confirmed}`}>
+            Confirmed
+          </span>
+        </td>
+        <td>{booking.message}</td>
+        <td>
+          <div className={styles.actions}>
+            <button className={styles.completeBtn}>Complete</button>
+            <button className={styles.cancelBtn}>Cancel</button>
+          </div>
+        </td>
+      </tr>
+    );
+  });
+
   return (
     <main className={styles.adminPage}>
       <section className={styles.adminHero}>
@@ -70,95 +148,7 @@ export function AdminBookings() {
               </tr>
             </thead>
 
-            <tbody>
-              <tr>
-                <td>April 10, 2026</td>
-                <td>10:00</td>
-                <td>
-                  <span className={styles.strong}>John Doe</span>
-                  <span>john@email.com</span>
-                </td>
-                <td>Repair</td>
-                <td>
-                  <span className={`${styles.statusBadge} ${styles.pending}`}>
-                    Pending
-                  </span>
-                </td>
-                <td>Brake adjustment and general inspection.</td>
-                <td>
-                  <div className={styles.actions}>
-                    <button className={styles.confirmBtn}>Confirm</button>
-                    <button className={styles.cancelBtn}>Cancel</button>
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>April 12, 2026</td>
-                <td>14:00</td>
-                <td>
-                  <span className={styles.strong}>Jane Smith</span>
-                  <span>jane@email.com</span>
-                </td>
-                <td>Maintenance</td>
-                <td>
-                  <span className={`${styles.statusBadge} ${styles.confirmed}`}>
-                    Confirmed
-                  </span>
-                </td>
-                <td>Full service and drivetrain cleaning.</td>
-                <td>
-                  <div className={styles.actions}>
-                    <button className={styles.completeBtn}>Complete</button>
-                    <button className={styles.cancelBtn}>Cancel</button>
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>April 12, 2026</td>
-                <td>14:00</td>
-                <td>
-                  <span className={styles.strong}>Jane Smith</span>
-                  <span>jane@email.com</span>
-                </td>
-                <td>Maintenance</td>
-                <td>
-                  <span className={`${styles.statusBadge} ${styles.cancelled}`}>
-                    Cancelled
-                  </span>
-                </td>
-                <td>Full service and drivetrain cleaning.</td>
-                <td>
-                  <div className={styles.actions}>
-                    <button className={styles.completeBtn}>Complete</button>
-                    <button className={styles.cancelBtn}>Cancel</button>
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>April 12, 2026</td>
-                <td>14:00</td>
-                <td>
-                  <span className={styles.strong}>Jane Smith</span>
-                  <span>jane@email.com</span>
-                </td>
-                <td>Maintenance</td>
-                <td>
-                  <span className={`${styles.statusBadge} ${styles.completed}`}>
-                    Completed
-                  </span>
-                </td>
-                <td>Full service and drivetrain cleaning.</td>
-                <td>
-                  <div className={styles.actions}>
-                    <button className={styles.completeBtn}>Complete</button>
-                    <button className={styles.cancelBtn}>Cancel</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
+            <tbody>{bookingData}</tbody>
           </table>
         </div>
       </section>
