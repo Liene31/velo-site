@@ -52,6 +52,15 @@ export function AdminBookings() {
     const bookingDate = date.getDate();
     const bookingYear = date.getFullYear();
 
+    const statusClass = {
+      pending: styles.pending,
+      confirmed: styles.confirmed,
+      completed: styles.completed,
+      cancelled: styles.cancelled,
+      //fallback
+      default: styles.pending,
+    };
+
     return (
       <tr key={booking._id}>
         <td>
@@ -64,8 +73,11 @@ export function AdminBookings() {
         </td>
         <td>{booking.serviceType}</td>
         <td>
-          <span className={`${styles.statusBadge} ${styles.confirmed}`}>
-            Confirmed
+          <span
+            //statusClass is an object not array
+            className={`${styles.statusBadge} ${statusClass[booking.status]}`}
+          >
+            {booking.status}
           </span>
         </td>
         <td>{booking.message}</td>
