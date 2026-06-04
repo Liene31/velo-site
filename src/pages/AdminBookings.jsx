@@ -46,6 +46,24 @@ export function AdminBookings() {
       });
   }, []);
 
+  //this is a function which takes in as a parameter an array (bookings)
+  const statusCount = (arr) => {
+    //maps over every booking and extracts only the status ["pending", "pending", "completed"] etc
+    //new Set() removes duplicates -> becomes ["pending", "completed"]
+    const uniqueStatusArray = [...new Set(arr.map(({ status }) => status))];
+
+    //reduce() builds an object, starts with {}
+    return uniqueStatusArray.reduce((acc, name) => {
+      //for each status name, it filters the original bookings arr and counts how many bookings have that status
+      acc[name] = arr.filter(({ status }) => status === name).length;
+      return acc;
+    }, {});
+  };
+
+  const statusEl = statusCount(bookings);
+
+  console.log(bookings.length);
+
   const bookingData = bookings.map((booking) => {
     const date = new Date(booking.bookingDate);
     const bookingMonth = date.getMonth();
@@ -101,27 +119,28 @@ export function AdminBookings() {
       <section className={styles.statsWrapper}>
         <div className={styles.statCard}>
           <span>Total</span>
-          <p>24</p>
+          {/* total of all bookings give total of the status */}
+          <p>{bookings.length}</p>
         </div>
 
         <div className={styles.statCard}>
           <span>Pending</span>
-          <p>8</p>
+          <p>{statusEl.pending || 0}</p>
         </div>
 
         <div className={styles.statCard}>
           <span>Confirmed</span>
-          <p>6</p>
+          <p>{statusEl.confirmed || 0}</p>
         </div>
 
         <div className={styles.statCard}>
           <span>Completed</span>
-          <p>6</p>
+          <p>{statusEl.completed || 0}</p>
         </div>
 
         <div className={styles.statCard}>
           <span>Cancelled</span>
-          <p>4</p>
+          <p>{statusEl.cancelled || 0}</p>
         </div>
       </section>
 
