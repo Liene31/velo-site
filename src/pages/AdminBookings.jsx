@@ -51,10 +51,20 @@ export function AdminBookings() {
       });
   }
 
-  async function handleCancelStatus(id) {
-    const modification = {
-      status: "cancelled",
+  async function handleStatusChange(id, bookingStatus) {
+    let modification = {
+      status: null,
     };
+
+    if (bookingStatus === "pending") {
+      modification.status = "confirmed";
+    } else if (bookingStatus === "confirmed") {
+      modification.status = "completed";
+    } else {
+      modification = {
+        status: "cancelled",
+      };
+    }
 
     try {
       const updatedStatus = await bookingService.updateStatus(id, modification);
@@ -128,11 +138,16 @@ export function AdminBookings() {
           <div className={styles.actions}>
             {booking.status === "pending" || booking.status === "confirmed" ? (
               <>
-                <button className={styles.completeBtn}>
+                <button
+                  onClick={() =>
+                    handleStatusChange(booking._id, booking.status)
+                  }
+                  className={styles.completeBtn}
+                >
                   {booking.status === "pending" ? "Confirm" : "Complete"}
                 </button>
                 <button
-                  onClick={() => handleCancelStatus(booking._id)}
+                  onClick={() => handleStatusChange(booking._id)}
                   className={styles.cancelBtn}
                 >
                   Cancel
