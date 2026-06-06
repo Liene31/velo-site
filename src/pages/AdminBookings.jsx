@@ -22,7 +22,12 @@ export function AdminBookings() {
     "December",
   ];
 
+  //fetchBookings is re-usable function
   useEffect(() => {
+    fetchBookings();
+  }, []);
+
+  function fetchBookings() {
     setIsLoading(true);
     setError(null);
     bookingService
@@ -44,7 +49,29 @@ export function AdminBookings() {
         }
         setIsLoading(false);
       });
-  }, []);
+  }
+
+  async function handleCancelStatus(id) {
+    const modification = {
+      status: "cancelled",
+    };
+
+    try {
+      const updatedStatus = await bookingService.updateStatus(id, modification);
+      fetchBookings();
+    } catch (err) {
+      if (err.response) {
+        // server responded (e.g. 500 with "DB error")
+        setError(err.response.data.message);
+      } else if (err.request) {
+        // request made but no response (server down / network issue)
+        setError("Server unavailable, please try again later");
+      } else {
+        // something else went wrong
+        setError("Unexpected error, please try again later");
+      }
+    }
+  }
 
   //this is a function which takes in as a parameter an array (bookings)
   const statusCount = (arr) => {
@@ -62,8 +89,6 @@ export function AdminBookings() {
 
   const statusEl = statusCount(bookings);
 
-  console.log(bookings.length);
-
   const bookingData = bookings.map((booking) => {
     const date = new Date(booking.bookingDate);
     const bookingMonth = date.getMonth();
@@ -78,8 +103,6 @@ export function AdminBookings() {
       //fallback
       default: styles.pending,
     };
-
-    console.log(booking.status);
 
     return (
       <tr key={booking._id}>
@@ -108,7 +131,12 @@ export function AdminBookings() {
                 <button className={styles.completeBtn}>
                   {booking.status === "pending" ? "Confirm" : "Complete"}
                 </button>
-                <button className={styles.cancelBtn}>Cancel</button>
+                <button
+                  onClick={() => handleCancelStatus(booking._id)}
+                  className={styles.cancelBtn}
+                >
+                  Cancel
+                </button>
               </>
             ) : (
               <p className={styles.noActions}>Booking closed</p>

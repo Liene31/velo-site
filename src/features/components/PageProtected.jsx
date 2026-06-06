@@ -8,8 +8,6 @@ export function PageProtected({ role, children }) {
   const isConnected = useAtomValue(isConnectedAtom);
   const userDetails = useAtomValue(authUserAtom);
 
-  console.log(role);
-
   //if not connected, go to login
   if (!isConnected) {
     //replace explanation -> BookingConfirmation is Protected Page, so  I am redirected to login and if for example I decide to not to login and press back, I will go to booking page. Without replace, it technically would go back to booking confirmation but since protected I will end up with login page again.
