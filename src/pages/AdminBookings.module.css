@@ -234,3 +234,12 @@
 .cancelBtn:hover {
   background: rgba(var(--color-red-rgb), 0.12);
 }
+
+.noActions {
+  text-align: center;
+  font-family: var(--font-secondary);
+  font-size: 0.75rem;
+  font-style: italic;
+  letter-spacing: 1px;
+  color: rgba(var(--color-white-rgb), 0.45);
+}

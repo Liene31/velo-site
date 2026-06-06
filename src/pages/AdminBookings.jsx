@@ -79,6 +79,8 @@ export function AdminBookings() {
       default: styles.pending,
     };
 
+    console.log(booking.status);
+
     return (
       <tr key={booking._id}>
         <td>
@@ -101,8 +103,16 @@ export function AdminBookings() {
         <td>{booking.message}</td>
         <td>
           <div className={styles.actions}>
-            <button className={styles.completeBtn}>Complete</button>
-            <button className={styles.cancelBtn}>Cancel</button>
+            {booking.status === "pending" || booking.status === "confirmed" ? (
+              <>
+                <button className={styles.completeBtn}>
+                  {booking.status === "pending" ? "Confirm" : "Complete"}
+                </button>
+                <button className={styles.cancelBtn}>Cancel</button>
+              </>
+            ) : (
+              <p className={styles.noActions}>Booking closed</p>
+            )}
           </div>
         </td>
       </tr>
