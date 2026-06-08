@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./AdminBookings.module.css";
 import { bookingService } from "../services/booking.service";
+import { createInstance } from "i18next";
 
 export function AdminBookings() {
   const [bookings, setBookings] = useState([]);
+  const [selectedStatus, setSelectedStatus] = useState("all");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -98,8 +100,21 @@ export function AdminBookings() {
   };
 
   const statusEl = statusCount(bookings);
+  //filtering on frontend not backend, otherwise my dashboard will reflect filtered values not global
+  const selectedBookings = bookings.filter((booking) => {
+    return selectedStatus === booking.status;
+  });
 
-  const bookingData = bookings.map((booking) => {
+  let bookingsToDisplay;
+
+  //set condition if all bookings should be displayed or filtered
+  if (selectedStatus === "all") {
+    bookingsToDisplay = bookings;
+  } else {
+    bookingsToDisplay = selectedBookings;
+  }
+
+  const bookingData = bookingsToDisplay.map((booking) => {
     const date = new Date(booking.bookingDate);
     const bookingMonth = date.getMonth();
     const bookingDate = date.getDate();
@@ -162,6 +177,11 @@ export function AdminBookings() {
     );
   });
 
+  //detects which of the statuses are selected from dropdown
+  function handleChange(event) {
+    setSelectedStatus(event.target.value);
+  }
+
   return (
     <main className={styles.adminPage}>
       <section className={styles.adminHero}>
@@ -200,7 +220,7 @@ export function AdminBookings() {
       <section className={styles.statsSelect}>
         <label>
           Status
-          <select name="statsSelect" defaultValue="all">
+          <select onChange={handleChange} name="statsSelect" defaultValue="all">
             <option value="all">All</option>
             <option value="pending">Pending</option>
             <option value="confirmed">Confirmed</option>
