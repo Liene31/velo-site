@@ -6,6 +6,7 @@ import { createInstance } from "i18next";
 export function AdminBookings() {
   const [bookings, setBookings] = useState([]);
   const [selectedStatus, setSelectedStatus] = useState("all");
+  const [selectedDate, setSelectedDate] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -105,21 +106,49 @@ export function AdminBookings() {
     return selectedStatus === booking.status;
   });
 
+  //filters only bookings by selected date
+  const selectedBookingsByDate = bookings.filter((booking) => {
+    return selectedDate === getComparableDate(booking.bookingDate);
+  });
+
+  console.log(selectedBookingsByDate);
+
   let bookingsToDisplay;
 
   //set condition if all bookings should be displayed or filtered
-  if (selectedStatus === "all") {
+  if (selectedStatus === "all" && selectedDate === "") {
     bookingsToDisplay = bookings;
-  } else {
+  }
+
+  if (selectedStatus !== "all") {
+    console.log("status");
     bookingsToDisplay = selectedBookings;
   }
 
-  const bookingData = bookingsToDisplay.map((booking) => {
-    const date = new Date(booking.bookingDate);
+  if (selectedDate !== "") {
+    console.log("date");
+    bookingsToDisplay = selectedBookingsByDate;
+  }
+
+  //helper function to format date for displaying dates in booking list
+  function getDisplayDate(dateValue) {
+    const date = new Date(dateValue);
     const bookingMonth = date.getMonth();
     const bookingDate = date.getDate();
     const bookingYear = date.getFullYear();
+    const formattedDate = `${months[bookingMonth]} ${bookingDate}, ${bookingYear}`;
+    return formattedDate;
+  }
 
+  //helper function to format date for comparing selectedDate with a date form the booking list
+  function getComparableDate(dateValue) {
+    const date = new Date(dateValue);
+    const formattedDate = date.toISOString().substring(0, 10);
+    return formattedDate;
+  }
+
+  const bookingData = bookingsToDisplay.map((booking) => {
+    console.log(booking);
     const statusClass = {
       pending: styles.pending,
       confirmed: styles.confirmed,
@@ -131,9 +160,7 @@ export function AdminBookings() {
 
     return (
       <tr key={booking._id}>
-        <td>
-          {months[bookingMonth]} {bookingDate}, {bookingYear}
-        </td>
+        <td>{getDisplayDate(booking.bookingDate)}</td>
         <td>{booking.bookingTime}</td>
         <td>
           <span className={styles.strong}>{booking.name}</span>
@@ -178,8 +205,13 @@ export function AdminBookings() {
   });
 
   //detects which of the statuses are selected from dropdown
-  function handleChange(event) {
+  function handleStatusChange(event) {
     setSelectedStatus(event.target.value);
+  }
+
+  //detects selected date
+  function handleDateInput(event) {
+    setSelectedDate(event.target.value);
   }
 
   return (
@@ -220,7 +252,11 @@ export function AdminBookings() {
       <section className={styles.statsSelect}>
         <label>
           Status
-          <select onChange={handleChange} name="statsSelect" defaultValue="all">
+          <select
+            onChange={handleStatusChange}
+            name="statsSelect"
+            defaultValue="all"
+          >
             <option value="all">All</option>
             <option value="pending">Pending</option>
             <option value="confirmed">Confirmed</option>
@@ -231,7 +267,7 @@ export function AdminBookings() {
 
         <label>
           Date
-          <input name="date" type="date" />
+          <input onChange={handleDateInput} name="date" type="date" />
         </label>
       </section>
 
