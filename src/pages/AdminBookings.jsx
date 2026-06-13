@@ -118,19 +118,17 @@ export function AdminBookings() {
     bookingsToDisplay = bookings;
   }
 
+  //filters on status and date if selected
   if (selectedStatus !== "all") {
     bookingsToDisplay = selectedBookings;
-  }
-
-  if (selectedDate !== "") {
+    if (selectedDate !== "") {
+      bookingsToDisplay = bookingsToDisplay.filter((booking) => {
+        return selectedDate === getComparableDate(booking.bookingDate);
+      });
+    }
+  } else if (selectedDate !== "") {
     bookingsToDisplay = selectedBookingsByDate;
   }
-
-  const testBookingsToDisplay = bookings.map((booking) => {
-    return selectedStatus === "all" && selectedDate === "";
-  });
-
-  console.log(testBookingsToDisplay);
 
   //helper function to format date for displaying dates in booking list
   function getDisplayDate(dateValue) {
