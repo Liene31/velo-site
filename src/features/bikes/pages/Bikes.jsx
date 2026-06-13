@@ -2,7 +2,7 @@ import styles from "./Bikes.module.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { bikeService } from "../../services/bike.service.js";
+import { bikeService } from "../../../services/bike.service";
 
 export function Bikes() {
   const [bikes, setBikes] = useState([]);

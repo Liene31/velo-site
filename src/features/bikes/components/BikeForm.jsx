@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { bikeService } from "../../services/bike.service.js";
+import { bikeService } from "../../../services/bike.service.js";
 import styles from "./BikeForm.module.css";
 
 export function BikeForm(props) {

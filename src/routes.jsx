@@ -4,13 +4,13 @@ import { PageProtected } from "./features/components/PageProtected";
 import { MainLayout } from "./layout/MainLayout";
 import { About } from "./pages-new/About";
 import { AdminBookings } from "./pages/AdminBookings";
-import { AdminBikes } from "./pages/bikes/AdminBikes";
-import { BikeDetail } from "./pages/bikes/BikeDetail";
-import { BikeOverview } from "./pages/bikes/BikeOverview";
-import { BikePhotos } from "./pages/bikes/BikePhotos";
-import { BikeReviews } from "./pages/bikes/BikeReviews";
-import { Bikes } from "./pages/bikes/Bikes";
-import { BikeSpecs } from "./pages/bikes/BikeSpecs";
+import { AdminBikes } from "./features/bikes/pages/AdminBikes";
+import { BikeDetail } from "./features/bikes/pages/BikeDetail";
+import { BikeOverview } from "./features/bikes/pages/BikeOverview";
+import { BikePhotos } from "./features/bikes/pages/BikePhotos";
+import { BikeReviews } from "./features/bikes/pages/BikeReviews";
+import { Bikes } from "./features/bikes/pages/Bikes";
+import { BikeSpecs } from "./features/bikes/pages/BikeSpecs";
 import { Booking } from "./pages/Booking";
 import { BookingConfirmation } from "./pages/BookingConfirmation";
 import { Contact } from "./pages-new/Contact";
@@ -18,7 +18,7 @@ import { Home } from "./pages-new/Home";
 import { NotFound } from "./pages-new/NotFound";
 import { Service } from "./pages/Service";
 import { SuccessPage } from "./pages/SuccessPage";
-import { UserProfile } from "./pages/UserProfile";
+import { UserProfile } from "./pages-new/UserProfile";
 
 export const routes = [
   {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./BikeDetail.module.css";
 import { NavLink, Link, Outlet, useParams } from "react-router-dom";
-import { bikeService } from "../../services/bike.service";
+import { bikeService } from "../../../services/bike.service.js";
 
 export function BikeDetail() {
   const [currentBike, setCurrentBike] = useState(null);

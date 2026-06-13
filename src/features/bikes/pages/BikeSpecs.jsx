@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styles from "./BikeSpecs.module.css";
-import { Build } from "./Build";
-import { GroupSet } from "./GroupSet";
-import { Wheels } from "./Wheels";
+import { Build } from "../components/Build";
+import { GroupSet } from "../components/GroupSet";
+import { Wheels } from "../components/Wheels";
 
 export function BikeSpecs() {
   const [activeTab, setActiveTab] = useState("build");

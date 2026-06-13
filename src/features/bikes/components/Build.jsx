@@ -1,5 +1,5 @@
 import { useOutletContext } from "react-router-dom";
-import styles from "./BikeSpecs.module.css";
+import styles from "../../../features/bikes/pages/BikeSpecs.module.css";
 
 export function Build() {
   const { currentBike } = useOutletContext();

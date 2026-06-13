@@ -1,8 +1,8 @@
 import styles from "./Bikes.module.css";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { BikeModal } from "./BikeModal.jsx";
-import { bikeService } from "../../services/bike.service.js";
+import { BikeModal } from "../../../features/bikes/components/BikeModal.jsx";
+import { bikeService } from "../../../services/bike.service.js";
 
 export function AdminBikes() {
   const [bikes, setBikes] = useState([]);
