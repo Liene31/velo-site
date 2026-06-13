@@ -25,8 +25,16 @@ export const bookingService = {
   },
 
   getById: async (id) => {
+    //Specific to Jotai how to use outside React
+    const userData = getDefaultStore().get(authUserAtom);
+    const token = userData.token;
+
     try {
-      const response = await axios.get(`${url}/api/booking/${id}`);
+      const response = await axios.get(`${url}/api/booking/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return response.data;
     } catch (err) {
       console.error("Booking fetch failed:", err);
