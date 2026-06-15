@@ -1,5 +1,5 @@
 import { useAtomValue } from "jotai";
-import { authUserAtom, isConnectedAtom } from "../../atoms/token.atom.js";
+import { authUserAtom, isConnectedAtom } from "../atoms/token.atom.js";
 import { Navigate } from "react-router";
 
 //these are props but deconstructed

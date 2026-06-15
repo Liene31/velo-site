@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "./Booking.module.css";
-import { allSlots, openDays } from "./bookingSlots.js";
+import { allSlots, openDays } from "../../../features/booking/bookingSlots.js";
 import { useNavigate } from "react-router-dom";
-import { bookingService } from "../services/booking.service.js";
+import { bookingService } from "../../../services/booking.service.js";
 import { useAtomValue, useSetAtom } from "jotai";
-import { bookingAtom } from "../atoms/booking.atom.js";
+import { bookingAtom } from "../booking.atom.js";
 
 export function Booking() {
   const [currentDate, setCurrentDate] = useState(new Date());

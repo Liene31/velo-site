@@ -6,7 +6,7 @@ import { useState } from "react";
 import { authUserAtom } from "../../../atoms/token.atom.js";
 import { useSetAtom } from "jotai";
 import { useAtomValue } from "jotai";
-import { bookingAtom } from "../../../atoms/booking.atom.js";
+import { bookingAtom } from "../../booking/booking.atom.js";
 
 export function Login() {
   const [isLoading, setIsLoading] = useState(false);

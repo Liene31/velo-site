@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./BookingConfirmation.module.css";
-import { bookingService } from "../services/booking.service.js";
+import { bookingService } from "../../../services/booking.service.js";
 import { useEffect, useState } from "react";
 import { useAtom, useAtomValue } from "jotai";
-import { bookingAtom } from "../atoms/booking.atom.js";
-import { authUserAtom } from "../atoms/token.atom.js";
+import { bookingAtom } from "../booking.atom.js";
+import { authUserAtom } from "../../../atoms/token.atom.js";
 
 export function BookingConfirmation() {
   //here it's set to false since the form isn’t submitting when the component loads

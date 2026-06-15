@@ -1,7 +1,7 @@
 import { useAtomValue } from "jotai";
 import styles from "./SuccessPage.module.css";
 import { Link } from "react-router-dom";
-import { bookingAtom } from "../atoms/booking.atom.js";
+import { bookingAtom } from "../booking.atom.js";
 
 export function SuccessPage() {
   const bookingData = useAtomValue(bookingAtom);

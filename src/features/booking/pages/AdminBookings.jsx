@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./AdminBookings.module.css";
-import { bookingService } from "../services/booking.service";
+import { bookingService } from "../../../services/booking.service";
 import { createInstance } from "i18next";
 
 export function AdminBookings() {
