@@ -213,6 +213,18 @@ export function AdminBookings() {
     setSelectedDate(event.target.value);
   }
 
+  let bookingElement;
+
+  if (error) {
+    bookingElement = <p>{error}</p>;
+  } else if (isLoading) {
+    bookingElement = <p>Loading</p>;
+  } else if (bookings.length === 0) {
+    bookingElement = <p>You don’t have any booking history</p>;
+  } else {
+    bookingElement = bookingData;
+  }
+
   return (
     <main className={styles.adminPage}>
       <section className={styles.adminHero}>
@@ -272,24 +284,27 @@ export function AdminBookings() {
 
       <section className={styles.bookingsCard}>
         <h2>Booking Requests</h2>
+        {error || isLoading || bookings.length === 0 ? (
+          bookingElement
+        ) : (
+          <div className={styles.tableWrapper}>
+            <table className={styles.bookingsTable}>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Customer</th>
+                  <th>Service</th>
+                  <th>Status</th>
+                  <th>Message</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
 
-        <div className={styles.tableWrapper}>
-          <table className={styles.bookingsTable}>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Customer</th>
-                <th>Service</th>
-                <th>Status</th>
-                <th>Message</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-
-            <tbody>{bookingData}</tbody>
-          </table>
-        </div>
+              <tbody>{bookingData}</tbody>
+            </table>
+          </div>
+        )}
       </section>
     </main>
   );
