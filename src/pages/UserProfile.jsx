@@ -106,7 +106,7 @@ export function UserProfile() {
 
           <div className={styles.userDetails}>
             <span>Mobile</span>
-            <p>{userDetails.email}</p>
+            <p>{userDetails.phone ? userDetails.phone : "not provided"}</p>
           </div>
         </div>
 
