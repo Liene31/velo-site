@@ -204,7 +204,7 @@ export function AdminBookings() {
   });
 
   //detects which of the statuses are selected from dropdown
-  function handleStatusChange(event) {
+  function getSelectedStatus(event) {
     setSelectedStatus(event.target.value);
   }
 
@@ -252,7 +252,7 @@ export function AdminBookings() {
         <label>
           Status
           <select
-            onChange={handleStatusChange}
+            onChange={getSelectedStatus}
             name="statsSelect"
             defaultValue="all"
           >
