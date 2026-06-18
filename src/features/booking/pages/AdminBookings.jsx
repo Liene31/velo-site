@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./AdminBookings.module.css";
 import { bookingService } from "../../../services/booking.service";
 import { createInstance } from "i18next";
+import { getErrorMessage } from "../../../utils/getErrorMessage";
 
 export function AdminBookings() {
   const [bookings, setBookings] = useState([]);
@@ -36,20 +37,14 @@ export function AdminBookings() {
     bookingService
       .getAll()
       .then((data) => {
-        setBookings(data.bookings);
+        setBookings(data.bookings || []);
         setIsLoading(false);
       })
-      .catch((error) => {
-        if (error.response) {
-          // server responded (e.g. 500 with "DB error")
-          setError(error.response.data.message);
-        } else if (error.request) {
-          // request made but no response (server down / network issue)
-          setError("Server unavailable, please try again later");
-        } else {
-          // something else went wrong
-          setError("Unexpected error, please try again later");
-        }
+      .catch((err) => {
+        //utility function
+        console.log("ADMIN BOOKINGS CATCH RUNNING", err);
+        setError(getErrorMessage(err));
+        console.log(err.response);
         setIsLoading(false);
       });
   }

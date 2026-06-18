@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { authService } from "./services/auth.service";
 import { useSetAtom } from "jotai";
 import { authUserAtom } from "./atoms/token.atom";
+import { getErrorMessage } from "./utils/getErrorMessage";
 
 const router = createBrowserRouter(routes);
 
@@ -41,19 +42,8 @@ function App() {
         setIsLoading(false);
       })
       .catch((err) => {
-        if (err.response) {
-          // server responded (e.g. 500 with "DB error")
-          console.log(err.response.data.message);
-          setError(err.response.data.message);
-        } else if (err.request) {
-          // request made but no response (server down / network issue)
-          console.log("Server unavailable, please try again later");
-          setError("Server unavailable, please try again later");
-        } else {
-          // something else went wrong
-          console.log("Unexpected error, please try again later");
-          setError("Unexpected error, please try again later");
-        }
+        //utility function
+        setError(getErrorMessage(err));
         //if the backend sends an error while verifying the token (token not valid or expired)
         //token is removed from local storage and jotai set to null
         localStorage.removeItem("token");

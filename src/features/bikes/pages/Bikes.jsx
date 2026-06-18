@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { bikeService } from "../../../services/bike.service";
+import { getErrorMessage } from "../../../utils/getErrorMessage";
 
 export function Bikes() {
   const [bikes, setBikes] = useState([]);
@@ -17,20 +18,13 @@ export function Bikes() {
     bikeService
       .getAll(selectedTag)
       .then((data) => {
-        setBikes(data.bikes);
+        //if no bikes, return an empty array, so the page doesn't break
+        setBikes(data.bikes || []);
         setIsLoading(false);
       })
-      .catch((error) => {
-        if (error.response) {
-          // server responded (e.g. 500 with "DB error")
-          setError(error.response.data.message);
-        } else if (error.request) {
-          // request made but no response (server down / network issue)
-          setError("Server unavailable, please try again later");
-        } else {
-          // something else went wrong
-          setError("Unexpected error, please try again later");
-        }
+      .catch((err) => {
+        //utility function
+        setError(getErrorMessage(err));
         setIsLoading(false);
       });
   }, [selectedTag]);

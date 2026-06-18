@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BikeModal } from "../../../features/bikes/components/BikeModal.jsx";
 import { bikeService } from "../../../services/bike.service.js";
+import { getErrorMessage } from "../../../utils/getErrorMessage.js";
 
 export function AdminBikes() {
   const [bikes, setBikes] = useState([]);
@@ -73,20 +74,12 @@ export function AdminBikes() {
     bikeService
       .getAll(selectedTag)
       .then((data) => {
-        setBikes(data.bikes);
+        setBikes(data.bikes || []);
         setIsLoading(false);
       })
       .catch((err) => {
-        if (err.response) {
-          // server responded (e.g. 500 with "DB error")
-          setError(err.response.data.message);
-        } else if (err.request) {
-          // request made but no response (server down / network issue)
-          setError("Server unavailable, please try again later");
-        } else {
-          // something else went wrong
-          setError("Unexpected error, please try again later");
-        }
+        //utility function
+        setError(getErrorMessage(err));
         setIsLoading(false);
       });
   }
