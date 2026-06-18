@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./BikeDetail.module.css";
 import { NavLink, Link, Outlet, useParams } from "react-router-dom";
 import { bikeService } from "../../../services/bike.service.js";
+import { getErrorMessage } from "../../../utils/getErrorMessage";
 
 export function BikeDetail() {
   const [currentBike, setCurrentBike] = useState(null);
@@ -18,17 +19,9 @@ export function BikeDetail() {
         setCurrentBike(data);
         setIsLoading(false);
       })
-      .catch((error) => {
-        if (error.response) {
-          // server responded (e.g. 500 with "DB error")
-          setError(error.response.data.message);
-        } else if (error.request) {
-          // request made but no response (server down / network issue)
-          setError("Server unavailable, please try again later");
-        } else {
-          // something else went wrong
-          setError("Unexpected error, please try again later");
-        }
+      .catch((err) => {
+        //utility function
+        setError(getErrorMessage(err));
         setIsLoading(false);
       });
     //use id as dependency because data should re-load if id is changing

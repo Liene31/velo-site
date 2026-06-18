@@ -42,9 +42,7 @@ export function AdminBookings() {
       })
       .catch((err) => {
         //utility function
-        console.log("ADMIN BOOKINGS CATCH RUNNING", err);
         setError(getErrorMessage(err));
-        console.log(err.response);
         setIsLoading(false);
       });
   }

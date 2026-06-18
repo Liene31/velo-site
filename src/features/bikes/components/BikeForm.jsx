@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { bikeService } from "../../../services/bike.service.js";
+import { getErrorMessage } from "../../../utils/getErrorMessage";
 import styles from "./BikeForm.module.css";
 
 export function BikeForm(props) {
@@ -86,17 +87,9 @@ export function BikeForm(props) {
       setIsLoading(false);
       //setShowModal, setShowToast, fetchBikes is triggered in parent component (AdminBikes)
       props.onSuccess(bikeDetails ? "updated" : "added");
-    } catch (error) {
-      if (error.response) {
-        // server responded (e.g. 500 with "DB error")
-        setError(error.response.data.message);
-      } else if (error.request) {
-        // request made but no response (server down / network issue)
-        setError("Server unavailable, please try again later");
-      } else {
-        // something else went wrong
-        setError("Unexpected error, please try again later");
-      }
+    } catch (err) {
+      //utility function
+      setError(getErrorMessage(err));
       setIsLoading(false);
     }
   };

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { authService } from "../../../services/auth.service";
+import { getErrorMessage } from "../../../utils/getErrorMessage";
 
 export function Register() {
   const [isLoading, setIsLoading] = useState(false);
@@ -39,19 +40,9 @@ export function Register() {
             "Your account has been created. Login to manage your bookings and profile.",
         },
       });
-
-      console.log(response);
     } catch (err) {
-      if (err.response) {
-        // server responded (e.g. 500 with "DB error")
-        setError(err.response.data.message);
-      } else if (err.request) {
-        // request made but no response (server down / network issue)
-        setError("Server unavailable, please try again later");
-      } else {
-        // something else went wrong
-        setError("Unexpected error, please try again later");
-      }
+      //utility function
+      setError(getErrorMessage(err));
       setIsLoading(false);
     }
   };

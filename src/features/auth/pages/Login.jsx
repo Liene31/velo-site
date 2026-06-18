@@ -7,6 +7,7 @@ import { authUserAtom } from "../../../atoms/token.atom.js";
 import { useSetAtom } from "jotai";
 import { useAtomValue } from "jotai";
 import { bookingAtom } from "../../booking/booking.atom.js";
+import { getErrorMessage } from "../../../utils/getErrorMessage.js";
 
 export function Login() {
   const [isLoading, setIsLoading] = useState(false);
@@ -53,7 +54,7 @@ export function Login() {
       const response = await authService.login(payload);
 
       //success -> stop loading
-      setIsLoading(false);
+      setIsLoading(true);
       //on success, uses jotai atom so the header component knows that login was successful
       //in order to change btn from login to user details
       setAuthUserAtom({
@@ -74,16 +75,8 @@ export function Login() {
         navigate("/");
       }
     } catch (err) {
-      if (err.response) {
-        // server responded (e.g. 500 with "DB error")
-        setError(err.response.data.message);
-      } else if (err.request) {
-        // request made but no response (server down / network issue)
-        setError("Server unavailable, please try again later");
-      } else {
-        // something else went wrong
-        setError("Unexpected error, please try again later");
-      }
+      //utility function
+      setError(getErrorMessage(err));
       setIsLoading(false);
     }
   };
