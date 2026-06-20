@@ -42,6 +42,17 @@ export const bookingService = {
     }
   },
 
+  getSlots: async () => {
+    try {
+      const response = await axios.get(`${url}/api/booking/slots`);
+      console.log(response.data);
+      return response.data;
+    } catch (err) {
+      console.error("Booking fetch failed:", err);
+      throw err; // rethrow
+    }
+  },
+
   insert: async (bookingData) => {
     //Specific to Jotai how to use outside React
     const userData = getDefaultStore().get(authUserAtom);

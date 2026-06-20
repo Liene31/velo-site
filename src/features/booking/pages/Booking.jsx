@@ -128,7 +128,7 @@ export function Booking() {
     setIsLoading(true);
     setError(null);
     bookingService
-      .getAll()
+      .getSlots()
       .then((data) => {
         setBookings(data.bookings);
         setIsLoading(false);
