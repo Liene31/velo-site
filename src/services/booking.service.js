@@ -45,7 +45,6 @@ export const bookingService = {
   getSlots: async () => {
     try {
       const response = await axios.get(`${url}/api/booking/slots`);
-      console.log(response.data);
       return response.data;
     } catch (err) {
       console.error("Booking fetch failed:", err);
